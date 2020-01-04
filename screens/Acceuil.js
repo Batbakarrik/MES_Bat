@@ -1,33 +1,29 @@
 import React, { Component } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 
-import { Text, View, FlatList } from 'react-native';
+import Login from './Login'
+import colors from '../utils/colors';
 
 export default class Acceuil extends Component {
     state = {
-        pokemons : [
-            {
-            "name":" toto",
-            "url":""
-            },
-            {
-            "name":" tata",
-            "url":""
-            },
-            {
-            "name":" tutu",
-            "url":""
-            }
-        ]
     }
     render(){
         return (
-          <View style={{ flex:1, alignItems:'center', justifyContent:'center'}}>
-                  <FlatList
-                      data={this.state.pokemons}
-                      renderItem={({ item}) => <View><Text>{item.name}</Text></View>}
-                      keyExtractor={item => item.name}
-                  />
+          <View style={styles.container}>
+            <Text style={styles.texte}>Paramètres Réseau</Text>
+            <Login/>
           </View>
         );
     }
 }
+const styles = StyleSheet.create({
+    container:{
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+    },
+    texte:{
+        color: colors.titre,
+        paddingVertical: 16,
+    },
+})
