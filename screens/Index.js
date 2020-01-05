@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 import Login from './Login'
-import colors from '../utils/colors';
+import colors from '../src/utils/colors';
 
 export default class Acceuil extends Component {
-    state = {
-    }
     render(){
         return (
           <View style={styles.container}>
-            <Text style={styles.texte}>Paramètres Réseau</Text>
             <Login/>
           </View>
         );

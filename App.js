@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, FlatList, StatusBar } from 'react-native'
+import { StyleSheet, View, StatusBar } from 'react-native'
 
-import Acceuil from './screens/Acceuil'
-import colors from './utils/colors'
+import Index from './screens/Index'
+import colors from './src/utils/colors'
 
 export default class App extends Component {
   render(){
       return (
         <View style={styles.container}>
           <StatusBar
-            hidden= {true}
+            hidden= {false}
           />
-          <Acceuil/>
+          <Index/>
         </View>
       );
     }
