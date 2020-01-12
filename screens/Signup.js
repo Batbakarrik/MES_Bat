@@ -6,20 +6,26 @@ import Logo from '../src/components/Logo'
 import Form from '../src/components/Form'
 import colors from '../src/utils/colors'
 
-export default class Login extends Component {
+export default class Signup extends Component {
   state = {
+    name: '',
     email: '',
     password: '',
     errorMessage : null
   };
 
-  handleLogin = () => {
-    const {email, password} = this.state
-    
-    firebase.auth().signInWithEmailAndPassword(email, password)
-    .catch(error => this.setState({errorMessage: error.message}))
+  handleSignup = () => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(userCredentials => {
+        return userCredentials.user.updateProfile({
+          displayName: this.state.name
+        })
+      })
+      .catch(error => this.setState({ errorMessage: error.message}));
   }
-
+  
   render() {
     return (
       <View style={styles.container}>
@@ -29,6 +35,12 @@ export default class Login extends Component {
           {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}
         </View>
         <View style={styles.container1}>
+        <TextInput style={styles.inputBox}
+            placeholder="name"
+            autoCapitalize="none"
+            onChangeText={name => this.setState({ name })}
+            value={this.state.name}
+          />
           <TextInput style={styles.inputBox}
             placeholder="Email"
             autoCapitalize="none"
@@ -42,19 +54,17 @@ export default class Login extends Component {
             onChangeText={password => this.setState({ password })}
             value={this.state.password}
           />
-          <TouchableOpacity onPress={this.handleLogin}>
+          <TouchableOpacity onPress={this.handleSignup}>
             <Text
               style={styles.button}>
-              Login
+              Sign Up
             </Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("Signup")}>
-          <View style={styles.signupcont}>
-            <Text style={styles.accounttext}>Don't have an account yet?</Text>
-            <Text style={styles.signuptext}>Sign Up!!</Text>
-          </View>
-        </TouchableOpacity>
+        <View style={styles.signupcont}>
+          <Text style={styles.accounttext}>Don't have an account yet?</Text>
+          <Text style={styles.signuptext}>Login!!</Text>
+        </View>
       </View>
     )
   }
@@ -67,9 +77,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems:'center',
-    borderColor: colors.borderinput,
-    borderWidth: 1,
-    borderRadius: 25,
   },
   container1: {
     display: 'flex',

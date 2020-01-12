@@ -1,27 +1,42 @@
-import React, { Component } from 'react'
-import { StyleSheet, View, StatusBar } from 'react-native'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
+import Home from './screens/Home'
+import Loading from './screens/Loading'
+import Login from './screens/Login'
+import Signup from './screens/Signup'
 
-import Index from './screens/Index'
-import colors from './src/utils/colors'
+import * as firebase from 'firebase'
 
-export default class App extends Component {
-  render(){
-      return (
-        <View style={styles.container}>
-          <StatusBar
-            hidden= {false}
-          />
-          <Index/>
-        </View>
-      );
+var firebaseConfig = {
+    apiKey: "AIzaSyCaVkEUsqPO-eGbeZQ7ubhQLwKkylI5hf8",
+    authDomain: "spie-mob.firebaseapp.com",
+    databaseURL: "https://spie-mob.firebaseio.com",
+    projectId: "spie-mob",
+    storageBucket: "spie-mob.appspot.com",
+    messagingSenderId: "376115758009",
+    appId: "1:376115758009:web:b4916082028469ae326c68"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+const AppStack = createStackNavigator ({
+  Home: Home,
+});
+
+const AuthStack = createStackNavigator ({
+  Login: Login,
+  Signup: Signup,
+});
+
+export default createAppContainer(
+  createSwitchNavigator(
+    {
+      Loading: Loading,
+      App: AppStack,
+      Auth: AuthStack
+    },
+    {
+      initialRouteName: "Loading"
     }
-}
-const styles = StyleSheet.create({
-  container:{
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: colors.background,
-      paddingTop: 24
-  }
-})
+  )
+)
