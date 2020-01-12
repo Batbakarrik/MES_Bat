@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, TextInput, TouchableOpacity} from 'react-native'
+import { Text, StyleSheet, View, TextInput, TouchableOpacity, Image, StatusBar, LayoutAnimation } from 'react-native'
 import * as firebase from 'firebase'
 
 import Logo from '../src/components/Logo'
 import Form from '../src/components/Form'
 import colors from '../src/utils/colors'
+import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 export default class Login extends Component {
+  static navigationOptions = {
+    title: 'Home',
+    headerStyle: {
+      backgroundColor: colors.background,
+    },
+  };
+
   state = {
     email: '',
     password: '',
@@ -23,6 +31,7 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar barStyle='light-content'></StatusBar>
         <Text style={styles.text}> Application d'aide à la mise en service </Text>
         <Logo/>
         <View style={styles.errorMessage}>
@@ -67,9 +76,9 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems:'center',
+    backgroundColor: colors.background,
     borderColor: colors.borderinput,
     borderWidth: 1,
-    borderRadius: 25,
   },
   container1: {
     display: 'flex',
@@ -110,9 +119,9 @@ const styles = StyleSheet.create({
       margin: 8,
       paddingHorizontal: 8,
       color: colors.texte,
-      borderColor: colors.borderinput,
-      borderWidth: 1,
-      borderRadius: 25,
+      // borderColor: colors.borderinput,
+      // borderWidth: 1,
+      // borderRadius: 25,
       justifyContent: 'center',
       textAlignVertical: 'center',
   },

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, TextInput, TouchableOpacity} from 'react-native'
+import { Text, StyleSheet, View, TextInput, TouchableOpacity, Image, StatusBar} from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
+
 import * as firebase from 'firebase'
 
 import Logo from '../src/components/Logo'
@@ -7,6 +9,13 @@ import Form from '../src/components/Form'
 import colors from '../src/utils/colors'
 
 export default class Signup extends Component {
+  static navigationOptions = {
+    title: 'SignUp',
+    headerStyle: {
+      backgroundColor: colors.background,
+    },
+  };
+
   state = {
     name: '',
     email: '',
@@ -29,7 +38,11 @@ export default class Signup extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}> Application d'aide à la mise en service </Text>
+        <StatusBar barStyle='light-content'></StatusBar>
+        <TouchableOpacity style={styles.back} onPress={() => this.props.navigation.goBack()}>
+          <Ionicons name="ios.arrow.back" size={32} color="#FFF"/>
+        </TouchableOpacity>
+        <Text style={styles.text}> Veuillez remplir les champs </Text>
         <Logo/>
         <View style={styles.errorMessage}>
           {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}
@@ -62,8 +75,10 @@ export default class Signup extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.signupcont}>
-          <Text style={styles.accounttext}>Don't have an account yet?</Text>
-          <Text style={styles.signuptext}>Login!!</Text>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
+            <Text style={styles.accounttext}>Don't have an account yet?</Text>
+            <Text style={styles.signuptext}>Login!!</Text>
+          </TouchableOpacity>
         </View>
       </View>
     )
@@ -77,6 +92,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems:'center',
+    backgroundColor: colors.background,
   },
   container1: {
     display: 'flex',
@@ -148,4 +164,15 @@ const styles = StyleSheet.create({
     color: "#E9446A",
     textAlignVertical: 'center',
   },
+  back: {
+    position: "absolute",
+    top: 48,
+    left: 42,
+    width: 42,
+    height: 42,
+    borderRadius: 16,
+    backgroundColor: "rgba(21, 22, 48, 0.1)",
+    alignItems: "center",
+    justifyContent: "center"
+  }
 })

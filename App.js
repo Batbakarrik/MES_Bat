@@ -1,11 +1,17 @@
+import React from 'react'
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
+import { Ionicons } from '@expo/vector-icons'
+
 import Home from './screens/Home'
 import Loading from './screens/Loading'
 import Login from './screens/Login'
 import Signup from './screens/Signup'
+import Param from './screens/Param'
 
 import * as firebase from 'firebase'
+import colors from './src/utils/colors'
 
 var firebaseConfig = {
     apiKey: "AIzaSyCaVkEUsqPO-eGbeZQ7ubhQLwKkylI5hf8",
@@ -19,9 +25,35 @@ var firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-const AppStack = createStackNavigator ({
-  Home: Home,
-});
+
+
+const AppTabNavigator = createBottomTabNavigator(
+  {
+    Home: {
+      screen: Home,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-home" size={24} color={tintColor}></Ionicons>
+      }
+    },
+    Param: {
+      screen: Param,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-home" size={24} color={tintColor}></Ionicons>
+      }
+    }
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarOptions: {
+        activeTintColor: '#42f44b',
+        inactiveTintColor: 'gray',
+        activeBackgroundColor: colors.background,
+        inactiveBackgroundColor: colors.background,
+      },
+    }
+    )
+  }
+)
 
 const AuthStack = createStackNavigator ({
   Login: Login,
@@ -32,7 +64,7 @@ export default createAppContainer(
   createSwitchNavigator(
     {
       Loading: Loading,
-      App: AppStack,
+      App: AppTabNavigator,
       Auth: AuthStack
     },
     {
