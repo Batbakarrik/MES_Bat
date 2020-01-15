@@ -9,36 +9,78 @@ export default class Param extends Component {
     constructor(props) {
         super(props);
             this.state= {
-                primary: '',
-                secondary: '',
-                results: '',
+                prim_I: 0,
+                second_I: 0,
+                coef_I: 0,
+                coef_U: 0,
+                seuil_I: 0,
+                seuil_U: 0,
+                inj_I: 0,
+                inj_U: 0,
             }
-            this.calc = this.calc.bind(this);
+            this.calc_coef = this.calc_coef.bind(this);
+            this.calc_seuil = this.calc_seuil.bind(this);
+        }
+        // componentDidUpdate(){
+        //         const coef_I = this.state.second_I / this.state.prim_I
+        //         console.log(coef_I)
+        //         }
+
+        calc_coef() {
+            this.setState({
+                coef_I: this.state.second_I / this.state.prim_I
+            }),
+            this.setState({
+                coef_U: this.state.second_U / this.state.prim_U
+            })
+        }
+        calc_seuil() {
+            this.setState({
+                inj_I: this.state.seuil_I * this.state.coef_I
+            })
+            this.setState({
+                inj_U: (this.state.seuil_U * this.state.coef_U) / 1.732
+            })
         }
 
-        calc() {
-            this.setState({
-                results: this.state.secondary / this.state.primary
-            });
-            console.log(this.state.results)
-        }
-        
         render() {
             return (
                 <View style={styles.container}>
                     <View style={styles.container1}>
-                        <Input Titre="Primaire TC" Change={(primary) => this.setState({primary})} Valeur={this.state.primary} Length={4} Placeholder="Entrez Valeur"/>
-                        <Input Titre="Secondaire TC" Change={(secondary) => this.setState({secondary})} Valeur={this.state.secondary} Length={1} Placeholder="Entrez Valeur"/>
+                        <Input Titre="Primaire TC" Change={(prim_I) => this.setState({prim_I})} Valeur={this.state.prim_I} Length={4} Placeholder="Entrez Valeur (A)"/>
+                        <Input Titre="Secondaire TC" Change={(second_I) => this.setState({second_I})} Valeur={this.state.second_I} Length={1} Placeholder="Entrez Valeur (A)"/>
+                    </View>
+                    <View style={styles.container1}>
+                        <Input Titre="Primaire TP" Change={(prim_U) => this.setState({prim_U})} Valeur={this.state.prim_U} Length={6} Placeholder="Entrez Valeur (V)"/>
+                        <Input Titre="Secondaire TP" Change={(second_U) => this.setState({second_U})} Valeur={this.state.second_U} Length={3} Placeholder="Entrez Valeur (V)"/>
                     </View>
                     <View style={styles.container1}>
                         <TouchableOpacity>
                             <Text
                                 style={styles.button}
-                                onPress={this.calc}>
+                                onPress={this.calc_coef}>
                             Calculer
                             </Text>
                         </TouchableOpacity>
-                        <Text style={styles.text}>{this.state.results}</Text>
+                        <Text style={styles.text}>{this.state.coef_I}</Text>
+                        <Text style={styles.text}>{this.state.coef_U}</Text>
+                    </View>
+                    <View style={styles.container1}>
+                        <Input Titre="Seuil (A)" Change={(seuil_I) => this.setState({seuil_I})} Valeur={this.state.seuil_I} Length={5} Placeholder="Entrez Valeur (A)"/>
+                        <Text style={styles.text}>{this.state.inj_I}</Text>
+                    </View>
+                    <View style={styles.container1}>
+                        <Input Titre="Seuil (V)" Change={(seuil_U) => this.setState({seuil_U})} Valeur={this.state.seuil_U} Length={5} Placeholder="Entrez Valeur (V)"/>
+                        <Text style={styles.text}>{this.state.inj_U}</Text>
+                    </View>
+                    <View style={styles.container1}>
+                        <TouchableOpacity>
+                            <Text
+                                style={styles.button}
+                                onPress={this.calc_seuil}>
+                            Calculer
+                            </Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
         )
@@ -50,13 +92,11 @@ const styles = StyleSheet.create({
         display: 'flex',
         marginTop: 24,
         flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: colors.background,
     },
     container1: {
-        display: 'flex',
-        justifyContent: 'center',
+        flexDirection: 'row',
         borderColor: colors.borderinput,
         borderRadius: 25,
     },

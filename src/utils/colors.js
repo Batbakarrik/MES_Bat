@@ -7,7 +7,7 @@ export default {
     buttonlogin: '#1c313a',
     statusbar: '#1c313a',
     titre: '#ffffff',
-    texte: '#rgba(255,255,255,0.5)',
+    texte: '#ffffff',
     signuptext: 'rgba(255,255,255,0.5)',
     accounttext: 'rgba(255,255,255,0.3)',
 }

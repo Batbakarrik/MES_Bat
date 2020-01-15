@@ -38,7 +38,7 @@ const AppTabNavigator = createBottomTabNavigator(
     Param: {
       screen: Param,
       navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-home" size={24} color={tintColor}></Ionicons>
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-calculator" size={24} color={tintColor}></Ionicons>
       }
     }
   },
