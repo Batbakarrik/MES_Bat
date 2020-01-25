@@ -18,7 +18,7 @@ export default class Home extends Component {
     displayName: ""
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     const { email, displayName} = firebase.auth().currentUser
     this.setState({ email, displayName})
   }

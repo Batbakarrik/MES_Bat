@@ -3,6 +3,7 @@ import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
 
 import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
+import Calcul1 from './Calcul1'
 
 
 export default class Param extends Component {
@@ -17,14 +18,20 @@ export default class Param extends Component {
                 seuil_U: 0,
                 inj_I: 0,
                 inj_U: 0,
+                maj: false,
             }
+            console.log('state')
             this.calc_coef = this.calc_coef.bind(this);
             this.calc_seuil = this.calc_seuil.bind(this);
         }
-        // componentDidUpdate(){
+        // componentDidUpdate = (prevProps, prevState) => {
+        //     if (prevState.coef_I === 0) {
         //         const coef_I = this.state.second_I / this.state.prim_I
+        //         this.setState({coef_I})
         //         console.log(coef_I)
         //         }
+        //     return
+        //     }
 
         calc_coef() {
             this.setState({
@@ -44,6 +51,9 @@ export default class Param extends Component {
         }
 
         render() {
+            console.log('render')
+            console.log(this.state.maj)
+            this.setState.maj=true
             return (
                 <View style={styles.container}>
                     <View style={styles.container1}>
@@ -62,16 +72,16 @@ export default class Param extends Component {
                             Calculer
                             </Text>
                         </TouchableOpacity>
-                        <Text style={styles.text}>{this.state.coef_I}</Text>
-                        <Text style={styles.text}>{this.state.coef_U}</Text>
+                        <Text style={styles.text}>{this.state.coef_I.toFixed(5)}</Text>
+                        <Text style={styles.text}>{this.state.coef_U.toFixed(5)}</Text>
                     </View>
                     <View style={styles.container1}>
                         <Input Titre="Seuil (A)" Change={(seuil_I) => this.setState({seuil_I})} Valeur={this.state.seuil_I} Length={5} Placeholder="Entrez Valeur (A)"/>
-                        <Text style={styles.text}>{this.state.inj_I}</Text>
+                        <Text style={styles.text}>{this.state.inj_I.toFixed(2)}</Text>
                     </View>
                     <View style={styles.container1}>
                         <Input Titre="Seuil (V)" Change={(seuil_U) => this.setState({seuil_U})} Valeur={this.state.seuil_U} Length={5} Placeholder="Entrez Valeur (V)"/>
-                        <Text style={styles.text}>{this.state.inj_U}</Text>
+                        <Text style={styles.text}>{this.state.inj_U.toFixed(2)}</Text>
                     </View>
                     <View style={styles.container1}>
                         <TouchableOpacity>
@@ -82,6 +92,7 @@ export default class Param extends Component {
                             </Text>
                         </TouchableOpacity>
                     </View>
+                    <Calcul1/>
                 </View>
         )
     }
