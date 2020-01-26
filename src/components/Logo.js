@@ -6,7 +6,7 @@ import colors from '../utils/colors'
 const Input = ({ Titre }) => (
     <View style={styles.container}>
         <Image style={{ width:70, height:70}}
-            source={require('../image/490-svg.png')}/>
+            source={require('../image/Lauburu_bleue.png')}/>
     </View>
     )
 export default Input
