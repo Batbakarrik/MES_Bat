@@ -9,6 +9,7 @@ import Loading from './screens/Loading'
 import Login from './screens/Login'
 import Signup from './screens/Signup'
 import Param from './screens/Param'
+import Calcul1 from './screens/Calcul1'
 
 import * as firebase from 'firebase'
 import colors from './src/utils/colors'
@@ -37,6 +38,12 @@ const AppTabNavigator = createBottomTabNavigator(
     },
     Param: {
       screen: Param,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-settings" size={24} color={tintColor}></Ionicons>
+      }
+    },
+    Calcul1: {
+      screen: Calcul1,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => <Ionicons name="ios-calculator" size={24} color={tintColor}></Ionicons>
       }

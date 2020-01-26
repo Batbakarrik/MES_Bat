@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, TextInput, TouchableOpacity, Image, StatusBar, LayoutAnimation } from 'react-native'
+import { Text, StyleSheet, View, TextInput, TouchableOpacity, StatusBar } from 'react-native'
 import * as firebase from 'firebase'
 
 import Logo from '../src/components/Logo'
-import Form from '../src/components/Form'
 import colors from '../src/utils/colors'
-import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 export default class Login extends Component {
   static navigationOptions = {

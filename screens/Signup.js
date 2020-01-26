@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, TextInput, TouchableOpacity, Image, StatusBar} from 'react-native'
+import { Text, StyleSheet, View, TextInput, TouchableOpacity, StatusBar} from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 
 import * as firebase from 'firebase'
 
 import Logo from '../src/components/Logo'
-import Form from '../src/components/Form'
 import colors from '../src/utils/colors'
 
 export default class Signup extends Component {
@@ -39,9 +38,9 @@ export default class Signup extends Component {
     return (
       <View style={styles.container}>
         <StatusBar barStyle='light-content'></StatusBar>
-        <TouchableOpacity style={styles.back} onPress={() => this.props.navigation.goBack()}>
+        {/* <TouchableOpacity style={styles.back} onPress={() => this.props.navigation.goBack()}>
           <Ionicons name="ios.arrow.back" size={32} color="#FFF"/>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <Text style={styles.text}> Veuillez remplir les champs </Text>
         <Logo/>
         <View style={styles.errorMessage}>
