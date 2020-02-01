@@ -7,7 +7,7 @@ import * as firebase from 'firebase'
 
 export default class Home extends Component {
   static navigationOptions = {
-    title: '',
+    title: 'Home',
     headerStyle: {
       backgroundColor: colors.background,
     },

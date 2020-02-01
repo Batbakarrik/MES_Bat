@@ -5,18 +5,20 @@ import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
 
 export default class Calcul1 extends Component{
+    static navigationOptions = {
+        title: 'Calcul1'
+    }
 
     render () {
-        const {seuil_I, seuil_U, inj_I, inj_U, calc_seuil} =  this.props
-        console.log(seuil_I)
+        const {seuil_I, seuil_U, inj_I, inj_U, calc_seuil, setSeuil_I, setSeuil_U} =  this.props.screenProps
             return (
                 <View style={styles.container}>
                     <View style={styles.container1}>
-                        <Input Titre="Seuil (A)" Change={(seuil_I) => this.setState({seuil_I})} Valeur={seuil_I} Length={5} Placeholder="Entrez Valeur (A)"/>
+                        <Input Titre="Seuil (A)" Change={setSeuil_I} Valeur={seuil_I} Length={5} Placeholder="Entrez Valeur (A)"/>
                         <Text style={styles.text}>{inj_I}</Text>
                     </View>
                     <View style={styles.container1}>
-                        <Input Titre="Seuil (V)" Change={(seuil_U) => this.setState({seuil_U})} Valeur={seuil_U} Length={5} Placeholder="Entrez Valeur (V)"/>
+                        <Input Titre="Seuil (V)" Change={setSeuil_U} Valeur={seuil_U} Length={5} Placeholder="Entrez Valeur (V)"/>
                         <Text style={styles.text}>{inj_U}</Text>
                     </View>
                     <View style={styles.container1}>

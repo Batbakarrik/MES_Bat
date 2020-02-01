@@ -6,98 +6,59 @@ import Input from '../src/components/Input'
 
 
 export default class Param extends Component {
-    constructor(props) {
-        super(props);
-            this.state= {
-                prim_I: 0,
-                second_I: 0,
-                prim_U: 0,
-                second_U: 0,
-                prim_I0: 0,
-                second_I0: 0,
-                prim_I_00: 0,
-                second_I_00: 0,
-                coef_I: 0,
-                coef_U: 0,
-                coef_I0: 0,
-                coef_I00: 0,
-                seuil_I: 0,
-                seuil_U: 0,
-                seuil_I0: 0,
-                seuil_I00: 0,
-                inj_I: 0,
-                inj_U: 0,
-                inj_I0: 0,
-                inj_I00:0,
-                maj: false,
-            }
-        this.calc_coef = this.calc_coef.bind(this);
-        this.calc_seuil = this.calc_seuil.bind(this);
-        }
-        calc_coef = () => {
-            this.setState({coef_I: this.state.second_I / this.state.prim_I})
-            this.setState({coef_U: this.state.second_U / this.state.prim_U})
-            this.setState({coef_I0: this.state.second_I0 / this.state.prim_I0})
-            this.setState({coef_I00: this.state.second_I00 / this.state.prim_I00})
-        }
-        calc_seuil = () => {
-            this.setState({inj_I: this.state.seuil_I * this.state.coef_I})
-            this.setState({inj_U: (this.state.seuil_U * this.state.coef_U) / 1.732})
-            this.setState({inj_I0: this.state.seuil_I0 * this.state.coef_I0})
-            this.setState({inj_I00: this.state.seuil_I00 * this.state.coef_I00})
-        }
+
         render() {
-            const {prim_I, second_I, prim_U, second_U, prim_I0, second_I0, prim_I00, second_I00, seuil_I, seuil_U, seuil_I0, seuil_I00} = this.state
+            const {prim_I, second_I, prim_U, second_U, prim_I0, second_I0, prim_I00, second_I00, seuil_I, seuil_U, seuil_I0, seuil_I00, setPrim_I, setSecond_I, setPrim_U, setSecond_U, setPrim_I0, setSecond_I0, setPrim_I00, setSecond_I00, setSeuil_I, setSeuil_U, setSeuil_I0, setSeuil_I00} = this.props.screenProps
             return (
                 <View style={styles.container}>
                     <View style={styles.container1}>
-                        <Input Titre="Primaire TC" Change={(prim_I) => this.setState({prim_I})} Valeur={prim_I} Length={4} Placeholder="Entrez Valeur (A)"/>
-                        <Input Titre="Secondaire TC" Change={(second_I) => this.setState({second_I})} Valeur={second_I} Length={1} Placeholder="Entrez Valeur (A)"/>
+                        <Input Titre="Primaire TC" Change={setPrim_I} Valeur={prim_I} Length={4} Placeholder="Entrez Valeur (A)"/>
+                        <Input Titre="Secondaire TC" Change={setSecond_I} Valeur={second_I} Length={1} Placeholder="Entrez Valeur (A)"/>
                     </View>
                     <View style={styles.container1}>
-                        <Input Titre="Primaire TP" Change={(prim_U) => this.setState({prim_U})} Valeur={prim_U} Length={6} Placeholder="Entrez Valeur (V)"/>
-                        <Input Titre="Secondaire TP" Change={(second_U) => this.setState({second_U})} Valeur={second_U} Length={3} Placeholder="Entrez Valeur (V)"/>
+                        <Input Titre="Primaire TP" Change={setPrim_U} Valeur={prim_U} Length={6} Placeholder="Entrez Valeur (V)"/>
+                        <Input Titre="Secondaire TP" Change={setSecond_U} Valeur={second_U} Length={3} Placeholder="Entrez Valeur (V)"/>
                     </View>
                     <View style={styles.container1}>
-                        <Input Titre="Primaire Tore1" Change={(prim_I0) => this.setState({prim_I0})} Valeur={prim_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
-                        <Input Titre="Secondaire Tore1" Change={(second_I0) => this.setState({second_I0})} Valeur={second_I0} Length={1} Placeholder="Entrez Valeur (I0)"/>
+                        <Input Titre="Primaire Tore1" Change={setPrim_I0} Valeur={prim_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
+                        <Input Titre="Secondaire Tore1" Change={setSecond_I0} Valeur={second_I0} Length={1} Placeholder="Entrez Valeur (I0)"/>
                     </View>
                     <View style={styles.container1}>
-                        <Input Titre="Primaire Tore2" Change={(prim_I00) => this.setState({prim_I00})} Valeur={prim_I00} Length={4} Placeholder="Entrez Valeur (I0)"/>
-                        <Input Titre="Secondaire Tore2" Change={(second_I00) => this.setState({second_I00})} Valeur={second_I00} Length={1} Placeholder="Entrez Valeur (I0)"/>
+                        <Input Titre="Primaire Tore2" Change={setPrim_I00} Valeur={prim_I00} Length={4} Placeholder="Entrez Valeur (I0)"/>
+                        <Input Titre="Secondaire Tore2" Change={setSecond_I00} Valeur={second_I00} Length={1} Placeholder="Entrez Valeur (I0)"/>
                     </View>
                         <View style={styles.container1}>
-                            <Input Titre="Seuil I" Change={(seuil_I) => this.setState({seuil_I})} Valeur={seuil_I} Length={4} Placeholder="Entrez Seuil (I)"/>
+                            <Input Titre="Seuil I" Change={setSeuil_I} Valeur={seuil_I} Length={4} Placeholder="Entrez Seuil (I)"/>
                             <Text style={styles.text}>Injecter</Text>
-                            <Text style={styles.text1}>{this.state.inj_I.toFixed(2)}</Text>
+                            <Text style={styles.text1}>{this.props.screenProps.inj_I.toFixed(2)}</Text>
                         </View>
                         <View style={styles.container1}>
-                            <Input Titre="Primaire Tore2" Change={(seuil_U) => this.setState({seuil_U})} Valeur={seuil_U} Length={6} Placeholder="Entrez Valeur (U)"/>
+                            <Input Titre="Primaire Tore2" Change={setSeuil_U} Valeur={seuil_U} Length={6} Placeholder="Entrez Valeur (U)"/>
                             <Text style={styles.text}>Injecter</Text>
-                            <Text style={styles.text1}>{this.state.inj_U.toFixed(2)}</Text>
+                            <Text style={styles.text1}>{this.props.screenProps.inj_U.toFixed(2)}</Text>
                             </View>
                         <View style={styles.container1}>
-                            <Input Titre="Primaire Tore2" Change={(seuil_I0) => this.setState({seuil_I0})} Valeur={seuil_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
+                            <Input Titre="Primaire Tore2" Change={setSeuil_I0} Valeur={seuil_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
                             <Text style={styles.text}>Injecter</Text>
-                            <Text style={styles.text1}>{this.state.inj_I0.toFixed(2)}</Text>
+                            <Text style={styles.text1}>{this.props.screenProps.inj_I0.toFixed(2)}</Text>
                             </View>
                         <View style={styles.container1}>
-                            <Input Titre="Primaire Tore2" Change={(seuil_I00) => this.setState({seuil_I00})} Valeur={seuil_I00} Length={4} Placeholder="Entrez Valeur (I0)"/>
+                            <Input Titre="Primaire Tore2" Change={setSeuil_I00} Valeur={seuil_I00} Length={4} Placeholder="Entrez Valeur (I0)"/>
                             <Text style={styles.text}>Injecter</Text>
-                            <Text style={styles.text1}>{this.state.inj_I00.toFixed(2)}</Text>
+                            <Text style={styles.text1}>{this.props.screenProps.inj_I00.toFixed(2)}</Text>
                         </View>
                     <View style={styles.container1}>
                             <TouchableOpacity>
                                 <Text
                                     style={styles.button}
-                                    onPress={this.calc_coef}>
+                                    onPress={this.props.screenProps.calc_coef}>
                                 Calculer coef
                                 </Text>
                             </TouchableOpacity>
                             <TouchableOpacity>
                                 <Text
                                     style={styles.button}
-                                    onPress={this.calc_seuil}>
+                                    onPress={this.props.screenProps.calc_seuil}>
                                 Calculer Inj
                                 </Text>
                             </TouchableOpacity>
