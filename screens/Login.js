@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, TextInput, TouchableOpacity, StatusBar } from 'react-native'
+import { Text, StyleSheet, View, TextInput, TouchableOpacity, StatusBar, Image } from 'react-native'
 import * as firebase from 'firebase'
 
 import Logo from '../src/components/Logo'
@@ -29,7 +29,10 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
+
         <StatusBar barStyle='light-content'></StatusBar>
+        <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 40}}>
+        </Image>
         <Text style={styles.text}> Application d'aide à la mise en service </Text>
         <Logo/>
         <View style={styles.errorMessage}>

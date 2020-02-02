@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Text, Alert } from 'react-native'
 
 import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
@@ -8,58 +8,45 @@ import Input from '../src/components/Input'
 export default class Param extends Component {
 
         render() {
-            const {prim_I, second_I, prim_U, second_U, prim_I0, second_I0, prim_I00, second_I00, seuil_I, seuil_U, seuil_I0, seuil_I00, setPrim_I, setSecond_I, setPrim_U, setSecond_U, setPrim_I0, setSecond_I0, setPrim_I00, setSecond_I00, setSeuil_I, setSeuil_U, setSeuil_I0, setSeuil_I00} = this.props.screenProps
+            const {prim_I, second_I, prim_U, second_U, prim_I0, second_I0, prim_I00, second_I00, setPrim_I, setSecond_I, setPrim_U, setSecond_U, setPrim_I0, setSecond_I0, setPrim_I00, setSecond_I00} = this.props.screenProps
             return (
                 <View style={styles.container}>
-                    <View style={styles.container1}>
-                        <Input Titre="Primaire TC" Change={setPrim_I} Valeur={prim_I} Length={4} Placeholder="Entrez Valeur (A)"/>
-                        <Input Titre="Secondaire TC" Change={setSecond_I} Valeur={second_I} Length={1} Placeholder="Entrez Valeur (A)"/>
-                    </View>
-                    <View style={styles.container1}>
-                        <Input Titre="Primaire TP" Change={setPrim_U} Valeur={prim_U} Length={6} Placeholder="Entrez Valeur (V)"/>
-                        <Input Titre="Secondaire TP" Change={setSecond_U} Valeur={second_U} Length={3} Placeholder="Entrez Valeur (V)"/>
-                    </View>
-                    <View style={styles.container1}>
-                        <Input Titre="Primaire Tore1" Change={setPrim_I0} Valeur={prim_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
-                        <Input Titre="Secondaire Tore1" Change={setSecond_I0} Valeur={second_I0} Length={1} Placeholder="Entrez Valeur (I0)"/>
-                    </View>
-                    <View style={styles.container1}>
-                        <Input Titre="Primaire Tore2" Change={setPrim_I00} Valeur={prim_I00} Length={4} Placeholder="Entrez Valeur (I0)"/>
-                        <Input Titre="Secondaire Tore2" Change={setSecond_I00} Valeur={second_I00} Length={1} Placeholder="Entrez Valeur (I0)"/>
-                    </View>
+                    <Text style={styles.text2}>SAISIE DES PARAMETRES</Text>
+                    <View style={styles.container}>
+                        <Text style={styles.text2}>Caractéristiques TC</Text>
                         <View style={styles.container1}>
-                            <Input Titre="Seuil I" Change={setSeuil_I} Valeur={seuil_I} Length={4} Placeholder="Entrez Seuil (I)"/>
-                            <Text style={styles.text}>Injecter</Text>
-                            <Text style={styles.text1}>{this.props.screenProps.inj_I.toFixed(2)}</Text>
+                            <Input Titre="Primaire TC" Change={setPrim_I} Valeur={prim_I} Length={4} Placeholder="Entrez Valeur (A)"/>
+                            <Input Titre="Secondaire TC" Change={setSecond_I} Valeur={second_I} Length={1} Placeholder="Entrez Valeur (A)"/>
                         </View>
+                    </View>
+                    <View style={styles.container}>
+                        <Text style={styles.text2}>Caractéristiques TP</Text>
                         <View style={styles.container1}>
-                            <Input Titre="Primaire Tore2" Change={setSeuil_U} Valeur={seuil_U} Length={6} Placeholder="Entrez Valeur (U)"/>
-                            <Text style={styles.text}>Injecter</Text>
-                            <Text style={styles.text1}>{this.props.screenProps.inj_U.toFixed(2)}</Text>
-                            </View>
-                        <View style={styles.container1}>
-                            <Input Titre="Primaire Tore2" Change={setSeuil_I0} Valeur={seuil_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
-                            <Text style={styles.text}>Injecter</Text>
-                            <Text style={styles.text1}>{this.props.screenProps.inj_I0.toFixed(2)}</Text>
-                            </View>
-                        <View style={styles.container1}>
-                            <Input Titre="Primaire Tore2" Change={setSeuil_I00} Valeur={seuil_I00} Length={4} Placeholder="Entrez Valeur (I0)"/>
-                            <Text style={styles.text}>Injecter</Text>
-                            <Text style={styles.text1}>{this.props.screenProps.inj_I00.toFixed(2)}</Text>
+                            <Input Titre="Primaire TP" Change={setPrim_U} Valeur={prim_U} Length={6} Placeholder="Entrez Valeur (V)"/>
+                            <Input Titre="Secondaire TP" Change={setSecond_U} Valeur={second_U} Length={3} Placeholder="Entrez Valeur (V)"/>
                         </View>
-                    <View style={styles.container1}>
+                    </View>
+                    <View style={styles.container}>
+                        <Text style={styles.text2}>Caractéristiques Tore homopolaire</Text>
+                        <View style={styles.container1}>
+                            <Input Titre="Primaire Tore" Change={setPrim_I0} Valeur={prim_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
+                            <Input Titre="Secondaire Tore" Change={setSecond_I0} Valeur={second_I0} Length={1} Placeholder="Entrez Valeur (I0)"/>
+                        </View>
+                    </View>
+                    <View style={styles.container}>
+                    <Text style={styles.text2}>Caractéristiques Tore masse cuve</Text>
+                        <View style={styles.container1}>
+                            <Input Titre="Primaire Tore'" Change={setPrim_I00} Valeur={prim_I00} Length={4} Placeholder="Entrez Valeur (I0')"/>
+                            <Input Titre="Secondaire Tore'" Change={setSecond_I00} Valeur={second_I00} Length={1} Placeholder="Entrez Valeur (I0')"/>
+                        </View>
+                    </View>
+                    <View style={styles.container}>
                             <TouchableOpacity>
                                 <Text
                                     style={styles.button}
-                                    onPress={this.props.screenProps.calc_coef}>
+                                    onPress={this.props.screenProps.calc_coef}
+                                    onPress={() => Alert.alert('Validé !! Passez au calcul')}>
                                 Calculer coef
-                                </Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity>
-                                <Text
-                                    style={styles.button}
-                                    onPress={this.props.screenProps.calc_seuil}>
-                                Calculer Inj
                                 </Text>
                             </TouchableOpacity>
                         </View>
@@ -78,8 +65,10 @@ const styles = StyleSheet.create({
     },
     container1: {
         flexDirection: 'row',
+        borderTopWidth: 5,
         borderColor: colors.borderinput,
-        borderRadius: 25,
+        borderRadius: 10,
+        borderBottomWidth: 1,
     },
     inputBox: {
         width: 100,
@@ -90,8 +79,9 @@ const styles = StyleSheet.create({
         borderRadius: 25,
     },
     button: {
-        width: 100,
+        width: 300,
         margin: 8,
+        fontSize: 25,
         paddingHorizontal: 8,
         backgroundColor: colors.button,
         borderColor: colors.borderinput,
@@ -102,21 +92,27 @@ const styles = StyleSheet.create({
     text: {
         width: 70,
         margin: 4,
+        fontSize: 16,
         paddingHorizontal: 8,
         color: colors.texte,
-        // borderColor: colors.borderinput,
-        // borderWidth: 1,
-        // borderRadius: 25,
         textAlignVertical: 'center',
     },
     text1: {
         width: 70,
-        margin: 8,
+        margin: 4,
+        fontSize: 20,
         paddingHorizontal: 8,
         color: colors.texte,
         borderColor: colors.borderinput,
         borderWidth: 1,
         borderRadius: 25,
+        textAlignVertical: 'center',
+    },
+    text2: {
+        // width: 70,
+        fontSize: 20,
+        paddingHorizontal: 8,
+        color: colors.texte,
         textAlignVertical: 'center',
     },
 })

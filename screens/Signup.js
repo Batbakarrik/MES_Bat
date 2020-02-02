@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, TextInput, TouchableOpacity, StatusBar} from 'react-native'
+import { Text, StyleSheet, View, TextInput, TouchableOpacity, StatusBar, Image} from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 
 import * as firebase from 'firebase'
@@ -37,6 +37,8 @@ export default class Signup extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 40}}>
+        </Image>
         <StatusBar barStyle='light-content'></StatusBar>
         {/* <TouchableOpacity style={styles.back} onPress={() => this.props.navigation.goBack()}>
           <Ionicons name="ios.arrow.back" size={32} color="#FFF"/>

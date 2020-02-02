@@ -9,7 +9,7 @@ export default class Home extends Component {
   static navigationOptions = {
     title: 'Home',
     headerStyle: {
-      backgroundColor: colors.background,
+      backgroundColor: colors.texte,
     },
   };
 

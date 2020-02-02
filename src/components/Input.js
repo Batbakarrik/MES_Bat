@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextInput, StyleSheet, View, Text } from 'react-native'
+import { TextInput, StyleSheet, View, Text} from 'react-native'
 
 import colors from '../utils/colors'
 
@@ -21,13 +21,13 @@ const Input = ({ Valeur, Change, Placeholder, Length, Titre }) => (
         container: {
             justifyContent: 'center',
             borderColor: colors.bordercontainer,
-            borderTopWidth: 1,
-            borderBottomWidth: 1,
+            // borderTopWidth: 1,
+            // borderBottomWidth: 1,
         },
         inputBox: {
             width: 150,
             paddingHorizontal: 8,
-            margin: 4,
+            margin: 8,
             color: colors.texte,
             borderColor: colors.borderinput,
             borderWidth: 1,

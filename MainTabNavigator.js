@@ -2,7 +2,7 @@ import React from 'react'
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
-import { Ionicons } from '@expo/vector-icons'
+import { FaFacebook } from "react-icons/fa";
 
 import Home from './screens/Home'
 import Loading from './screens/Loading'
@@ -33,19 +33,19 @@ const AppTabNavigator = createBottomTabNavigator(
     Home: {
       screen: Home,
       navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-home" size={24} color={tintColor}></Ionicons>
+        tabBarIcon: () => <FaFacebook/>
       }
     },
     Param: {
       screen: Param,
       navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-settings" size={24} color={tintColor}></Ionicons>
+        tabBarIcon: () => <FaFacebook/>
       }
     },
     Calcul1: {
       screen: Calcul1,
       navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-calculator" size={24} color={tintColor}></Ionicons>
+        tabBarIcon: () => <FaFacebook/>
       }
     },
   },
@@ -54,7 +54,7 @@ const AppTabNavigator = createBottomTabNavigator(
       tabBarOptions: {
         activeTintColor: '#42f44b',
         inactiveTintColor: 'gray',
-        activeBackgroundColor: colors.background,
+        activeBackgroundColor: colors.backgroundactive,
         inactiveBackgroundColor: colors.background,
       },
     }

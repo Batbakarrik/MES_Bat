@@ -13,7 +13,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./src/image/Lauburu_bleue.png",
+      "image": "./src/image/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
