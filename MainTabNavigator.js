@@ -2,7 +2,7 @@ import React from 'react'
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
-import { FaFacebook } from "react-icons/fa";
+// import { FaFacebook } from "react-icons/fa";
 
 import Home from './screens/Home'
 import Loading from './screens/Loading'
@@ -33,19 +33,19 @@ const AppTabNavigator = createBottomTabNavigator(
     Home: {
       screen: Home,
       navigationOptions: {
-        tabBarIcon: () => <FaFacebook/>
+        // tabBarIcon: () => <View/>
       }
     },
     Param: {
       screen: Param,
       navigationOptions: {
-        tabBarIcon: () => <FaFacebook/>
+        // tabBarIcon: () => <View/>
       }
     },
     Calcul1: {
       screen: Calcul1,
       navigationOptions: {
-        tabBarIcon: () => <FaFacebook/>
+        // tabBarIcon: () => <View/>
       }
     },
   },
