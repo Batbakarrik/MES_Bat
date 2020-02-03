@@ -37,12 +37,14 @@ export default class App extends Component {
             this.setState({coef_U: this.state.second_U / this.state.prim_U})
             this.setState({coef_I0: this.state.second_I0 / this.state.prim_I0})
             this.setState({coef_I00: this.state.second_I00 / this.state.prim_I00})
+            console.log(this.state)
         }
         calc_seuil = () => {
             this.setState({inj_I: this.state.seuil_I * this.state.coef_I})
             this.setState({inj_U: (this.state.seuil_U * this.state.coef_U) / 1.732})
             this.setState({inj_I0: this.state.seuil_I0 * this.state.coef_I0})
             this.setState({inj_I00: this.state.seuil_I00 * this.state.coef_I00})
+            console.log(this.state)
         }
         setPrim_I = (prim_I) => {
             this.setState({prim_I: prim_I})
@@ -99,6 +101,10 @@ export default class App extends Component {
                     setSeuil_I00 : this.setSeuil_I00,
                     calc_coef : this.calc_coef,
                     calc_seuil : this.calc_seuil,
+                    inj_I : this.inj_I,
+                    inj_U : this.inj_U,
+                    inj_I0 : this.inj_I0,
+                    inj_I00 : this.inj_I00,
                 }}
             />
         )

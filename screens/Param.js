@@ -44,8 +44,7 @@ export default class Param extends Component {
                             <TouchableOpacity>
                                 <Text
                                     style={styles.button}
-                                    onPress={this.props.screenProps.calc_coef}
-                                    onPress={() => Alert.alert('Validé !! Passez au calcul')}>
+                                    onPress={this.props.screenProps.calc_coef}>
                                 Calculer coef
                                 </Text>
                             </TouchableOpacity>

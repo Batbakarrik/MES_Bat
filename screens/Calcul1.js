@@ -10,24 +10,24 @@ export default class Calcul1 extends Component{
     }
 
     render () {
-        const {seuil_I, seuil_U, seuil_I0, seuil_I00, calc_seuil, setSeuil_I, setSeuil_U, setSeuil_I0, setSeuil_I00} =  this.props.screenProps
+        const {seuil_I, seuil_U, seuil_I0, seuil_I00, setSeuil_I, setSeuil_U, setSeuil_I0, setSeuil_I00, calc_seuil} =  this.props.screenProps
             return (
                 <View style={styles.container}>
                     <View style={styles.container1}>
                         <Input Titre="Seuil I" Change={setSeuil_I} Valeur={seuil_I} Length={4} Placeholder="Entrez Seuil (I)"/>
-                        <Input Titre="Injecter" Valeur={this.props.screenProps.inj_I.toFixed(2)} Length={4}/>
+                        <Input Titre="Injecter" Valeur={this.props.screenProps.inj_I} Length={4}/>
                     </View>
                     <View style={styles.container1}>
                         <Input Titre="Seuil U" Change={setSeuil_U} Valeur={seuil_U} Length={6} Placeholder="Entrez Valeur (U)"/>
-                        <Input Titre="Injecter" Valeur={this.props.screenProps.inj_U.toFixed(2)} Length={4}/>
+                        <Input Titre="Injecter" Valeur={this.props.screenProps.inj_U} Length={4}/>
                         </View>
                     <View style={styles.container1}>
                         <Input Titre="Seuil I0" Change={setSeuil_I0} Valeur={seuil_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
-                        <Input Titre="Injecter" Valeur={this.props.screenProps.inj_I0.toFixed(2)} Length={4}/>
+                        <Input Titre="Injecter" Valeur={this.props.screenProps.inj_I0} Length={4}/>
                         </View>
                     <View style={styles.container1}>
                         <Input Titre="Seuil I00" Change={setSeuil_I00} Valeur={seuil_I00} Length={4} Placeholder="Entrez Valeur (I0')"/>
-                        <Input Titre="Injecter" Valeur={this.props.screenProps.inj_I00.toFixed(2)} Length={4}/>
+                        <Input Titre="Injecter" Valeur={this.props.screenProps.inj_I00} Length={4}/>
                     </View>
                     <View style={styles.container1}>
                         <TouchableOpacity>
