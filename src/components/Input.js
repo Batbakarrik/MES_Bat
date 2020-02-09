@@ -32,6 +32,7 @@ const Input = ({ Valeur, Change, Placeholder, Length, Titre }) => (
             borderColor: colors.borderinput,
             borderWidth: 1,
             borderRadius: 25,
+            fontSize: 16,
         },
         text: {
             width: 150,

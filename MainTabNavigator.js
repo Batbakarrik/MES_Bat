@@ -2,7 +2,7 @@ import React from 'react'
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
-// import { FaFacebook } from "react-icons/fa";
+import { Ionicons } from '@expo/vector-icons'
 
 import Home from './screens/Home'
 import Loading from './screens/Loading'
@@ -33,19 +33,19 @@ const AppTabNavigator = createBottomTabNavigator(
     Home: {
       screen: Home,
       navigationOptions: {
-        // tabBarIcon: () => <View/>
+        tabBarIcon: () => <Ionicons name="ios-home" size={24} color={'white'}></Ionicons>
       }
     },
     Param: {
       screen: Param,
       navigationOptions: {
-        // tabBarIcon: () => <View/>
+        tabBarIcon: () => <Ionicons name="ios-settings" size={24} color={'white'}></Ionicons>
       }
     },
     Calcul1: {
       screen: Calcul1,
       navigationOptions: {
-        // tabBarIcon: () => <View/>
+        tabBarIcon: () => <Ionicons name="ios-calculator" size={24} color={'white'}></Ionicons>
       }
     },
   },

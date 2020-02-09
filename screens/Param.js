@@ -41,12 +41,8 @@ export default class Param extends Component {
                         </View>
                     </View>
                     <View style={styles.container}>
-                            <TouchableOpacity>
-                                <Text
-                                    style={styles.button}
-                                    onPress={this.props.screenProps.calc_coef}>
-                                Calculer coef
-                                </Text>
+                            <TouchableOpacity style={{activeOpacity:2}} onPress={this.props.screenProps.calc_coef}>
+                                <Text style={styles.button}>Calculer coef</Text>
                             </TouchableOpacity>
                         </View>
                 </View>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View, TextInput, TouchableOpacity, StatusBar, Image } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
 import * as firebase from 'firebase'
 
 import Logo from '../src/components/Logo'
@@ -29,7 +30,6 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
-
         <StatusBar barStyle='light-content'></StatusBar>
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 40}}>
         </Image>
@@ -39,19 +39,25 @@ export default class Login extends Component {
           {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}
         </View>
         <View style={styles.container1}>
-          <TextInput style={styles.inputBox}
-            placeholder="Email"
-            autoCapitalize="none"
-            onChangeText={email => this.setState({ email })}
-            value={this.state.email}
-          />
-          <TextInput style={styles.inputBox}
-            placeholder="Password"
-            autoCapitalize="none"
-            secureTextEntry={true}  
-            onChangeText={password => this.setState({ password })}
-            value={this.state.password}
-          />
+          <View style={styles.container2}>
+            <Ionicons name="ios-mail" color={'white'} size={24}></Ionicons>
+              <TextInput style={styles.inputBox}
+                placeholder="Email"
+                autoCapitalize="none"
+                onChangeText={email => this.setState({ email })}
+                value={this.state.email}
+              />
+          </View>
+          <View style={styles.container2}>
+            <Ionicons name="ios-lock" color={'white'} size={24}></Ionicons>
+              <TextInput style={styles.inputBox}
+                placeholder="Password"
+                autoCapitalize="none"
+                secureTextEntry={true}  
+                onChangeText={password => this.setState({ password })}
+                value={this.state.password}
+              />
+          </View>
           <TouchableOpacity onPress={this.handleLogin}>
             <Text
               style={styles.button}>
@@ -78,22 +84,29 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems:'center',
     backgroundColor: colors.background,
-    borderColor: colors.borderinput,
-    borderWidth: 1,
+    // borderColor: colors.borderinput,
+    // borderWidth: 1,
   },
   container1: {
     display: 'flex',
     flex:1,
     flexDirection: 'column',
   },
-  inputBox: {
-    width: 250,
-    paddingHorizontal: 16,
-    margin: 8,
-    backgroundColor: colors.backgroundinput,
+  container2: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems:'center',
+    flexDirection: 'row',
+    paddingLeft: 5,
+    margin: 5,
     borderColor: colors.borderinput,
     borderWidth: 1,
     borderRadius: 25,
+  },
+  inputBox: {
+    width: 200,
+    paddingHorizontal: 8,
+    margin: 4,
     color: colors.texte,
   },
   inputBox1: {

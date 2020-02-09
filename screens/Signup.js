@@ -40,34 +40,40 @@ export default class Signup extends Component {
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 40}}>
         </Image>
         <StatusBar barStyle='light-content'></StatusBar>
-        {/* <TouchableOpacity style={styles.back} onPress={() => this.props.navigation.goBack()}>
-          <Ionicons name="ios.arrow.back" size={32} color="#FFF"/>
-        </TouchableOpacity> */}
         <Text style={styles.text}> Veuillez remplir les champs </Text>
         <Logo/>
         <View style={styles.errorMessage}>
           {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}
         </View>
         <View style={styles.container1}>
-        <TextInput style={styles.inputBox}
-            placeholder="name"
-            autoCapitalize="none"
-            onChangeText={name => this.setState({ name })}
-            value={this.state.name}
-          />
-          <TextInput style={styles.inputBox}
-            placeholder="Email"
-            autoCapitalize="none"
-            onChangeText={email => this.setState({ email })}
-            value={this.state.email}
-          />
-          <TextInput style={styles.inputBox}
-            placeholder="Password"
-            autoCapitalize="none"
-            secureTextEntry={true}  
-            onChangeText={password => this.setState({ password })}
-            value={this.state.password}
-          />
+          <View style={styles.container2}>
+            <Ionicons name="ios-person-add" color={'white'} size={24}></Ionicons>
+            <TextInput style={styles.inputBox}
+                placeholder="name"
+                autoCapitalize="none"
+                onChangeText={name => this.setState({ name })}
+                value={this.state.name}
+              />
+          </View>
+          <View style={styles.container2}>
+            <Ionicons name="ios-mail" color={'white'} size={24}></Ionicons>
+              <TextInput style={styles.inputBox}
+                placeholder="Email"
+                autoCapitalize="none"
+                onChangeText={email => this.setState({ email })}
+                value={this.state.email}
+              />
+          </View>
+          <View style={styles.container2}>
+            <Ionicons name="ios-lock" color={'white'} size={24}></Ionicons>
+              <TextInput style={styles.inputBox}
+                placeholder="Password"
+                autoCapitalize="none"
+                secureTextEntry={true}  
+                onChangeText={password => this.setState({ password })}
+                value={this.state.password}
+              />
+          </View>
           <TouchableOpacity onPress={this.handleSignup}>
             <Text
               style={styles.button}>
@@ -100,14 +106,21 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection: 'column',
   },
-  inputBox: {
-    width: 250,
-    paddingHorizontal: 16,
-    margin: 8,
-    backgroundColor: colors.backgroundinput,
+  container2: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems:'center',
+    flexDirection: 'row',
+    paddingLeft: 5,
+    margin: 5,
     borderColor: colors.borderinput,
     borderWidth: 1,
     borderRadius: 25,
+  },
+  inputBox: {
+    width: 200,
+    paddingHorizontal: 8,
+    margin: 4,
     color: colors.texte,
   },
   inputBox1: {
@@ -129,14 +142,11 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     color: colors.texte,
     textAlign: 'center',
-},
+  },
   text: {
       margin: 8,
       paddingHorizontal: 8,
       color: colors.texte,
-      borderColor: colors.borderinput,
-      borderWidth: 1,
-      borderRadius: 25,
       justifyContent: 'center',
       textAlignVertical: 'center',
   },

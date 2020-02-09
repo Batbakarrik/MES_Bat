@@ -10,37 +10,48 @@ export default class Calcul1 extends Component{
     }
 
     render () {
-        const {seuil_I, seuil_U, seuil_I0, seuil_I00, setSeuil_I, setSeuil_U, setSeuil_I0, setSeuil_I00, calc_seuil, inj_U, inj_I, inj_I0, inj_I00} =  this.props.screenProps
+        const {seuil_I, seuil_U, seuil_I0, seuil_I00, setSeuil_I, setSeuil_U, setSeuil_I0, setSeuil_I00, calc_seuil, inj_U, inj_I, inj_I1, inj_I2, inj_I0, inj_I00} =  this.props.screenProps
             return (
                 <View style={styles.container}>
                     <View style={styles.container1}>
                         <Input Titre="Seuil I" Change={setSeuil_I} Valeur={seuil_I} Length={4} Placeholder="Entrez Seuil (I)"/>
-                        <Text style={styles.text} Length={4}>{inj_I}</Text>
+                        <View style={styles.container2}>
+                            <Text style={styles.text1}>Injecter</Text>
+                            <Text style={styles.text} Length={4}>{inj_I.toFixed(2)}</Text>
+                            <Text style={styles.text1}>Injecter 0,95 I seuil</Text>
+                            <Text style={styles.text} Length={4}>{inj_I1.toFixed(2)}</Text>
+                            <Text style={styles.text1}>Injecter 1,1 I seuil</Text>
+                            <Text style={styles.text} Length={4}>{inj_I2.toFixed(2)}</Text>
+                        </View>
                     </View>
                     <View style={styles.container1}>
                         <Input Titre="Seuil U" Change={setSeuil_U} Valeur={seuil_U} Length={6} Placeholder="Entrez Valeur (U)"/>
-                        <Text style={styles.text}>{inj_U}</Text>
+                        <View style={styles.container2}>
+                            <Text style={styles.text1}>Injecter</Text>
+                            <Text style={styles.text}>{inj_U.toFixed(2)}</Text>
                         </View>
-                    <View style={styles.container1}>
-                        <Input Titre="Seuil I0" Change={setSeuil_I0} Valeur={seuil_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
-                        <Text style={styles.text}>{inj_I0}</Text>
-                        </View>
-                    <View style={styles.container1}>
-                        <Input Titre="Seuil I00" Change={setSeuil_I00} Valeur={seuil_I00} Length={4} Placeholder="Entrez Valeur (I0')"/>
-                        <Text style={styles.text}>{inj_I00}</Text>
                     </View>
                     <View style={styles.container1}>
-                        <TouchableOpacity>
-                            <Text
-                                style={styles.button}
-                                onPress={calc_seuil}>
-                                Calculer
-                            </Text>
+                        <Input Titre="Seuil I0" Change={setSeuil_I0} Valeur={seuil_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
+                        <View style={styles.container2}>
+                            <Text style={styles.text1}>Injecter</Text>
+                            <Text style={styles.text}>{inj_I0.toFixed(2)}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.container1}>
+                        <Input Titre="Seuil I00" Change={setSeuil_I00} Valeur={seuil_I00} Length={4} Placeholder="Entrez Valeur (I0')"/>
+                        <View style={styles.container2}>
+                            <Text style={styles.text1}>Injecter</Text>
+                            <Text style={styles.text}>{inj_I00.toFixed(2)}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.container1}>
+                        <TouchableOpacity style={{activeOpacity:2}} onPress={calc_seuil}>
+                            <Text style={styles.button}>Calculer</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
         )
-        console.log(inj_I)
     }
 }
 const styles = StyleSheet.create({
@@ -59,10 +70,9 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
     },
     container2: {
-        justifyContent: 'center',
-        // borderColor: colors.bordercontainer,
-        // borderTopWidth: 1,
-        // borderBottomWidth: 1,
+        display: 'flex',
+        alignItems: 'center',
+        backgroundColor: colors.background,
     },
     inputBox: {
         width: 100,
@@ -88,19 +98,21 @@ const styles = StyleSheet.create({
         margin: 8,
         color: colors.texte,
         borderColor: colors.borderinput,
-        borderWidth: 1,
+        borderWidth: 4,
         borderRadius: 25,
+        fontSize : 20,
         textAlign: 'center',
+        textAlignVertical: 'center',
     },
     text1: {
-        width: 70,
-        margin: 10,
-        paddingHorizontal: 8,
-        paddingVertical: 4,
+        width: 150,
+        margin: 4,
+        paddingHorizontal: 4,
         color: colors.texte,
-        borderColor: colors.borderinput,
-        borderWidth: 1,
-        borderRadius: 25,
+        // borderColor: colors.borderinput,
+        // borderWidth: 1,
+        // borderRadius: 25,
+        textAlign: 'center',
         textAlignVertical: 'center',
     },
 })

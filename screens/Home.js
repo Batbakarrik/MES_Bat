@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, TouchableOpacity } from 'react-native'
+import { Text, StyleSheet, View, TouchableOpacity, Image } from 'react-native'
 
 import colors from '../src/utils/colors'
 
@@ -30,8 +30,12 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Loading...</Text>
-        <TouchableOpacity onPress={this.signOutUser}>
+        <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 40}}>
+        </Image>
+        <Text style={styles.text}> Aide: </Text>
+        <Text style={styles.text}> Dans l'onglet 'PARAM' rentrez les caractéristiques des TC et TP, confirmer en cliquant sur 'Valider'</Text>
+        <Text style={styles.text}> Dans l'onglet 'Calcul1' rentrez les seuils, pour afficher les seuils appuyer sur 'Calculer</Text>
+        <TouchableOpacity style={{activeOpacity:2}} onPress={this.signOutUser}>
           <Text style={styles.button}>LogOut</Text>
         </TouchableOpacity>
       </View>
@@ -58,5 +62,12 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     color: colors.texte,
     textAlign: 'center',
-},
+  },
+  text: {
+    margin: 8,
+    paddingHorizontal: 8,
+    color: colors.texte,
+    justifyContent: 'center',
+    textAlignVertical: 'center',
+  },
 })
