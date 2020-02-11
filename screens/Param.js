@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, TouchableOpacity, Text, Alert } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Text, Picker } from 'react-native'
 
 import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
@@ -16,14 +16,48 @@ export default class Param extends Component {
                         <Text style={styles.text2}>Caractéristiques TC</Text>
                         <View style={styles.container1}>
                             <Input Titre="Primaire TC" Change={setPrim_I} Valeur={prim_I} Length={4} Placeholder="Entrez Valeur (A)"/>
-                            <Input Titre="Secondaire TC" Change={setSecond_I} Valeur={second_I} Length={1} Placeholder="Entrez Valeur (A)"/>
+                            <View style={styles.container2}>
+                            <Text style={styles.text}>Secondaire TC</Text>
+                                <View style={styles.text4}>
+                                    <Picker
+                                        mode = "dropdown"
+                                        selectedValue = {second_I}
+                                        onValueChange = {setSecond_I}
+                                        style = {styles.text3}
+                                        itemStyle={{
+                                            backgroundColor: "#d3d3d3",
+                                            marginLeft: 0,
+                                            paddingLeft: 20
+                                        }}>
+                                        <Picker.Item label = "5" value ="5"/>
+                                        <Picker.Item label = "1" value ="1"/>
+                                    </Picker>
+                                </View>
+                            </View>
                         </View>
                     </View>
                     <View style={styles.container}>
                         <Text style={styles.text2}>Caractéristiques TP</Text>
                         <View style={styles.container1}>
                             <Input Titre="Primaire TP" Change={setPrim_U} Valeur={prim_U} Length={6} Placeholder="Entrez Valeur (V)"/>
-                            <Input Titre="Secondaire TP" Change={setSecond_U} Valeur={second_U} Length={3} Placeholder="Entrez Valeur (V)"/>
+                            <View style={styles.container2}>
+                            <Text style={styles.text}>Secondaire TP</Text>
+                                <View style={styles.text4}>
+                                    <Picker
+                                        mode = "dropdown"
+                                        selectedValue = {second_U}
+                                        onValueChange = {setSecond_U}
+                                        style = {styles.text3}
+                                        itemStyle={{
+                                            backgroundColor: "#d3d3d3",
+                                            marginLeft: 0,
+                                            paddingLeft: 20
+                                        }}>
+                                        <Picker.Item label = "100" value ="100"/>
+                                        <Picker.Item label = "110" value ="110"/>
+                                    </Picker>
+                                </View>
+                            </View>
                         </View>
                     </View>
                     <View style={styles.container}>
@@ -85,12 +119,16 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     text: {
-        width: 70,
+        width: 150,
         margin: 4,
-        fontSize: 16,
+        fontSize: 14,
         paddingHorizontal: 8,
+        // backgroundColor: colors.button,
+        // borderColor: colors.borderinput,
+        // borderRadius: 25,
         color: colors.texte,
         textAlignVertical: 'center',
+        textAlign: 'center',
     },
     text1: {
         width: 70,
@@ -108,6 +146,22 @@ const styles = StyleSheet.create({
         fontSize: 20,
         paddingHorizontal: 8,
         color: colors.texte,
+        textAlignVertical: 'center',
+    },
+    text3: {
+        width: 100,
+        marginLeft: 20,
+        color: colors.texte,
+    },
+    text4: {
+        width: 150,
+        height: 45,
+        paddingLeft: 10,
+        borderWidth:1,
+        color: colors.texte,
+        borderColor: colors.borderinput,
+        borderWidth: 1,
+        borderRadius: 25,
         textAlignVertical: 'center',
     },
 })
