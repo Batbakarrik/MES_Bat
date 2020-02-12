@@ -1,27 +1,35 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Text, Picker } from 'react-native'
 
 import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
 
-export default class Calcul1 extends Component{
+export default class Tension extends Component{
     static navigationOptions = {
-        title: 'Calcul1'
+        title: 'Tension'
     }
 
     render () {
-        const {seuil_I, seuil_U, seuil_I0, seuil_I00, setSeuil_I, setSeuil_U, setSeuil_I0, setSeuil_I00, calc_seuil, inj_U, inj_I, inj_I1, inj_I2, inj_I0, inj_I00} =  this.props.screenProps
+        const {seuil_U, setSeuil_U, setPrim_U, setSecond_U, prim_U, second_U, calc_seuil, inj_U } =  this.props.screenProps
             return (
                 <View style={styles.container}>
-                    <View style={styles.container1}>
-                        <Input Titre="Seuil I" Change={setSeuil_I} Valeur={seuil_I} Length={4} Placeholder="Entrez Seuil (I)"/>
-                        <View style={styles.container2}>
-                            <Text style={styles.text1}>Injecter</Text>
-                            <Text style={styles.text} Length={4}>{inj_I.toFixed(2)}</Text>
-                            <Text style={styles.text1}>Injecter 0,95 I seuil</Text>
-                            <Text style={styles.text} Length={4}>{inj_I1.toFixed(2)}</Text>
-                            <Text style={styles.text1}>Injecter 1,1 I seuil</Text>
-                            <Text style={styles.text} Length={4}>{inj_I2.toFixed(2)}</Text>
+                    <View style={styles.container}>
+                        <Text style={styles.text2}>Caractéristiques TP</Text>
+                        <View style={styles.container1}>
+                            <Input Titre="Primaire TP" Change={setPrim_U} Valeur={prim_U} Length={6} Placeholder="Entrez Valeur (V)"/>
+                            <View style={styles.container2}>
+                            <Text style={styles.text}>Secondaire TP</Text>
+                                <View style={styles.text4}>
+                                    <Picker
+                                        mode = "dropdown"
+                                        selectedValue = {second_U}
+                                        onValueChange = {setSecond_U}
+                                        style = {styles.text3}>
+                                        <Picker.Item label = "100V" value ="100"/>
+                                        <Picker.Item label = "110V" value ="110"/>
+                                    </Picker>
+                                </View>
+                            </View>
                         </View>
                     </View>
                     <View style={styles.container1}>
@@ -29,20 +37,6 @@ export default class Calcul1 extends Component{
                         <View style={styles.container2}>
                             <Text style={styles.text1}>Injecter</Text>
                             <Text style={styles.text}>{inj_U.toFixed(2)}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.container1}>
-                        <Input Titre="Seuil I0" Change={setSeuil_I0} Valeur={seuil_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
-                        <View style={styles.container2}>
-                            <Text style={styles.text1}>Injecter</Text>
-                            <Text style={styles.text}>{inj_I0.toFixed(2)}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.container1}>
-                        <Input Titre="Seuil I00" Change={setSeuil_I00} Valeur={seuil_I00} Length={4} Placeholder="Entrez Valeur (I0')"/>
-                        <View style={styles.container2}>
-                            <Text style={styles.text1}>Injecter</Text>
-                            <Text style={styles.text}>{inj_I00.toFixed(2)}</Text>
                         </View>
                     </View>
                     <View style={styles.container1}>
@@ -113,6 +107,29 @@ const styles = StyleSheet.create({
         // borderWidth: 1,
         // borderRadius: 25,
         textAlign: 'center',
+        textAlignVertical: 'center',
+    },
+    text2: {
+        // width: 70,
+        fontSize: 20,
+        paddingHorizontal: 8,
+        color: colors.texte,
+        textAlignVertical: 'center',
+    },
+    text3: {
+        width: 120,
+        marginLeft: 20,
+        color: colors.texte,
+    },
+    text4: {
+        width: 150,
+        height: 45,
+        paddingLeft: 10,
+        borderWidth:1,
+        color: colors.texte,
+        borderColor: colors.borderinput,
+        borderWidth: 1,
+        borderRadius: 25,
         textAlignVertical: 'center',
     },
 })

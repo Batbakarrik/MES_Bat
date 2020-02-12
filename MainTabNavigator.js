@@ -9,7 +9,8 @@ import Loading from './screens/Loading'
 import Login from './screens/Login'
 import Signup from './screens/Signup'
 import Param from './screens/Param'
-import Calcul1 from './screens/Calcul1'
+import Courant from './screens/Courant'
+import Tension from './screens/Tension'
 
 import * as firebase from 'firebase'
 import colors from './src/utils/colors'
@@ -42,8 +43,14 @@ const AppTabNavigator = createBottomTabNavigator(
         tabBarIcon: () => <Ionicons name="ios-settings" size={24} color={'white'}></Ionicons>
       }
     },
-    Calcul1: {
-      screen: Calcul1,
+    Courant: {
+      screen: Courant,
+      navigationOptions: {
+        tabBarIcon: () => <Ionicons name="ios-calculator" size={24} color={'white'}></Ionicons>
+      }
+    },
+    Tension: {
+      screen: Tension,
       navigationOptions: {
         tabBarIcon: () => <Ionicons name="ios-calculator" size={24} color={'white'}></Ionicons>
       }
@@ -52,7 +59,7 @@ const AppTabNavigator = createBottomTabNavigator(
   {
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarOptions: {
-        activeTintColor: '#42f44b',
+        activeTintColor: 'white',
         inactiveTintColor: 'gray',
         activeBackgroundColor: colors.backgroundactive,
         inactiveBackgroundColor: colors.background,

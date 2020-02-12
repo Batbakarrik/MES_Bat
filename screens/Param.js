@@ -23,38 +23,9 @@ export default class Param extends Component {
                                         mode = "dropdown"
                                         selectedValue = {second_I}
                                         onValueChange = {setSecond_I}
-                                        style = {styles.text3}
-                                        itemStyle={{
-                                            backgroundColor: "#d3d3d3",
-                                            marginLeft: 0,
-                                            paddingLeft: 20
-                                        }}>
-                                        <Picker.Item label = "5" value ="5"/>
-                                        <Picker.Item label = "1" value ="1"/>
-                                    </Picker>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={styles.container}>
-                        <Text style={styles.text2}>Caractéristiques TP</Text>
-                        <View style={styles.container1}>
-                            <Input Titre="Primaire TP" Change={setPrim_U} Valeur={prim_U} Length={6} Placeholder="Entrez Valeur (V)"/>
-                            <View style={styles.container2}>
-                            <Text style={styles.text}>Secondaire TP</Text>
-                                <View style={styles.text4}>
-                                    <Picker
-                                        mode = "dropdown"
-                                        selectedValue = {second_U}
-                                        onValueChange = {setSecond_U}
-                                        style = {styles.text3}
-                                        itemStyle={{
-                                            backgroundColor: "#d3d3d3",
-                                            marginLeft: 0,
-                                            paddingLeft: 20
-                                        }}>
-                                        <Picker.Item label = "100" value ="100"/>
-                                        <Picker.Item label = "110" value ="110"/>
+                                        style = {styles.text3}>
+                                        <Picker.Item label = "5A" value ="5"/>
+                                        <Picker.Item label = "1A" value ="1"/>
                                     </Picker>
                                 </View>
                             </View>
@@ -65,13 +36,6 @@ export default class Param extends Component {
                         <View style={styles.container1}>
                             <Input Titre="Primaire Tore" Change={setPrim_I0} Valeur={prim_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
                             <Input Titre="Secondaire Tore" Change={setSecond_I0} Valeur={second_I0} Length={1} Placeholder="Entrez Valeur (I0)"/>
-                        </View>
-                    </View>
-                    <View style={styles.container}>
-                    <Text style={styles.text2}>Caractéristiques Tore masse cuve</Text>
-                        <View style={styles.container1}>
-                            <Input Titre="Primaire Tore'" Change={setPrim_I00} Valeur={prim_I00} Length={4} Placeholder="Entrez Valeur (I0')"/>
-                            <Input Titre="Secondaire Tore'" Change={setSecond_I00} Valeur={second_I00} Length={1} Placeholder="Entrez Valeur (I0')"/>
                         </View>
                     </View>
                     <View style={styles.container}>
@@ -149,7 +113,7 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center',
     },
     text3: {
-        width: 100,
+        width: 120,
         marginLeft: 20,
         color: colors.texte,
     },
