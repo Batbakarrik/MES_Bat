@@ -8,17 +8,22 @@ import colors from '../src/utils/colors'
 
 export default class Login extends Component {
   static navigationOptions = {
-    title: 'Home',
+    title: '',
     headerStyle: {
       backgroundColor: colors.background,
     },
-  };
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      textAlign: 'center',
+    }
+  }
 
   state = {
     email: '',
     password: '',
     errorMessage : null
-  };
+  }
 
   handleLogin = () => {
     const {email, password} = this.state

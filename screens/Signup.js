@@ -9,18 +9,22 @@ import colors from '../src/utils/colors'
 
 export default class Signup extends Component {
   static navigationOptions = {
-    title: 'SignUp',
+    title: '',
     headerStyle: {
       backgroundColor: colors.background,
     },
-  };
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    }
+  }
 
   state = {
     name: '',
     email: '',
     password: '',
     errorMessage : null
-  };
+  }
 
   handleSignup = () => {
     firebase

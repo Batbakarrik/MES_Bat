@@ -1,48 +1,39 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, TouchableOpacity, Text, Picker } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Text} from 'react-native'
 
 import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
-
+import Seuil from '../src/components/Seuil'
 
 export default class Param extends Component {
 
         render() {
-            const {prim_I, second_I, prim_U, second_U, prim_I0, second_I0, prim_I00, second_I00, setPrim_I, setSecond_I, setPrim_U, setSecond_U, setPrim_I0, setSecond_I0, setPrim_I00, setSecond_I00} = this.props.screenProps
+            const {prim_I0, second_I0, setSeuil_I0, seuil_I0, inj_I0, setPrim_I0, setSecond_I0, calc_seuil } = this.props.screenProps
             return (
                 <View style={styles.container}>
-                    <Text style={styles.text2}>SAISIE DES PARAMETRES</Text>
-                    <View style={styles.container}>
-                        <Text style={styles.text2}>Caractéristiques TC</Text>
-                        <View style={styles.container1}>
-                            <Input Titre="Primaire TC" Change={setPrim_I} Valeur={prim_I} Length={4} Placeholder="Entrez Valeur (A)"/>
-                            <View style={styles.container2}>
-                            <Text style={styles.text}>Secondaire TC</Text>
-                                <View style={styles.text4}>
-                                    <Picker
-                                        mode = "dropdown"
-                                        selectedValue = {second_I}
-                                        onValueChange = {setSecond_I}
-                                        style = {styles.text3}>
-                                        <Picker.Item label = "5A" value ="5"/>
-                                        <Picker.Item label = "1A" value ="1"/>
-                                    </Picker>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
                     <View style={styles.container}>
                         <Text style={styles.text2}>Caractéristiques Tore homopolaire</Text>
                         <View style={styles.container1}>
-                            <Input Titre="Primaire Tore" Change={setPrim_I0} Valeur={prim_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
-                            <Input Titre="Secondaire Tore" Change={setSecond_I0} Valeur={second_I0} Length={1} Placeholder="Entrez Valeur (I0)"/>
+                            <Input Title="Primaire Tore" Change={setPrim_I0} Value={prim_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
+                            <Input Title="Secondaire Tore" Change={setSecond_I0} Value={second_I0} Length={1} Placeholder="Entrez Valeur (I0)"/>
                         </View>
                     </View>
-                    <View style={styles.container}>
-                            <TouchableOpacity style={{activeOpacity:2}} onPress={this.props.screenProps.calc_coef}>
-                                <Text style={styles.button}>Calculer coef</Text>
-                            </TouchableOpacity>
+                    <View style={styles.container1}>
+                        <Input Title="Seuil I0" Change={setSeuil_I0} Value={seuil_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
+                        <View style={styles.container2}>
+                            <Seuil Title="Injecter" Value={inj_I0.toFixed(2)}/>
                         </View>
+                    </View>
+                    <View style={styles.container1}>
+                        <TouchableOpacity style={{activeOpacity:2}} onPress={calc_seuil}>
+                            <Text style={styles.button}>Calculer</Text>
+                        </TouchableOpacity>
+                    </View>
+                    {/* <View style={styles.container}>
+                        <TouchableOpacity style={{activeOpacity:2}} onPress={this.props.screenProps.calc_coef}>
+                            <Text style={styles.button}>Calculer coef</Text>
+                        </TouchableOpacity>
+                    </View> */}
                 </View>
         )
     }

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Text, Picker } from 'react-native'
 
 import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
+import Seuil from '../src/components/Seuil'
 
 export default class Courant extends Component{
     static navigationOptions = {
@@ -10,26 +11,54 @@ export default class Courant extends Component{
     }
 
     render () {
-        const {seuil_I, seuil_I0, setSeuil_I, setSeuil_I0, calc_seuil, inj_I, inj_I1, inj_I2, inj_I0 } =  this.props.screenProps
+        const {seuil_I, setSeuil_I, setPrim_I, setSecond_I, prim_I, second_I, calc_seuil, calc_coef, inj_I, inj_I1, inj_I2, curve, setCurve} =  this.props.screenProps
             return (
                 <View style={styles.container}>
-                    <View style={styles.container1}>
-                        <Input Titre="Seuil I" Change={setSeuil_I} Valeur={seuil_I} Length={4} Placeholder="Entrez Seuil (I)"/>
-                        <View style={styles.container2}>
-                            <Text style={styles.text1}>Injecter</Text>
-                            <Text style={styles.text} Length={4}>{inj_I.toFixed(2)}</Text>
-                            <Text style={styles.text1}>Injecter 0,95 I seuil</Text>
-                            <Text style={styles.text} Length={4}>{inj_I1.toFixed(2)}</Text>
-                            <Text style={styles.text1}>Injecter 1,1 I seuil</Text>
-                            <Text style={styles.text} Length={4}>{inj_I2.toFixed(2)}</Text>
+                    <View style={styles.container}>
+                        <Text style={styles.text2}>Caractéristiques TC</Text>
+                        <View style={styles.container1}>
+                            <Input Title="Primaire TC" Change={setPrim_I} Value={prim_I} Length={4} Placeholder="Entrez Valeur (A)"/>
+                            <View style={styles.container2}>
+                            <Text style={styles.text1}>Secondaire TC</Text>
+                                <View style={styles.text4}>
+                                    <Picker
+                                        mode = "dropdown"
+                                        selectedValue = {second_I}
+                                        onValueChange = {setSecond_I}
+                                        style = {styles.text3}>
+                                        <Picker.Item label = "5A" value ="5"/>
+                                        <Picker.Item label = "1A" value ="1"/>
+                                    </Picker>
+                                </View>
+                            </View>
                         </View>
                     </View>
                     <View style={styles.container1}>
-                        <Input Titre="Seuil I0" Change={setSeuil_I0} Valeur={seuil_I0} Length={4} Placeholder="Entrez Valeur (I0)"/>
                         <View style={styles.container2}>
-                            <Text style={styles.text1}>Injecter</Text>
-                            <Text style={styles.text}>{inj_I0.toFixed(2)}</Text>
+                            <Input Titre="Seuil I" Change={setSeuil_I} Valeur={seuil_I} Length={4} Placeholder="Entrez Seuil (I)"/>
+                            <View style={styles.text4}>
+                                <Picker
+                                    mode = "dropdown"
+                                    selectedValue = {curve}
+                                    onValueChange = {setCurve}
+                                    style = {styles.text3}>
+                                    <Picker.Item label = "DT" value ="0"/>
+                                    <Picker.Item label = "CEI SIT" value ="1"/>
+                                    <Picker.Item label = "CEI VIT" value ="2"/>
+                                    <Picker.Item label = "CEI EIT" value ="3"/>
+                                </Picker>
+                            </View>
                         </View>
+                        <View style={styles.container2}>
+                            <Seuil Title="Injecter 0,95 seuil" Value={inj_I1.toFixed(2)}/>
+                            <Seuil Title="Injecter I seuil" Value={inj_I.toFixed(2)}/>
+                            <Seuil Title="Injecter 1,1 seuil" Value={inj_I2.toFixed(2)}/>
+                        </View>
+                    </View>
+                    <View style={styles.container1}>
+                        <TouchableOpacity style={{activeOpacity:2}} onPress={calc_coef}>
+                            <Text style={styles.button}>Calculer Coef</Text>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.container1}>
                         <TouchableOpacity style={{activeOpacity:2}} onPress={calc_seuil}>
@@ -95,10 +124,30 @@ const styles = StyleSheet.create({
         margin: 4,
         paddingHorizontal: 4,
         color: colors.texte,
-        // borderColor: colors.borderinput,
-        // borderWidth: 1,
-        // borderRadius: 25,
         textAlign: 'center',
+        textAlignVertical: 'center',
+    },
+    text2: {
+        // width: 70,
+        fontSize: 20,
+        paddingHorizontal: 8,
+        color: colors.texte,
+        textAlignVertical: 'center',
+    },
+    text3: {
+        width: 120,
+        marginLeft: 20,
+        color: colors.texte,
+    },
+    text4: {
+        width: 150,
+        height: 45,
+        paddingLeft: 10,
+        borderWidth:1,
+        color: colors.texte,
+        borderColor: colors.borderinput,
+        borderWidth: 1,
+        borderRadius: 25,
         textAlignVertical: 'center',
     },
 })

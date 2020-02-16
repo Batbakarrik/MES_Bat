@@ -3,6 +3,7 @@ import { StyleSheet, View, TouchableOpacity, Text, Picker } from 'react-native'
 
 import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
+import Seuil from '../src/components/Seuil'
 
 export default class Tension extends Component{
     static navigationOptions = {
@@ -10,15 +11,15 @@ export default class Tension extends Component{
     }
 
     render () {
-        const {seuil_U, setSeuil_U, setPrim_U, setSecond_U, prim_U, second_U, calc_seuil, inj_U } =  this.props.screenProps
+        const {seuil_U, seuil_V, setSeuil_U, setSeuil_V, setPrim_U, setSecond_U, prim_U, second_U, calc_seuil, calc_coef, inj_U, inj_V } =  this.props.screenProps
             return (
                 <View style={styles.container}>
                     <View style={styles.container}>
                         <Text style={styles.text2}>Caractéristiques TP</Text>
                         <View style={styles.container1}>
-                            <Input Titre="Primaire TP" Change={setPrim_U} Valeur={prim_U} Length={6} Placeholder="Entrez Valeur (V)"/>
+                            <Input Title="Primaire TP" Change={setPrim_U} Value={prim_U} Length={6} Placeholder="Entrez Valeur (V)"/>
                             <View style={styles.container2}>
-                            <Text style={styles.text}>Secondaire TP</Text>
+                            <Text style={styles.text1}>Secondaire TP</Text>
                                 <View style={styles.text4}>
                                     <Picker
                                         mode = "dropdown"
@@ -33,11 +34,21 @@ export default class Tension extends Component{
                         </View>
                     </View>
                     <View style={styles.container1}>
-                        <Input Titre="Seuil U" Change={setSeuil_U} Valeur={seuil_U} Length={6} Placeholder="Entrez Valeur (U)"/>
+                        <Input Title="Seuil V" Change={setSeuil_V} Value={seuil_V} Length={6} Placeholder="Entrez Valeur (V)"/>
                         <View style={styles.container2}>
-                            <Text style={styles.text1}>Injecter</Text>
-                            <Text style={styles.text}>{inj_U.toFixed(2)}</Text>
+                            <Seuil Title="Injecter" Value={inj_V.toFixed(2)}/>
                         </View>
+                    </View>
+                    <View style={styles.container1}>
+                        <Input Title="Seuil U" Change={setSeuil_U} Value={seuil_U} Length={6} Placeholder="Entrez Valeur (U)"/>
+                        <View style={styles.container2}>
+                            <Seuil Title="Injecter" Value={inj_U.toFixed(2)}/>
+                        </View>
+                    </View>
+                    <View style={styles.container1}>
+                        <TouchableOpacity style={{activeOpacity:2}} onPress={calc_coef}>
+                            <Text style={styles.button}>Calculer Coef</Text>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.container1}>
                         <TouchableOpacity style={{activeOpacity:2}} onPress={calc_seuil}>

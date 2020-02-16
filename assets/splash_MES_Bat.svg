@@ -27,12 +27,26 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs6" />
+     id="defs6">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter1127"
+       x="-0.4442029"
+       width="1.8884058"
+       y="-0.22647783"
+       height="1.4529557">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="229.875"
+         id="feGaussianBlur1129" />
+    </filter>
+  </defs>
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -46,9 +60,9 @@
      inkscape:window-height="1017"
      id="namedview4"
      showgrid="false"
-     inkscape:zoom="0.27401839"
-     inkscape:cx="71.903108"
-     inkscape:cy="1256.2959"
+     inkscape:zoom="0.56360709"
+     inkscape:cx="258.82648"
+     inkscape:cy="1350.3665"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -59,12 +73,14 @@
      id="layer1"
      inkscape:label="Layer 1">
     <rect
-       style="opacity:1;fill:#455a64;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       style="opacity:0.548;fill:#455a64;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal;filter:url(#filter1127)"
        id="rect824"
        width="1242"
        height="2436"
        x="0"
-       y="0" />
+       y="0"
+       inkscape:export-xdpi="122"
+       inkscape:export-ydpi="122" />
   </g>
   <g
      inkscape:groupmode="layer"

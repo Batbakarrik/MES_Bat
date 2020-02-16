@@ -27,8 +27,6 @@ var firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-
-
 const AppTabNavigator = createBottomTabNavigator(
   {
     Home: {
@@ -73,6 +71,7 @@ const AuthStack = createStackNavigator ({
   Login: Login,
   Signup: Signup,
 });
+
 
 export default createAppContainer(
   createSwitchNavigator(

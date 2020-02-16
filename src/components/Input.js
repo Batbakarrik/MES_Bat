@@ -3,12 +3,12 @@ import { TextInput, StyleSheet, View, Text} from 'react-native'
 
 import colors from '../utils/colors'
 
-const Input = ({ Valeur, Change, Placeholder, Length, Titre }) => (
+const Input = ({ Value, Change, Placeholder, Length, Title }) => (
     <View style={styles.container}>
-        <Text style={styles.text}>{Titre}</Text>
+        <Text style={styles.text}>{Title}</Text>
         <TextInput style={styles.inputBox}
             onChangeText={Change}
-            Value={Valeur}
+            Value={Value}
             maxLength = {Length}
             placeholder={Placeholder}
             keyboardType={"decimal-pad"}

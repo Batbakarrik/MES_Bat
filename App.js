@@ -7,9 +7,9 @@ export default class App extends Component {
         super(props);
             this.state= {
                 prim_I: 0,
-                second_I: 0,
+                second_I: 5,
                 prim_U: 0,
-                second_U: 0,
+                second_U: 110,
                 prim_I0: 0,
                 second_I0: 0,
                 coef_I: 0,
@@ -18,13 +18,16 @@ export default class App extends Component {
                 coef_I00: 0,
                 seuil_I: 0,
                 seuil_U: 0,
+                seuil_V: 0,
                 seuil_I0: 0,
                 inj_I: 0,
                 inj_I1: 0,
                 inj_I2: 0,
                 inj_U: 0,
+                inj_V: 0,
                 inj_I0: 0,
                 maj: false,
+                curve: 0,
             }
         this.calc_coef = this.calc_coef.bind(this);
         this.calc_seuil = this.calc_seuil.bind(this);
@@ -39,7 +42,8 @@ export default class App extends Component {
             this.setState({inj_I: this.state.seuil_I * this.state.coef_I})
             this.setState({inj_I1: (this.state.seuil_I * this.state.coef_I) * 0.95 })
             this.setState({inj_I2: (this.state.seuil_I * this.state.coef_I) * 1.1 })
-            this.setState({inj_U: (this.state.seuil_U * this.state.coef_U) / 1.732 })
+            this.setState({inj_U: (this.state.seuil_U * this.state.coef_U)})
+            this.setState({inj_V: (this.state.seuil_V * this.state.coef_U) / 1.732 })
             this.setState({inj_I0: this.state.seuil_I0 * this.state.coef_I0})
         }
         setPrim_I = (prim_I) => {
@@ -66,10 +70,15 @@ export default class App extends Component {
         setSeuil_U = (seuil_U) => {
             this.setState({seuil_U: seuil_U})
         }
+        setSeuil_V = (seuil_V) => {
+            this.setState({seuil_V: seuil_V})
+        }
         setSeuil_I0 = (seuil_I0) => {
             this.setState({seuil_I0: seuil_I0})
         }
-
+        setCurve = (curve) => {
+            this.setState({curve: curve})
+        }
     render() {
         return (
             <MainTabNavigator
@@ -83,9 +92,11 @@ export default class App extends Component {
                     setSecond_I0 : this.setSecond_I0,
                     setSeuil_I : this.setSeuil_I,
                     setSeuil_U : this.setSeuil_U,
+                    setSeuil_V : this.setSeuil_V,
                     setSeuil_I0 : this.setSeuil_I0,
                     calc_coef : this.calc_coef,
                     calc_seuil : this.calc_seuil,
+                    setCurve : this.setCurve,
                 }}
             />
         )
