@@ -11,10 +11,10 @@ export default class Tension extends Component{
     }
 
     render () {
-        const {seuil_U, seuil_V, setSeuil_U, setSeuil_V, setPrim_U, setSecond_U, prim_U, second_U, calc_seuil, calc_coef, inj_U, inj_V } =  this.props.screenProps
+        const {seuil_U, seuil_V, setSeuil_U, setSeuil_V, setPrim_U, setSecond_U, prim_U, second_U, calc_seuilU, calc_coef, inj_U, inj_V } =  this.props.screenProps
             return (
                 <View style={styles.container}>
-                    <View style={styles.container}>
+                    <View style={styles.container2}>
                         <Text style={styles.text2}>Caractéristiques TP</Text>
                         <View style={styles.container1}>
                             <Input Title="Primaire TP" Change={setPrim_U} Value={prim_U} Length={6} Placeholder="Entrez Valeur (V)"/>
@@ -46,12 +46,7 @@ export default class Tension extends Component{
                         </View>
                     </View>
                     <View style={styles.container1}>
-                        <TouchableOpacity style={{activeOpacity:2}} onPress={calc_coef}>
-                            <Text style={styles.button}>Calculer Coef</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.container1}>
-                        <TouchableOpacity style={{activeOpacity:2}} onPress={calc_seuil}>
+                        <TouchableOpacity style={{activeOpacity:2}} onPress={calc_seuilU}>
                             <Text style={styles.button}>Calculer</Text>
                         </TouchableOpacity>
                     </View>
@@ -62,8 +57,8 @@ export default class Tension extends Component{
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
-        marginTop: 24,
         flex: 1,
+        paddingTop: 30,
         alignItems: 'center',
         backgroundColor: colors.background,
     },

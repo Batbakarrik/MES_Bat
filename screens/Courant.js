@@ -3,18 +3,18 @@ import { StyleSheet, View, TouchableOpacity, Text, Picker } from 'react-native'
 
 import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
-import Seuil from '../src/components/Seuil'
+import Injecter from '../src/components/Injecter'
 
 export default class Courant extends Component{
     static navigationOptions = {
-        title: 'Courant'
-    }
+        title: 'Courant',
+      }
 
     render () {
-        const {seuil_I, setSeuil_I, setPrim_I, setSecond_I, prim_I, second_I, calc_seuil, calc_coef, inj_I, inj_I1, inj_I2, curve, setCurve} =  this.props.screenProps
+        const {seuil_I, setSeuil_I, setPrim_I, setSecond_I, prim_I, second_I, calc_seuilI, calc_seuilISIT,calc_seuilIVIT, calc_seuilIEIT, inj_I, inj_I1, inj_I2, curve, setCurve, k, setk, temps} =  this.props.screenProps
             return (
                 <View style={styles.container}>
-                    <View style={styles.container}>
+                    <View style={styles.container2}>
                         <Text style={styles.text2}>Caractéristiques TC</Text>
                         <View style={styles.container1}>
                             <Input Title="Primaire TC" Change={setPrim_I} Value={prim_I} Length={4} Placeholder="Entrez Valeur (A)"/>
@@ -42,28 +42,46 @@ export default class Courant extends Component{
                                     selectedValue = {curve}
                                     onValueChange = {setCurve}
                                     style = {styles.text3}>
-                                    <Picker.Item label = "DT" value ="0"/>
-                                    <Picker.Item label = "CEI SIT" value ="1"/>
-                                    <Picker.Item label = "CEI VIT" value ="2"/>
-                                    <Picker.Item label = "CEI EIT" value ="3"/>
+                                    <Picker.Item label = "DT" value = "0"/>
+                                    <Picker.Item label = "CEI SIT" value = "1"/>
+                                    <Picker.Item label = "CEI VIT" value = "2"/>
+                                    <Picker.Item label = "CEI EIT" value = "3"/>
                                 </Picker>
                             </View>
+                            {curve !== '0'? <Input Titre="k" Change={setk} Valeur={k} Length={4} Placeholder="Courbes (k)"/>: null}
                         </View>
-                        <View style={styles.container2}>
-                            <Seuil Title="Injecter 0,95 seuil" Value={inj_I1.toFixed(2)}/>
-                            <Seuil Title="Injecter I seuil" Value={inj_I.toFixed(2)}/>
-                            <Seuil Title="Injecter 1,1 seuil" Value={inj_I2.toFixed(2)}/>
-                        </View>
+                        <Injecter inj1={inj_I1} inj2={inj_I} inj3={inj_I2} curve={curve} temps={temps}/>
                     </View>
                     <View style={styles.container1}>
-                        <TouchableOpacity style={{activeOpacity:2}} onPress={calc_coef}>
-                            <Text style={styles.button}>Calculer Coef</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.container1}>
-                        <TouchableOpacity style={{activeOpacity:2}} onPress={calc_seuil}>
+                        {curve=='0' ?
+                            <TouchableOpacity
+                                style={{activeOpacity:2}}
+                                onPress={calc_seuilI}
+                            >
                             <Text style={styles.button}>Calculer</Text>
-                        </TouchableOpacity>
+                            </TouchableOpacity>:
+                            curve == '1' ?
+                                <TouchableOpacity
+                                    style={{activeOpacity:2}}
+                                    onPress={calc_seuilISIT}
+                                >
+                                <Text style={styles.button}>Calculer</Text>
+                                </TouchableOpacity>:
+                            curve == '2' ?
+                                <TouchableOpacity
+                                    style={{activeOpacity:2}}
+                                    onPress={calc_seuilIVIT}
+                                >
+                                <Text style={styles.button}>Calculer</Text>
+                                </TouchableOpacity>:
+                            curve == '3' ?
+                                <TouchableOpacity
+                                    style={{activeOpacity:2}}
+                                    onPress={calc_seuilIEIT}
+                                >
+                                <Text style={styles.button}>Calculer</Text>
+                                </TouchableOpacity>: null
+                    }
                     </View>
                 </View>
         )
@@ -72,12 +90,13 @@ export default class Courant extends Component{
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
-        marginTop: 24,
         flex: 1,
+        paddingTop: 30,
         alignItems: 'center',
         backgroundColor: colors.background,
     },
     container1: {
+        display: 'flex',
         flexDirection: 'row',
         borderTopWidth: 5,
         borderColor: colors.borderinput,
@@ -143,7 +162,6 @@ const styles = StyleSheet.create({
         width: 150,
         height: 45,
         paddingLeft: 10,
-        borderWidth:1,
         color: colors.texte,
         borderColor: colors.borderinput,
         borderWidth: 1,

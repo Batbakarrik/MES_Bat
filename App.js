@@ -10,41 +10,50 @@ export default class App extends Component {
                 second_I: 5,
                 prim_U: 0,
                 second_U: 110,
-                prim_I0: 0,
-                second_I0: 0,
                 coef_I: 0,
                 coef_U: 0,
-                coef_I0: 0,
-                coef_I00: 0,
                 seuil_I: 0,
                 seuil_U: 0,
                 seuil_V: 0,
-                seuil_I0: 0,
                 inj_I: 0,
                 inj_I1: 0,
                 inj_I2: 0,
                 inj_U: 0,
                 inj_V: 0,
-                inj_I0: 0,
                 maj: false,
                 curve: 0,
+                k: 1,
+                temps: 0,
             }
-        this.calc_coef = this.calc_coef.bind(this);
-        this.calc_seuil = this.calc_seuil.bind(this);
+        this.calc_seuilI = this.calc_seuilI.bind(this);
+        this.calc_seuilISIT = this.calc_seuilISIT.bind(this);
+        this.calc_seuilIVIT = this.calc_seuilIVIT.bind(this);
+        this.calc_seuilIEIT = this.calc_seuilIEIT.bind(this);
+        this.calc_seuilU = this.calc_seuilU.bind(this);
         }
 
-        calc_coef = () => {
-            this.setState({coef_I: this.state.second_I / this.state.prim_I})
-            this.setState({coef_U: this.state.second_U / this.state.prim_U})
-            this.setState({coef_I0: this.state.second_I0 / this.state.prim_I0})
+        calc_seuilI = async() => {
+            await this.setState({coef_I: this.state.second_I / this.state.prim_I})
+            await this.setState({inj_I: this.state.seuil_I * this.state.coef_I})
+            await this.setState({inj_I1: (this.state.seuil_I * this.state.coef_I) * 0.95 })
+            await this.setState({inj_I2: (this.state.seuil_I * this.state.coef_I) * 1.1 })
         }
-        calc_seuil = () => {
-            this.setState({inj_I: this.state.seuil_I * this.state.coef_I})
-            this.setState({inj_I1: (this.state.seuil_I * this.state.coef_I) * 0.95 })
-            this.setState({inj_I2: (this.state.seuil_I * this.state.coef_I) * 1.1 })
-            this.setState({inj_U: (this.state.seuil_U * this.state.coef_U)})
-            this.setState({inj_V: (this.state.seuil_V * this.state.coef_U) / 1.732 })
-            this.setState({inj_I0: this.state.seuil_I0 * this.state.coef_I0})
+        calc_seuilISIT = async(calc_seuilI) => {
+            await calc_seuilI
+            await this.setState({temps: ((this.state.k/2.97)*(0.14/((Math.pow((this.state.seuil_I / this.state.prim_I),0.02))-1)))})
+        }
+        calc_seuilIVIT = async(calc_seuilI) => {
+            await calc_seuilI
+            await this.setState({temps: ((this.state.k/1.5)*(13.5/((Math.pow((this.state.seuil_I / this.state.prim_I),1))-1)))})
+        }
+        calc_seuilIEIT = async(calc_seuilI) => {
+            await calc_seuilI
+            await this.setState({temps: ((this.state.k/0.808)*(80/((Math.pow((this.state.seuil_I / this.state.prim_I),2))-1)))})
+        }
+        calc_seuilU = async() => {
+            await this.setState({coef_U: this.state.second_U / this.state.prim_U})
+            await this.setState({inj_U: (this.state.seuil_U * this.state.coef_U)})
+            await this.setState({inj_V: (this.state.seuil_V * this.state.coef_U) / 1.732 })
         }
         setPrim_I = (prim_I) => {
             this.setState({prim_I: prim_I})
@@ -58,12 +67,6 @@ export default class App extends Component {
         setSecond_U = (second_U) => {
             this.setState({second_U: second_U})
         }
-        setPrim_I0 = (prim_I0) => {
-            this.setState({prim_I0: prim_I0})
-        }
-        setSecond_I0 = (second_I0) => {
-            this.setState({second_I0: second_I0})
-        }
         setSeuil_I = (seuil_I) => {
             this.setState({seuil_I: seuil_I})
         }
@@ -73,11 +76,11 @@ export default class App extends Component {
         setSeuil_V = (seuil_V) => {
             this.setState({seuil_V: seuil_V})
         }
-        setSeuil_I0 = (seuil_I0) => {
-            this.setState({seuil_I0: seuil_I0})
-        }
         setCurve = (curve) => {
             this.setState({curve: curve})
+        }
+        setk = (k) => {
+            this.setState({k: k})
         }
     render() {
         return (
@@ -88,15 +91,17 @@ export default class App extends Component {
                     setSecond_I : this.setSecond_I,
                     setPrim_U : this.setPrim_U,
                     setSecond_U : this.setSecond_U,
-                    setPrim_I0 : this.setPrim_I0,
-                    setSecond_I0 : this.setSecond_I0,
                     setSeuil_I : this.setSeuil_I,
                     setSeuil_U : this.setSeuil_U,
                     setSeuil_V : this.setSeuil_V,
-                    setSeuil_I0 : this.setSeuil_I0,
                     calc_coef : this.calc_coef,
-                    calc_seuil : this.calc_seuil,
+                    calc_seuilI : this.calc_seuilI,
+                    calc_seuilISIT : this.calc_seuilISIT,
+                    calc_seuilIVIT : this.calc_seuilIVIT,
+                    calc_seuilIEIT : this.calc_seuilIEIT,
+                    calc_seuilU : this.calc_seuilU,
                     setCurve : this.setCurve,
+                    setk : this.setk,
                 }}
             />
         )

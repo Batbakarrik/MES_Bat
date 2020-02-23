@@ -8,9 +8,6 @@ import * as firebase from 'firebase'
 export default class Home extends Component {
   static navigationOptions = {
     title: 'Home',
-    headerStyle: {
-      backgroundColor: colors.texte,
-    },
   };
 
   state = {
@@ -33,8 +30,8 @@ export default class Home extends Component {
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 40}}>
         </Image>
         <Text style={styles.text}> Aide: </Text>
-        <Text style={styles.text}> Dans l'onglet 'PARAM' rentrez les caractéristiques des TC et TP, confirmer en cliquant sur 'Valider'</Text>
-        <Text style={styles.text}> Dans l'onglet 'Calcul1' rentrez les seuils, pour afficher les seuils appuyer sur 'Calculer</Text>
+        <Text style={styles.text}> Dans l'onglet 'Courant' rentrez les caractéristiques des TC, confirmer en cliquant sur 'Calculer coef'</Text>
+        <Text style={styles.text}>-</Text>
         <TouchableOpacity style={{activeOpacity:2}} onPress={this.signOutUser}>
           <Text style={styles.button}>LogOut</Text>
         </TouchableOpacity>

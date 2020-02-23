@@ -3,7 +3,7 @@ import { TextInput, StyleSheet, Text, View, TouchableOpacity} from 'react-native
 
 import colors from '../utils/colors'
 
-const Form = (handleLogin) => (
+const Form = ({ handleLogin }) => (
     <View style={styles.container}>
         <TextInput style={styles.inputBox}
             placeholder="Name"
@@ -15,7 +15,7 @@ const Form = (handleLogin) => (
             placeholder="Password"
             secureTextEntry={true}
         />
-        <TouchableOpacity onPress={this.handleLogin}>
+        <TouchableOpacity onPress={handleLogin}>
             <Text
                 style={styles.button}>
                 Login

@@ -3,7 +3,7 @@ import { StyleSheet, View, Image } from 'react-native'
 
 import colors from '../utils/colors'
 
-const Input = ({ Titre }) => (
+const Input = () => (
     <View style={styles.container}>
         <Image style={{ width:70, height:70}}
             source={require('../image/icon.png')}/>

@@ -8,7 +8,6 @@ import Home from './screens/Home'
 import Loading from './screens/Loading'
 import Login from './screens/Login'
 import Signup from './screens/Signup'
-import Param from './screens/Param'
 import Courant from './screens/Courant'
 import Tension from './screens/Tension'
 
@@ -33,12 +32,6 @@ const AppTabNavigator = createBottomTabNavigator(
       screen: Home,
       navigationOptions: {
         tabBarIcon: () => <Ionicons name="ios-home" size={24} color={'white'}></Ionicons>
-      }
-    },
-    Param: {
-      screen: Param,
-      navigationOptions: {
-        tabBarIcon: () => <Ionicons name="ios-settings" size={24} color={'white'}></Ionicons>
       }
     },
     Courant: {
