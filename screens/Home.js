@@ -27,14 +27,17 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 40}}>
-        </Image>
-        <Text style={styles.text}> Aide: </Text>
-        <Text style={styles.text}> Dans l'onglet 'Courant' rentrez les caractéristiques des TC, confirmer en cliquant sur 'Calculer coef'</Text>
-        <Text style={styles.text}>-</Text>
-        <TouchableOpacity style={{activeOpacity:2}} onPress={this.signOutUser}>
-          <Text style={styles.button}>LogOut</Text>
-        </TouchableOpacity>
+        <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 40}}></Image>
+        <View style={styles.container1}>
+          <Text style={styles.text}>Aide:</Text>
+          <Text style={styles.text}>Dans l'onglet 'Courant' rentrez les caractéristiques des TC, le seuil, la courbe de déclenchement. Confirmer en cliquant sur 'Calculer'</Text>
+          <Text style={styles.text}>Dans l'onglet 'Tension' rentrez les caractéristiques des TP, le seuil. Confirmer en cliquant sur 'Calculer'</Text>
+        </View>
+        <View style={styles.container2}>
+          <TouchableOpacity style={{activeOpacity:2}} onPress={this.signOutUser}>
+            <Text style={styles.button}>LogOut</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
@@ -47,6 +50,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems:'center',
     backgroundColor: colors.background,
+  },
+  container1: {
+    display: 'flex',
+    flex:1,
+    paddingTop: 30,
+  },
+  container2: {
+    display: 'flex',
+    flex:1,
+
   },
   button: {
     width: 250,
@@ -64,7 +77,7 @@ const styles = StyleSheet.create({
     margin: 8,
     paddingHorizontal: 8,
     color: colors.texte,
-    justifyContent: 'center',
+    // justifyContent: 'center',
     textAlignVertical: 'center',
   },
 })

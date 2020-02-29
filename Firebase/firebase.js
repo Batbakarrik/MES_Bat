@@ -9,9 +9,8 @@ class Firebase {
     }
 
     handleLogin = async () => {
-        const { user } = await this.auth.signInWithEmailAndPassword(email, password)
+        await this.auth.signInWithEmailAndPassword(email, password)
         .catch(error => this.setState({errorMessage: error.message}))
-        console.log(user)
       }
     }
     user = () => {
