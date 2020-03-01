@@ -5,9 +5,11 @@ import Seuil from './Seuil'
 
 import colors from '../utils/colors'
 
-const Temps = ({temps}) => (
+const Temps = ({curve, temps1, temps2, temps3}) => (
     <View style={styles.container2}>
-        <Seuil Title="Tps de Déclench (S)" Value={temps.toFixed(2)}/>
+        {curve !== '0'?<Seuil Title="Tps de Déclench (S)" Value={temps1.toFixed(2)}/> : null}
+        {curve !== '0'?<Seuil Title="Tps de Déclench (S)" Value={temps2.toFixed(2)}/> : null}
+        {curve !== '0'?<Seuil Title="Tps de Déclench (S)" Value={temps3.toFixed(2)}/> : null}
     </View>
     )
     export default Temps

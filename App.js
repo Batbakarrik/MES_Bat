@@ -23,7 +23,12 @@ export default class App extends Component {
                 maj: false,
                 curve: 0,
                 k: 1,
-                temps: 0,
+                temps1: 0,
+                temps2: 0,
+                temps3: 0,
+                seuil_Ix1: 0,
+                seuil_Ix2: 0,
+                seuil_Ix3: 0,
             }
         this.calc_seuilI = this.calc_seuilI.bind(this);
         this.calc_seuilISIT = this.calc_seuilISIT.bind(this);
@@ -34,21 +39,36 @@ export default class App extends Component {
 
         calc_seuilI = async() => {
             await this.setState({coef_I: this.state.second_I / this.state.prim_I})
-            await this.setState({inj_I: this.state.seuil_I * this.state.coef_I})
-            await this.setState({inj_I1: (this.state.seuil_I * this.state.coef_I) * 0.95 })
-            await this.setState({inj_I2: (this.state.seuil_I * this.state.coef_I) * 1.1 })
+            await this.setState({inj_I: this.state.seuil_I * this.state.coef_I * 0.95})
+            await this.setState({inj_I1: (this.state.seuil_I * this.state.coef_I) * 1})
+            await this.setState({inj_I2: (this.state.seuil_I * this.state.coef_I) * 1.1})
         }
-        calc_seuilISIT = async(calc_seuilI) => {
-            await calc_seuilI
-            await this.setState({temps: ((this.state.k/2.97)*(0.14/((Math.pow((this.state.seuil_I / this.state.prim_I),0.02))-1)))})
+        calc_seuilISIT = async() => {
+            await this.setState({coef_I: this.state.second_I / this.state.prim_I})
+            await this.setState({inj_I: (this.state.seuil_I * this.state.coef_I) * this.state.seuil_Ix1})
+            await this.setState({inj_I1: (this.state.seuil_I * this.state.coef_I) * this.state.seuil_Ix2})
+            await this.setState({inj_I2: (this.state.seuil_I * this.state.coef_I) * this.state.seuil_Ix3})
+            await this.setState({temps1: ((this.state.k/2.97)*(0.14/((Math.pow((this.state.inj_I),0.02))-1)))})
+            await this.setState({temps2: ((this.state.k/2.97)*(0.14/((Math.pow((this.state.inj_I1),0.02))-1)))})
+            await this.setState({temps3: ((this.state.k/2.97)*(0.14/((Math.pow((this.state.inj_I2),0.02))-1)))})
         }
-        calc_seuilIVIT = async(calc_seuilI) => {
-            await calc_seuilI
-            await this.setState({temps: ((this.state.k/1.5)*(13.5/((Math.pow((this.state.seuil_I / this.state.prim_I),1))-1)))})
+        calc_seuilIVIT = async() => {
+            await this.setState({coef_I: this.state.second_I / this.state.prim_I})
+            await this.setState({inj_I: (this.state.seuil_I * this.state.coef_I) * this.state.seuil_Ix1})
+            await this.setState({inj_I1: (this.state.seuil_I * this.state.coef_I) * this.state.seuil_Ix2})
+            await this.setState({inj_I2: (this.state.seuil_I * this.state.coef_I) * this.state.seuil_Ix3})
+            await this.setState({temps1: ((this.state.k/1.5)*(13.5/((Math.pow((this.state.inj_I),1))-1)))})
+            await this.setState({temps2: ((this.state.k/1.5)*(13.5/((Math.pow((this.state.inj_I1),1))-1)))})
+            await this.setState({temps3: ((this.state.k/1.5)*(13.5/((Math.pow((this.state.inj_I2),1))-1)))})
         }
-        calc_seuilIEIT = async(calc_seuilI) => {
-            await calc_seuilI
-            await this.setState({temps: ((this.state.k/0.808)*(80/((Math.pow((this.state.seuil_I / this.state.prim_I),2))-1)))})
+        calc_seuilIEIT = async() => {
+            await this.setState({coef_I: this.state.second_I / this.state.prim_I})
+            await this.setState({inj_I: (this.state.seuil_I * this.state.coef_I) * this.state.seuil_Ix1})
+            await this.setState({inj_I1: (this.state.seuil_I * this.state.coef_I) * this.state.seuil_Ix2})
+            await this.setState({inj_I2: (this.state.seuil_I * this.state.coef_I) * this.state.seuil_Ix3})
+            await this.setState({temps1: ((this.state.k/0.808)*(80/((Math.pow((this.state.inj_I),2))-1)))})
+            await this.setState({temps2: ((this.state.k/0.808)*(80/((Math.pow((this.state.inj_I1),2))-1)))})
+            await this.setState({temps3: ((this.state.k/0.808)*(80/((Math.pow((this.state.inj_I2),2))-1)))})
         }
         calc_seuilU = async() => {
             await this.setState({coef_U: this.state.second_U / this.state.prim_U})
@@ -82,7 +102,18 @@ export default class App extends Component {
         setk = (k) => {
             this.setState({k: k})
         }
+        setSeuil_Ix1 = (seuil_Ix1) => {
+            this.setState({seuil_Ix1: seuil_Ix1})
+            console.log("setSeuil_I")
+        }
+        setSeuil_Ix2 = (seuil_Ix2) => {
+            this.setState({seuil_Ix2: seuil_Ix2})
+        }
+        setSeuil_Ix3 = (seuil_Ix3) => {
+            this.setState({seuil_Ix3: seuil_Ix3})
+        }
     render() {
+        console.log({...this.state})
         return (
             <MainTabNavigator
                 screenProps = {{
@@ -102,6 +133,9 @@ export default class App extends Component {
                     calc_seuilU : this.calc_seuilU,
                     setCurve : this.setCurve,
                     setk : this.setk,
+                    setSeuil_Ix1 : this.setSeuil_Ix1,
+                    setSeuil_Ix2 : this.setSeuil_Ix2,
+                    setSeuil_Ix3 : this.setSeuil_Ix3,
                 }}
             />
         )
