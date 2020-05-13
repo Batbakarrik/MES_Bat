@@ -3,7 +3,7 @@ import { TextInput, StyleSheet, View, Text} from 'react-native'
 
 import colors from '../utils/colors'
 
-const Input = ({ Value, Change, Placeholder, Length, Title}) => (
+const Input = ({ Value, Change, Placeholder, Length, Title }) => (
     <View style={styles.container}>
         <Text style={styles.text}>{Title}</Text>
         <TextInput style={styles.inputBox}

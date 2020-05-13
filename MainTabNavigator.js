@@ -8,7 +8,7 @@ import Home from './screens/Home'
 import Loading from './screens/Loading'
 import Login from './screens/Login'
 import Signup from './screens/Signup'
-import Courant from './screens/Courant'
+import Courant_test from './screens/Courant_test'
 import Tension from './screens/Tension'
 
 import * as firebase from 'firebase'
@@ -35,7 +35,7 @@ const AppTabNavigator = createBottomTabNavigator(
       }
     },
     Courant: {
-      screen: Courant,
+      screen: Courant_test,
       navigationOptions: {
         tabBarIcon: () => <Ionicons name="ios-calculator" size={24} color={'white'}></Ionicons>
       }

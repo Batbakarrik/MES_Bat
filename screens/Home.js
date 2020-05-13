@@ -28,6 +28,7 @@ export default class Home extends Component {
     return (
       <View style={styles.container}>
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 40}}></Image>
+        <Image source={require("../assets/Texte_MES_Bat.png")} style= {{position:"absolute", top: 0, right: 0}}></Image>
         <View style={styles.container1}>
           <Text style={styles.text}>Aide:</Text>
           <Text style={styles.text}>Dans l'onglet 'Courant' rentrez les caractéristiques des TC, le seuil, la courbe de déclenchement. Confirmer en cliquant sur 'Calculer'</Text>
