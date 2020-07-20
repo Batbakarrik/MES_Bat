@@ -13,9 +13,9 @@ const Courant = () => {
         const [second_I, setsecond_I] = useState(5);
         const [curve, setcurve] = useState(0);
         const [k, setk] = useState(0);
-        const [seuil_Ix1, setseuil_Ix1] = useState(0);
-        const [seuil_Ix2, setseuil_Ix2] = useState(0);
-        const [seuil_Ix3, setseuil_Ix3] = useState(0);
+        const [seuil_Ix1, setseuil_Ix1] = useState(1.2);
+        const [seuil_Ix2, setseuil_Ix2] = useState(1.5);
+        const [seuil_Ix3, setseuil_Ix3] = useState(2);
         const [coef_I, setcoef_I] = useState(0);
         const [inj_I, setinj_I] = useState(0);
         const [inj_I1, setinj_I1] = useState(0);
@@ -30,38 +30,35 @@ const Courant = () => {
             setinj_I2((seuil_I.Value * coef_I) * 1.1)
         };
         const calc_seuilISIT = () => {
-            setcoef_I(second_I / prim_I)
-            setinj_I((seuil_I * coef_I) * seuil_Ix1)
-            setinj_I1((seuil_I * coef_I) * seuil_Ix2)
-            setinj_I2((seuil_I * coef_I) * seuil_Ix3)
-            settemps1(((k/2.97)*(0.14/((Math.pow((inj_I),0.02))-1))))
-            settemps2(((k/2.97)*(0.14/((Math.pow((inj_I1),0.02))-1))))
-            settemps3(((k/2.97)*(0.14/((Math.pow((inj_I2),0.02))-1))))
+            setinj_I((seuil_I.Value * coef_I) * seuil_Ix1)
+            setinj_I1((seuil_I.Value * coef_I) * seuil_Ix2)
+            setinj_I2((seuil_I.Value * coef_I) * seuil_Ix3)
+            settemps1(((k.Value/2.97)*(0.14/((Math.pow((seuil_Ix1),0.02))-1))))
+            settemps2(((k.Value/2.97)*(0.14/((Math.pow((seuil_Ix2),0.02))-1))))
+            settemps3(((k.Value/2.97)*(0.14/((Math.pow((seuil_Ix3),0.02))-1))))
         };
         const calc_seuilIVIT = () => {
-            setcoef_I(second_I / prim_I)
-            setinj_I((seuil_I * coef_I) * seuil_Ix1)
-            setinj_I1((seuil_I * coef_I) * seuil_Ix2)
-            setinj_I2((seuil_I * coef_I) * seuil_Ix3)
-            settemps1(((k/1.5)*(13.5/((Math.pow((inj_I),1))-1))))
-            settemps2(((k/1.5)*(13.5/((Math.pow((inj_I1),1))-1))))
-            settemps3(((k/1.5)*(13.5/((Math.pow((inj_I2),1))-1))))
+            setinj_I((seuil_I.Value * coef_I) * seuil_Ix1)
+            setinj_I1((seuil_I.Value * coef_I) * seuil_Ix2)
+            setinj_I2((seuil_I.Value * coef_I) * seuil_Ix3)
+            settemps1(((k.Value/1.5)*(13.5/((Math.pow((seuil_Ix1),1))-1))))
+            settemps2(((k.Value/1.5)*(13.5/((Math.pow((seuil_Ix2),1))-1))))
+            settemps3(((k.Value/1.5)*(13.5/((Math.pow((seuil_Ix3),1))-1))))
         };
         const calc_seuilIEIT = () => {
-            setcoef_I(second_I / prim_I)
-            setinj_I((seuil_I * coef_I) * seuil_Ix1)
-            setinj_I1((seuil_I * coef_I) * seuil_Ix2)
-            setinj_I2((seuil_I * coef_I) * seuil_Ix3)
-            settemps1(((k/0.808)*(80/((Math.pow((inj_I),2))-1))))
-            settemps2(((k/0.808)*(80/((Math.pow((inj_I1),2))-1))))
-            settemps3(((k/0.808)*(80/((Math.pow((inj_I2),2))-1))))
+            setinj_I((seuil_I.Value * coef_I) * seuil_Ix1)
+            setinj_I1((seuil_I.Value * coef_I) * seuil_Ix2)
+            setinj_I2((seuil_I.Value * coef_I) * seuil_Ix3)
+            settemps1(((k.Value/0.808)*(80/((Math.pow((seuil_Ix1),2))-1))))
+            settemps2(((k.Value/0.808)*(80/((Math.pow((seuil_Ix2),2))-1))))
+            settemps3(((k.Value/0.808)*(80/((Math.pow((seuil_Ix3),2))-1))))
         };
 
         useEffect(() => {
             setseuil_I(0)
             setprim_I(0)
-            // setsecond_I(5)
-            // setcurve(0)
+            setsecond_I(5)
+            setcurve(0)
             setk(0)
             setseuil_Ix1(0)
             setseuil_Ix2(0)
@@ -79,7 +76,7 @@ const Courant = () => {
             setcoef_I(second_I / prim_I.Value)
         }, [prim_I, second_I])
         
-        console.log({prim_I, second_I, seuil_I})
+        console.log({prim_I, second_I, seuil_I, coef_I, seuil_Ix1, seuil_Ix2, seuil_Ix3,inj_I ,inj_I1, inj_I2, temps1, temps2, temps3, k})
             return (
                 <View style={styles.container}>
                     <View style={styles.container2}>
@@ -94,12 +91,15 @@ const Courant = () => {
                                     <Picker
                                         mode = "dropdown"
                                         selectedValue = {second_I}
-                                        onValueChange = {setsecond_I}
+                                        onValueChange = {newsecond_I =>setsecond_I(newsecond_I)}
                                         style = {styles.text3}>
                                         <Picker.Item label = "5A" value ="5"/>
                                         <Picker.Item label = "1A" value ="1"/>
                                     </Picker>
                                 </View>
+                            </View>
+                            <View style={styles.container2}>
+                                <Input Title="Coef_I" Placeholder={coef_I.toFixed(3)} Length={4}/>
                             </View>
                         </View>
                         <Text style={styles.text2}>Paramétrage des seuils</Text>
@@ -110,7 +110,7 @@ const Courant = () => {
                                     <Picker
                                         mode = "dropdown"
                                         selectedValue = {curve}
-                                        onValueChange = {setcurve}
+                                        onValueChange = {newcurve =>setcurve(newcurve)}
                                         style = {styles.text3}>
                                         <Picker.Item label = "DT" value = "0"/>
                                         <Picker.Item label = "CEI SIT" value = "1"/>
@@ -123,15 +123,15 @@ const Courant = () => {
                                 <Input Title="I_Seuil (A)" Change={(e) => setseuil_I({Value:e})} Valeur={seuil_I} Length={4} Placeholder="Entrez Seuil"/>
                             </View>
                             <View style={styles.container2}>
-                                {curve == '0'? null : <Input Title="Seuil k" Change={(e) => setk({Value:e})} Valeur={k} Length={4} Placeholder="Entrez Seuil"/>}
+                                {curve == '0'? null : <Input Title="Seuil k" Change={(e) => setk({Value:e})} Valeur={k} Length={5} Placeholder="Entrez Seuil"/>}
                             </View>
                         </View>
                     </View>
                     <Text style={styles.text2}>Résultats</Text>
                     <View style={styles.container1}>
                         {curve == '0'? null : <InputSeuil seuil_Ix1={seuil_Ix1} setseuil_Ix1={setseuil_Ix1} seuil_Ix2={seuil_Ix2} setseuil_Ix2={setseuil_Ix2} seuil_Ix3={seuil_Ix3} setseuil_Ix3={setseuil_Ix3} curve={curve}/>}
-                        <Injecter Title1="0.95 x Is" Title1b="x Is" inj1={inj_I} Title2="1 x Is" Title2b="x Is" inj2={inj_I1} Title3="1.1 x Is" Title3b="x Is" inj3={inj_I2} curve={curve}/>
-                        {curve == '0'? null : <Injecter Title1="x1" Title1b="tps (s)" inj1={temps1} Title2="x2" Title2b="tps (s)" inj2={temps2} Title3="x3" Title3b="tps (s)" inj3={temps3} curve={curve}/>}
+                        <Injecter Title1="0.95 x Is" Title1b="I à Inj_1" inj1={inj_I} Title2="1 x Is" Title2b="I à Inj_2" inj2={inj_I1} Title3="1.1 x Is" Title3b="I à Inj_3" inj3={inj_I2} curve={curve}/>
+                        {curve == '0'? null : <Injecter Title1="x1" Title1b="tps_1 (s)" inj1={temps1} Title2="x2" Title2b="tps_2 (s)" inj2={temps2} Title3="x3" Title3b="tps_3 (s)" inj3={temps3} curve={curve}/>}
                     </View>
                     <View style={styles.container1}>
                         {curve =='0' ?

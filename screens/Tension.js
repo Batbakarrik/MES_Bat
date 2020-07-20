@@ -6,35 +6,39 @@ import Input from '../src/components/Input'
 import Seuil from '../src/components/Seuil'
 
 
-const tension = () => {
-    const [seuil_U, setseuil_U] = useStete(0);
-    const [seuil_V, setseuil_V] = useStete(0);
-    const [prim_U, setprim_U] = useStete(0);
-    const [second_U, setsecond_U] = useStete(0);
-    const [calc_seuilU, setcalc_seuilU] = useStete(0);
-    const [calc_coef, setcalc_coef] = useStete(0);
-    const [inj_U, setinj_U] = useStete(0);
-    const [inj_V, setinj_V] = useStete(0);
+const Tension = () => {
+    const [seuil_U, setseuil_U] = useState(0);
+    const [seuil_V, setseuil_V] = useState(0);
+    const [prim_U, setprim_U] = useState(0);
+    const [second_U, setsecond_U] = useState(0);
+    // const [calc_seuilU, setcalc_seuilU] = useState(0);
+    const [coef_U, setcoef_U] = useState(0);
+    const [inj_U, setinj_U] = useState(0);
+    const [inj_V, setinj_V] = useState(0);
 
     const calc_USimple = () => {
         seuil_U(prim_U/1.732)
     };
     const calc_seuilU = () => {
         seuil_U(prim_U/1.732)
-    };   
+    };
+
+    useEffect(() => {
+        setcoef_U(second_U / prim_U.Value)},[prim_U, second_U]);
+
          return (
             <View style={styles.container}>
                 <View style={styles.container2}>
                     <Text style={styles.text2}>Caractéristiques TP</Text>
                         <View style={styles.container1}>
-                            <Input Title="Primaire TP" Change={setPrim_U} Value={prim_U} Length={6} Placeholder="Entrez Valeur (V)"/>
+                            <Input Title="Primaire TP" Change={setprim_U} Value={prim_U} Length={6} Placeholder="Entrez Valeur (V)"/>
                             <View style={styles.container2}>
                             <Text style={styles.text1}>Secondaire TP</Text>
                                 <View style={styles.text4}>
                                     <Picker
                                         mode = "dropdown"
                                         selectedValue = {second_U}
-                                        onValueChange = {setSecond_U}
+                                        onValueChange = {setsecond_U}
                                         style = {styles.text3}>
                                         <Picker.Item label = "100V" value ="100"/>
                                         <Picker.Item label = "110V" value ="110"/>
@@ -44,13 +48,13 @@ const tension = () => {
                         </View>
                 </View>
                 <View style={styles.container1}>
-                    <Input Title="Seuil V" Change={setSeuil_V} Value={seuil_V} Length={6} Placeholder="Entrez Valeur (V)"/>
+                    <Input Title="Seuil V" Change={setseuil_V} Value={seuil_V} Length={6} Placeholder="Entrez Valeur (V)"/>
                     <View style={styles.container2}>
                         <Seuil Title="Injecter" Value={inj_V.toFixed(2)}/>
                     </View>
                 </View>
                 <View style={styles.container1}>
-                    <Input Title="Seuil U" Change={setSeuil_U} Value={seuil_U} Length={6} Placeholder="Entrez Valeur (U)"/>
+                    <Input Title="Seuil U" Change={setseuil_U} Value={seuil_U} Length={6} Placeholder="Entrez Valeur (U)"/>
                     <View style={styles.container2}>
                         <Seuil Title="Injecter" Value={inj_U.toFixed(2)}/>
                     </View>
