@@ -1,21 +1,31 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect} from 'react'
 import { StyleSheet, View, TouchableOpacity, Text, Picker } from 'react-native'
 
 import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
 import Seuil from '../src/components/Seuil'
 
-export default class Tension extends Component{
-    static navigationOptions = {
-        title: 'Tension'
-    }
 
-    render () {
-        const {seuil_U, seuil_V, setSeuil_U, setSeuil_V, setPrim_U, setSecond_U, prim_U, second_U, calc_seuilU, calc_coef, inj_U, inj_V } =  this.props.screenProps
-            return (
-                <View style={styles.container}>
-                    <View style={styles.container2}>
-                        <Text style={styles.text2}>Caractéristiques TP</Text>
+const tension = () => {
+    const [seuil_U, setseuil_U] = useStete(0);
+    const [seuil_V, setseuil_V] = useStete(0);
+    const [prim_U, setprim_U] = useStete(0);
+    const [second_U, setsecond_U] = useStete(0);
+    const [calc_seuilU, setcalc_seuilU] = useStete(0);
+    const [calc_coef, setcalc_coef] = useStete(0);
+    const [inj_U, setinj_U] = useStete(0);
+    const [inj_V, setinj_V] = useStete(0);
+
+    const calc_USimple = () => {
+        seuil_U(prim_U/1.732)
+    };
+    const calc_seuilU = () => {
+        seuil_U(prim_U/1.732)
+    };   
+         return (
+            <View style={styles.container}>
+                <View style={styles.container2}>
+                    <Text style={styles.text2}>Caractéristiques TP</Text>
                         <View style={styles.container1}>
                             <Input Title="Primaire TP" Change={setPrim_U} Value={prim_U} Length={6} Placeholder="Entrez Valeur (V)"/>
                             <View style={styles.container2}>
@@ -32,28 +42,30 @@ export default class Tension extends Component{
                                 </View>
                             </View>
                         </View>
-                    </View>
-                    <View style={styles.container1}>
-                        <Input Title="Seuil V" Change={setSeuil_V} Value={seuil_V} Length={6} Placeholder="Entrez Valeur (V)"/>
-                        <View style={styles.container2}>
-                            <Seuil Title="Injecter" Value={inj_V.toFixed(2)}/>
-                        </View>
-                    </View>
-                    <View style={styles.container1}>
-                        <Input Title="Seuil U" Change={setSeuil_U} Value={seuil_U} Length={6} Placeholder="Entrez Valeur (U)"/>
-                        <View style={styles.container2}>
-                            <Seuil Title="Injecter" Value={inj_U.toFixed(2)}/>
-                        </View>
-                    </View>
-                    <View style={styles.container1}>
-                        <TouchableOpacity style={{activeOpacity:2}} onPress={calc_seuilU}>
-                            <Text style={styles.button}>Calculer</Text>
-                        </TouchableOpacity>
+                </View>
+                <View style={styles.container1}>
+                    <Input Title="Seuil V" Change={setSeuil_V} Value={seuil_V} Length={6} Placeholder="Entrez Valeur (V)"/>
+                    <View style={styles.container2}>
+                        <Seuil Title="Injecter" Value={inj_V.toFixed(2)}/>
                     </View>
                 </View>
+                <View style={styles.container1}>
+                    <Input Title="Seuil U" Change={setSeuil_U} Value={seuil_U} Length={6} Placeholder="Entrez Valeur (U)"/>
+                    <View style={styles.container2}>
+                        <Seuil Title="Injecter" Value={inj_U.toFixed(2)}/>
+                    </View>
+                </View>
+                <View style={styles.container1}>
+                    <TouchableOpacity style={{activeOpacity:2}} onPress={calc_seuilU}>
+                        <Text style={styles.button}>Calculer</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
         )
-    }
-}
+};
+
+    export default Tension
+
 const styles = StyleSheet.create({
     container: {
         display: 'flex',

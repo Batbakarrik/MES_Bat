@@ -60,8 +60,8 @@ const Courant = () => {
         useEffect(() => {
             setseuil_I(0)
             setprim_I(0)
-            setsecond_I(5)
-            setcurve(0)
+            // setsecond_I(5)
+            // setcurve(0)
             setk(0)
             setseuil_Ix1(0)
             setseuil_Ix2(0)
