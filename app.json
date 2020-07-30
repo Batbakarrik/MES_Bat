@@ -1,9 +1,9 @@
 {
   "expo": {
+    "sdkVersion": "38.0.0",
     "name": "MES_Bat",
     "slug": "MEs_Bat",
     "privacy": "public",
-    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android",
@@ -24,7 +24,8 @@
       "**/*"
     ],
     "android": {
-      "package": "xipitei.com.spie_mob"
+      "package": "xipitei.com.spie_mob",
+      "versionCode": 5
     },
     "description": ""
   }

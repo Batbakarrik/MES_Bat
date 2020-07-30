@@ -17,7 +17,7 @@
    viewBox="0 0 1080 2340"
    sodipodi:docname="icon_MES_Bat.svg"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   inkscape:export-filename="C:\Code\spie_mob\assets\icon.png"
+   inkscape:export-filename="C:\Code\MES_Bat\spie_mob\assets\icon.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    style="shape-rendering:crispEdges"
@@ -30,7 +30,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -229,10 +229,10 @@
      inkscape:window-height="1017"
      id="namedview4568"
      showgrid="false"
-     inkscape:zoom="0.32"
-     inkscape:cx="-239.73881"
-     inkscape:cy="1320.5929"
-     inkscape:window-x="-8"
+     inkscape:zoom="1.28"
+     inkscape:cx="577.88946"
+     inkscape:cy="867.45799"
+     inkscape:window-x="1358"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer5"
@@ -247,14 +247,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:Classic;-inkscape-font-specification:'Classic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:0.7;fill:#ffffff;fill-opacity:1;stroke:none"
-       x="517"
+       x="713"
        y="2170.25"
        id="text6251"><tspan
          sodipodi:role="line"
          id="tspan6249"
-         x="517"
+         x="713"
          y="2170.25"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Classic;-inkscape-font-specification:'Classic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1">BATBAKARRIK@XIPITEI.COM</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1">XIPITEI.DEV@XIPITEI.COM</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:0.7;fill:#ffffff;fill-opacity:1;stroke:none"
@@ -285,18 +285,18 @@
    id="tspan6273">CHARGEMENT DE L'APPLICATION</tspan>.....</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:155.04983521px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;shape-rendering:crispEdges;"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:155.04983521px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;shape-rendering:crispEdges"
        x="777.14746"
        y="173.82584"
        id="text6271-2"
        transform="scale(1.2296404,0.81324588)"><tspan
          sodipodi:role="line"
          id="tspan6269-8"
-         x="171.36656"
-         y="779.60675"
-         style="writing-mode:vertical-lr;stroke-width:1;-inkscape-font-specification:'Calibri Bold';font-family:Calibri;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;">MES_BAT <tspan
-   style="font-size:103.36655426px;writing-mode:vertical-lr;stroke-width:1;-inkscape-font-specification:'Calibri Bold';font-family:Calibri;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;"
-   id="tspan6296">V1.10</tspan></tspan></text>
+         x="173.82584"
+         y="777.14746"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Calibri;-inkscape-font-specification:'Calibri Bold';writing-mode:vertical-lr;stroke-width:1">MES_BAT <tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:103.36655426px;font-family:Calibri;-inkscape-font-specification:'Calibri Bold';writing-mode:vertical-lr;stroke-width:1"
+   id="tspan6296">V1.20</tspan></tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
