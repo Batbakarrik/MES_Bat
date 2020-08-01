@@ -1,32 +1,27 @@
 import React from 'react'
-import { TextInput, StyleSheet, View, Text} from 'react-native'
+import { StyleSheet, View, Text} from 'react-native'
 
 import colors from '../utils/colors'
 
-const Input = ({ Value, Change, Placeholder, Length, Title }) => (
+const Info = ({ Title, TitleInfo }) => (
     <View style={styles.container}>
         <Text style={styles.text}>{Title}</Text>
-        <TextInput style={styles.inputBox}
-            onChangeText={Change}
-            Value={Value}
-            maxLength = {Length}
-            placeholder={Placeholder}
-            keyboardType={"decimal-pad"}
-        />
+        <Text style={styles.inputBox}>{TitleInfo}</Text>
     </View>
     )
-    export default Input
+    export default Info
     
     const styles = StyleSheet.create({
         container: {
             justifyContent: 'center',
+            borderColor: colors.bordercontainer,
         },
         inputBox: {
             width: 110,
             color: colors.texte,
-            borderColor: colors.borderinput,
-            borderWidth: 1,
-            borderRadius: 25,
+            // borderColor: colors.borderinput,
+            // borderWidth: 1,
+            // borderRadius: 25,
             fontSize: 16,
             textAlign: 'center',
         },

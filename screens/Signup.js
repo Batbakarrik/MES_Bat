@@ -27,17 +27,29 @@ export default class Signup extends Component {
   }
 
   handleSignup = () => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(userCredentials => {
-        return userCredentials.user.updateProfile({
-          displayName: this.state.name
-        })
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+    .then(userCredentials => {
+      return userCredentials.user.updateProfile({
+        displayName: this.state.name
       })
-      .catch(error => this.setState({ errorMessage: error.message}));
+    })
+    .catch(error => this.setState({ errorMessage: error.message}));
+    // .then(function(user){
+    //   if(user && user.emailVerified === false){
+    //     user.sendEmailVerification().then(function(){
+    //       console.log("email verification sent to user");
+    //     });
+    //   }
+    // })
+    // .catch(function(error) {
+    //   // Handle Errors here.
+    //   var errorCode = error.code;
+    //   var errorMessage = error.message;
+
+    //   console.log(errorCode, errorMessage);
+    // })
   }
-  
+
   render() {
     return (
       <View style={styles.container}>

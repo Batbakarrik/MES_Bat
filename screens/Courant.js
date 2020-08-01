@@ -5,6 +5,7 @@ import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
 import InputSeuil from '../src/components/InputSeuil'
 import Injecter from '../src/components/Injecter'
+import Info from '../src/components/Info'
 
 const Courant = () => {
 
@@ -33,25 +34,25 @@ const Courant = () => {
             setinj_I((seuil_I.Value * coef_I) * seuil_Ix1)
             setinj_I1((seuil_I.Value * coef_I) * seuil_Ix2)
             setinj_I2((seuil_I.Value * coef_I) * seuil_Ix3)
-            settemps1(((k.Value/2.97)*(0.14/((Math.pow((seuil_Ix1),0.02))-1))))
-            settemps2(((k.Value/2.97)*(0.14/((Math.pow((seuil_Ix2),0.02))-1))))
-            settemps3(((k.Value/2.97)*(0.14/((Math.pow((seuil_Ix3),0.02))-1))))
+            settemps1(((k.Value)*(0.14/((Math.pow((seuil_Ix1),0.02))-1)))) /* /2.97 */
+            settemps2(((k.Value)*(0.14/((Math.pow((seuil_Ix2),0.02))-1))))
+            settemps3(((k.Value)*(0.14/((Math.pow((seuil_Ix3),0.02))-1))))
         };
         const calc_seuilIVIT = () => {
             setinj_I((seuil_I.Value * coef_I) * seuil_Ix1)
             setinj_I1((seuil_I.Value * coef_I) * seuil_Ix2)
             setinj_I2((seuil_I.Value * coef_I) * seuil_Ix3)
-            settemps1(((k.Value/1.5)*(13.5/((Math.pow((seuil_Ix1),1))-1))))
-            settemps2(((k.Value/1.5)*(13.5/((Math.pow((seuil_Ix2),1))-1))))
-            settemps3(((k.Value/1.5)*(13.5/((Math.pow((seuil_Ix3),1))-1))))
+            settemps1(((k.Value)*(13.5/((Math.pow((seuil_Ix1),1))-1)))) /* /1.5 */
+            settemps2(((k.Value)*(13.5/((Math.pow((seuil_Ix2),1))-1))))
+            settemps3(((k.Value)*(13.5/((Math.pow((seuil_Ix3),1))-1))))
         };
         const calc_seuilIEIT = () => {
             setinj_I((seuil_I.Value * coef_I) * seuil_Ix1)
             setinj_I1((seuil_I.Value * coef_I) * seuil_Ix2)
             setinj_I2((seuil_I.Value * coef_I) * seuil_Ix3)
-            settemps1(((k.Value/0.808)*(80/((Math.pow((seuil_Ix1),2))-1))))
-            settemps2(((k.Value/0.808)*(80/((Math.pow((seuil_Ix2),2))-1))))
-            settemps3(((k.Value/0.808)*(80/((Math.pow((seuil_Ix3),2))-1))))
+            settemps1(((k.Value)*(80/((Math.pow((seuil_Ix1),2))-1)))) /* 0.808 */
+            settemps2(((k.Value)*(80/((Math.pow((seuil_Ix2),2))-1))))
+            settemps3(((k.Value)*(80/((Math.pow((seuil_Ix3),2))-1))))
         };
 
         useEffect(() => {
@@ -76,14 +77,16 @@ const Courant = () => {
             setcoef_I(second_I / prim_I.Value)
         }, [prim_I, second_I])
         
-        console.log({prim_I, second_I, seuil_I, coef_I, seuil_Ix1, seuil_Ix2, seuil_Ix3,inj_I ,inj_I1, inj_I2, temps1, temps2, temps3, k})
+        // console.log({prim_I, second_I, seuil_I, coef_I, seuil_Ix1, seuil_Ix2, seuil_Ix3,inj_I ,inj_I1, inj_I2, temps1, temps2, temps3, k})
             return (
                 <View style={styles.container}>
                     <View style={styles.container2}>
+                        <View style={styles.container4}>
                         <Text style={styles.text2}>Caractéristiques TC</Text>
+                        </View>
                         <View style={styles.container1}>
                             <View style={styles.container2}>
-                                <Input Title="Primaire TC" Change={(e) => setprim_I({Value:e})} Value={prim_I} Length={4} Placeholder="Entrez Valeur"/>
+                                <Input Title="Primaire TC (A)" Change={(e) => setprim_I({Value:e})} Value={prim_I} Length={4} Placeholder="Entrez Valeur"/>
                             </View>
                             <View style={styles.container2}>
                             <Text style={styles.text1}>Secondaire TC</Text>
@@ -99,10 +102,12 @@ const Courant = () => {
                                 </View>
                             </View>
                             <View style={styles.container2}>
-                                <Input Title="Coef_I" Placeholder={coef_I.toFixed(3)} Length={4}/>
+                                <Info Title="Coef_Is/Ip" TitleInfo={coef_I.toFixed(3)}/>
                             </View>
                         </View>
+                        <View style={styles.container4}>
                         <Text style={styles.text2}>Paramétrage des seuils</Text>
+                        </View>
                         <View style={styles.container1}>
                             <View style={styles.container2}>
                                 <Text style={styles.text1}>Choix courbe Décl.</Text>
@@ -127,11 +132,8 @@ const Courant = () => {
                             </View>
                         </View>
                     </View>
+                    <View style={styles.container4}>
                     <Text style={styles.text2}>Résultats</Text>
-                    <View style={styles.container1}>
-                        {curve == '0'? null : <InputSeuil seuil_Ix1={seuil_Ix1} setseuil_Ix1={setseuil_Ix1} seuil_Ix2={seuil_Ix2} setseuil_Ix2={setseuil_Ix2} seuil_Ix3={seuil_Ix3} setseuil_Ix3={setseuil_Ix3} curve={curve}/>}
-                        <Injecter Title1="0.95 x Is" Title1b="I à Inj_1" inj1={inj_I} Title2="1 x Is" Title2b="I à Inj_2" inj2={inj_I1} Title3="1.1 x Is" Title3b="I à Inj_3" inj3={inj_I2} curve={curve}/>
-                        {curve == '0'? null : <Injecter Title1="x1" Title1b="tps_1 (s)" inj1={temps1} Title2="x2" Title2b="tps_2 (s)" inj2={temps2} Title3="x3" Title3b="tps_3 (s)" inj3={temps3} curve={curve}/>}
                     </View>
                     <View style={styles.container1}>
                         {curve =='0' ?
@@ -164,6 +166,11 @@ const Courant = () => {
                                 </TouchableOpacity>: null
                         }
                     </View>
+                    <View style={styles.container1}>
+                        {curve == '0'? null : <InputSeuil seuil_Ix1={seuil_Ix1} setseuil_Ix1={setseuil_Ix1} seuil_Ix2={seuil_Ix2} setseuil_Ix2={setseuil_Ix2} seuil_Ix3={seuil_Ix3} setseuil_Ix3={setseuil_Ix3} curve={curve}/>}
+                        <Injecter Title1="0.95 x Is" Title1b="I à Inj_1" inj1={inj_I} Title2="1 x Is" Title2b="I à Inj_2" inj2={inj_I1} Title3="1.1 x Is" Title3b="I à Inj_3" inj3={inj_I2} curve={curve}/>
+                        {curve == '0'? null : <Injecter Title1="x1" Title1b="tps_1 (s)" inj1={temps1} Title2="x2" Title2b="tps_2 (s)" inj2={temps2} Title3="x3" Title3b="tps_3 (s)" inj3={temps3} curve={curve}/>}
+                    </View>
                 </View>
             )
 };
@@ -181,14 +188,23 @@ const styles = StyleSheet.create({
     container1: {
         display: 'flex',
         flexDirection: 'row',
-        borderBottomWidth: 1,
-        borderColor: colors.bordercontainer,
-        borderRadius: 10,
+        // borderBottomWidth: 1,
+        // borderColor: colors.bordercontainer,
+        // borderRadius: 10,
     },
     container2: {
         display: 'flex',
         alignItems: 'center',
         backgroundColor: colors.background,
+    },
+    container4: {
+        width: 350,
+        marginTop: 8,
+        paddingBottom: 4,
+        alignItems: 'center',
+        borderRadius: 10,
+        borderTopWidth: 1,
+        borderColor: colors.bordercontainer,
     },
     inputBox: {
         width: 100,
