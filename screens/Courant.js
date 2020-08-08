@@ -54,7 +54,14 @@ const Courant = () => {
             settemps2(((k.Value)*(80/((Math.pow((seuil_Ix2),2))-1))))
             settemps3(((k.Value)*(80/((Math.pow((seuil_Ix3),2))-1))))
         };
-
+        const calc_seuilILIT = () => {
+            setinj_I((seuil_I.Value * coef_I) * seuil_Ix1)
+            setinj_I1((seuil_I.Value * coef_I) * seuil_Ix2)
+            setinj_I2((seuil_I.Value * coef_I) * seuil_Ix3)
+            settemps1(((k.Value)*(80/((Math.pow((seuil_Ix1),2))-1)))) /* 0.808 */
+            settemps2(((k.Value)*(80/((Math.pow((seuil_Ix2),2))-1))))
+            settemps3(((k.Value)*(80/((Math.pow((seuil_Ix3),2))-1))))
+        };
         useEffect(() => {
             setseuil_I(0)
             setprim_I(0)
@@ -121,11 +128,12 @@ const Courant = () => {
                                         <Picker.Item label = "CEI SIT" value = "1"/>
                                         <Picker.Item label = "CEI VIT" value = "2"/>
                                         <Picker.Item label = "CEI EIT" value = "3"/>
+                                        <Picker.Item label = "CEI LIT" value = "4"/>
                                     </Picker>
                                 </View>
                             </View>
                             <View style={styles.container2}>
-                                <Input Title="I_Seuil (A)" Change={(e) => setseuil_I({Value:e})} Valeur={seuil_I} Length={4} Placeholder="Entrez Seuil"/>
+                                {curve == '0'? <Input Title="Seuil I (A)" Change={(e) => setseuil_I({Value:e})} Valeur={seuil_I} Length={4} Placeholder="Entrez Seuil"/> : null}
                             </View>
                             <View style={styles.container2}>
                                 {curve == '0'? null : <Input Title="Seuil k" Change={(e) => setk({Value:e})} Valeur={k} Length={5} Placeholder="Entrez Seuil"/>}
@@ -143,32 +151,39 @@ const Courant = () => {
                             >
                             <Text style={styles.button}>Calculer</Text>
                             </TouchableOpacity>:
-                            curve == '1' ?
-                                <TouchableOpacity
-                                    style={{activeOpacity:2}}
-                                    onPress={calc_seuilISIT}
-                                >
-                                <Text style={styles.button}>Calculer</Text>
-                                </TouchableOpacity>:
-                            curve == '2' ?
-                                <TouchableOpacity
-                                    style={{activeOpacity:2}}
-                                    onPress={calc_seuilIVIT}
-                                >
-                                <Text style={styles.button}>Calculer</Text>
-                                </TouchableOpacity>:
-                            curve == '3' ?
-                                <TouchableOpacity
-                                    style={{activeOpacity:2}}
-                                    onPress={calc_seuilIEIT}
-                                >
-                                <Text style={styles.button}>Calculer</Text>
-                                </TouchableOpacity>: null
+                        curve == '1' ?
+                            <TouchableOpacity
+                                style={{activeOpacity:2}}
+                                onPress={calc_seuilISIT}
+                            >
+                            <Text style={styles.button}>Calculer</Text>
+                            </TouchableOpacity>:
+                        curve == '2' ?
+                            <TouchableOpacity
+                                style={{activeOpacity:2}}
+                                onPress={calc_seuilIVIT}
+                            >
+                            <Text style={styles.button}>Calculer</Text>
+                            </TouchableOpacity>:
+                        curve == '3' ?
+                            <TouchableOpacity
+                                style={{activeOpacity:2}}
+                                onPress={calc_seuilIEIT}
+                            >
+                            <Text style={styles.button}>Calculer</Text>
+                            </TouchableOpacity>:
+                        curve == '4' ?
+                            <TouchableOpacity
+                                style={{activeOpacity:2}}
+                                onPress={calc_seuilILIT}
+                            >
+                            <Text style={styles.button}>Calculer</Text>
+                            </TouchableOpacity>: null
                         }
                     </View>
                     <View style={styles.container1}>
                         {curve == '0'? null : <InputSeuil seuil_Ix1={seuil_Ix1} setseuil_Ix1={setseuil_Ix1} seuil_Ix2={seuil_Ix2} setseuil_Ix2={setseuil_Ix2} seuil_Ix3={seuil_Ix3} setseuil_Ix3={setseuil_Ix3} curve={curve}/>}
-                        <Injecter Title1="0.95 x Is" Title1b="I à Inj_1" inj1={inj_I} Title2="1 x Is" Title2b="I à Inj_2" inj2={inj_I1} Title3="1.1 x Is" Title3b="I à Inj_3" inj3={inj_I2} curve={curve}/>
+                        <Injecter Title1="0.95 x Is" Title1b="I_1 à Inj" inj1={inj_I} Title2="1 x Is" Title2b="I_2 à Inj" inj2={inj_I1} Title3="1.1 x Is" Title3b="I_3 à Inj" inj3={inj_I2} curve={curve}/>
                         {curve == '0'? null : <Injecter Title1="x1" Title1b="tps_1 (s)" inj1={temps1} Title2="x2" Title2b="tps_2 (s)" inj2={temps2} Title3="x3" Title3b="tps_3 (s)" inj3={temps3} curve={curve}/>}
                     </View>
                 </View>

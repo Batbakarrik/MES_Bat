@@ -10,6 +10,7 @@ import Login from './screens/Login'
 import Signup from './screens/Signup'
 import Courant from './screens/Courant'
 import Tension from './screens/Tension'
+import Thermique from './screens/Thermique'
 
 import * as firebase from 'firebase'
 import colors from './src/utils/colors'
@@ -23,7 +24,7 @@ var firebaseConfig = {
     messagingSenderId: "376115758009",
     appId: "1:376115758009:web:b4916082028469ae326c68"
   };
-  // Initialize Firebase
+
   firebase.initializeApp(firebaseConfig);
 
 const AppTabNavigator = createBottomTabNavigator(
@@ -42,6 +43,12 @@ const AppTabNavigator = createBottomTabNavigator(
     },
     Tension: {
       screen: Tension,
+      navigationOptions: {
+        tabBarIcon: () => <Ionicons name="ios-calculator" size={24} color={'white'}></Ionicons>
+      }
+    },
+    Thermique: {
+      screen: Thermique,
       navigationOptions: {
         tabBarIcon: () => <Ionicons name="ios-calculator" size={24} color={'white'}></Ionicons>
       }
