@@ -28,7 +28,7 @@ const Tension = () => {
         setseuil_V(prim_U/1.732)
     },[prim_U, second_U, seuil_U]);
 
-    console.log({prim_U, second_U, seuil_U, coef_U})
+    // console.log({prim_U, second_U, seuil_U, coef_U})
 
          return (
             <View style={styles.container}>
@@ -38,7 +38,7 @@ const Tension = () => {
                 <View style={styles.container1}>
                     <View style={styles.container2}>
                         <View style={styles.container3}>
-                            <Input Title="Primaire TP (V)" Change={setprim_U} Value={prim_U} Length={6} Placeholder="Entrez Valeur"/>
+                            <Input Title="Primaire TP" Change={setprim_U} Value={prim_U} Length={6} Placeholder="Valeur !"/>
                         </View>
                         <View style={styles.container3}>
                             <Info Title="U simple" TitleInfo={seuil_V.toFixed(0)+" V"}/>
@@ -66,7 +66,7 @@ const Tension = () => {
                 </View>
                 <View style={styles.container1}>
                             <View style={styles.container2}>
-                                <Input Title="Seuil U (V)" Change={setseuil_U} Value={seuil_U} Length={6} Placeholder="Entrez Valeur"/>
+                                <Input Title="Seuil U" Change={setseuil_U} Value={seuil_U} Length={6} Placeholder="Valeur !"/>
                             </View>
                             <View style={styles.container2}>
                                 <Info Title=" " TitleInfo={seuil_Up+" %Un"}/>

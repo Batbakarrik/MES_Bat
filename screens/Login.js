@@ -36,7 +36,7 @@ export default class Login extends Component {
     return (
       <View style={styles.container}>
         <StatusBar barStyle='light-content'></StatusBar>
-        <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 40}}>
+        <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 65}}>
         </Image>
         <Text style={styles.text}> Application d'aide à la mise en service </Text>
         <Logo/>

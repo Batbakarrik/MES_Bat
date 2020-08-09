@@ -93,7 +93,7 @@ const Courant = () => {
                         </View>
                         <View style={styles.container1}>
                             <View style={styles.container2}>
-                                <Input Title="Primaire TC (A)" Change={(e) => setprim_I({Value:e})} Value={prim_I} Length={4} Placeholder="Entrez Valeur"/>
+                                <Input Title="Primaire TC" Change={(e) => setprim_I({Value:e})} Value={prim_I} Length={4} Placeholder="Valeur !"/>
                             </View>
                             <View style={styles.container2}>
                             <Text style={styles.text1}>Secondaire TC</Text>
@@ -102,7 +102,8 @@ const Courant = () => {
                                         mode = "dropdown"
                                         selectedValue = {second_I}
                                         onValueChange = {newsecond_I =>setsecond_I(newsecond_I)}
-                                        style = {styles.text3}>
+                                        style = {styles.text3}
+                                        >
                                         <Picker.Item label = "5A" value ="5"/>
                                         <Picker.Item label = "1A" value ="1"/>
                                     </Picker>
@@ -133,10 +134,10 @@ const Courant = () => {
                                 </View>
                             </View>
                             <View style={styles.container2}>
-                                {curve == '0'? <Input Title="Seuil I (A)" Change={(e) => setseuil_I({Value:e})} Valeur={seuil_I} Length={4} Placeholder="Entrez Seuil"/> : null}
+                                {curve == '0'? <Input Title="Seuil I" Change={(e) => setseuil_I({Value:e})} Valeur={seuil_I} Length={4} Placeholder="Valeur !"/> : null}
                             </View>
                             <View style={styles.container2}>
-                                {curve == '0'? null : <Input Title="Seuil k" Change={(e) => setk({Value:e})} Valeur={k} Length={5} Placeholder="Entrez Seuil"/>}
+                                {curve == '0'? null : <Input Title="Seuil k" Change={(e) => setk({Value:e})} Valeur={k} Length={5} Placeholder="Valeur !"/>}
                             </View>
                         </View>
                     </View>

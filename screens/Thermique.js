@@ -33,28 +33,16 @@ const Thermique = () => {
                 </View> 
                 <View style={styles.container1}>
                     <View style={styles.container2}>
-                    <Text style={styles.text1}>Coef</Text>
-                        <View style={styles.container3}>
-                            <Input Title="K" Change={setk} Value={k} Length={3} Placeholder="Entrez Valeur"/>
-                        </View>
+                            <Input Title="Coef K" Change={setk} Value={k} Length={3} Placeholder="Valeur !"/>
                     </View>
                     <View style={styles.container2}>
-                    <Text style={styles.text1}>Courant</Text>
-                        <View style={styles.container3}>
-                            <Input Title="Injecté" Change={setI} Value={I} Length={3} Placeholder="Entrez Valeur"/>
-                        </View>
+                            <Input Title="I_Injecté" Change={setI} Value={I} Length={3} Placeholder="Valeur !"/>
                     </View>
                     <View style={styles.container2}>
-                    <Text style={styles.text1}>In Objet</Text>
-                        <View style={styles.container3}>
-                            <Input Title="InOb" Change={setInOb} Value={InOb} Length={3} Placeholder="Entrez Valeur"/>
-                        </View>
+                            <Input Title="InOb" Change={setInOb} Value={InOb} Length={3} Placeholder="Valeur !"/>
                     </View>
                     <View style={styles.container2}>
-                    <Text style={styles.text1}>Const TPS</Text>
-                        <View style={styles.container3}>
-                            <Input Title="constTps" Change={setconstTps} Value={constTps} Length={4} Placeholder="Entrez Valeur"/>
-                        </View>
+                            <Input Title="constTps" Change={setconstTps} Value={constTps} Length={4} Placeholder="Valeur !"/>
                     </View>
                 </View>
 
@@ -81,7 +69,7 @@ const Thermique = () => {
                     <View style={styles.container2}>
                         <Text style={styles.text1}>Courant Précharge</Text>
                         <View style={styles.container3}>
-                            <Input Title="" Change={setIpre} Value={Ipre} Length={4} Placeholder="Entrez Valeur"/>
+                            <Input Title="" Change={setIpre} Value={Ipre} Length={4} Placeholder="Valeur !"/>
                         </View>
                     </View>
                 <View style={styles.container1}>

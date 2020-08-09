@@ -1,6 +1,6 @@
 export default {
     background: '#003B46',
-    backgroundinput: '#003B46',
+    backgroundinput: '#4c757d',
     backgroundactive: '#4c757d',
     bordercontainer: '#ffffff',
     borderinput: '#808080',

@@ -1,9 +1,11 @@
-import React, { Component, version } from 'react'
+import React, { Component } from 'react'
 import { Text, StyleSheet, View, TouchableOpacity, Image, Linking } from 'react-native'
 
 import colors from '../src/utils/colors'
+import {expo} from '../app.json'
 
 import * as firebase from 'firebase'
+import { WhiteSpace } from 'antd-mobile'
 
 export default class Home extends Component {
   static navigationOptions = {
@@ -30,13 +32,13 @@ export default class Home extends Component {
       <View style={styles.container}>
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 70}}></Image>
         <View style={styles.container1}>
-          <Text style={styles.text}>{"Version "+version}</Text>
+          <Text style={styles.text}>{"version " + expo.version}</Text>
           <Text style={styles.text}>Aide:</Text>
           <Text style={styles.text}>Dans l'onglet 'Courant' rentrez les caractéristiques des TC, le seuil, la courbe de déclenchement. Confirmer en cliquant sur 'Calculer'</Text>
           <Text style={styles.text}>Dans l'onglet 'Tension' rentrez les caractéristiques des TP, le seuil. Confirmer en cliquant sur 'Calculer'</Text>
         </View>
         <View style={styles.container3}>
-        <Text style={styles.text}>Règles de confidencialitées:</Text>
+          <Text style={styles.text}>Règles de confidentialité:</Text>
           <Text style={styles.text}
             onPress={() => Linking.openURL('https://reglesdeconfidentialite.xipitei.com')}>
             Cliquez ici
@@ -61,8 +63,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   container1: {
-    display: 'flex',
-    flex:1,
     paddingTop: 30,
   },
   container2: {
@@ -71,8 +71,7 @@ const styles = StyleSheet.create({
   container3: {
     flex:1,
     flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'baseline',
+    alignItems: 'flex-start',
   },
   button: {
     width: 250,
@@ -90,7 +89,6 @@ const styles = StyleSheet.create({
     margin: 8,
     paddingHorizontal: 8,
     color: colors.texte,
-    // justifyContent: 'center',
     textAlignVertical: 'center',
   },
 })
