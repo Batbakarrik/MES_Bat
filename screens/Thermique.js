@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Text, ScrollView } from 'react-native'
 
 import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
@@ -27,66 +27,68 @@ const Thermique = () => {
     // },[k, InOb, constTps, Tps]);
 
          return (
-            <View style={styles.container}>
-                <View style={styles.container4}>
-                    <Text style={styles.text2}>Valeurs de réglage</Text>
-                </View> 
-                <View style={styles.container1}>
-                    <View style={styles.container2}>
-                            <Input Title="Coef K" Change={setk} Value={k} Length={3} Placeholder="Valeur !"/>
+             <ScrollView>
+                <View style={styles.container}>
+                    <View style={styles.container4}>
+                        <Text style={styles.text2}>Valeurs de réglage</Text>
+                    </View> 
+                    <View style={styles.container1}>
+                        <View style={styles.container2}>
+                                <Input Title="Coef K" Change={setk} Value={k} Length={3} Placeholder="Valeur !"/>
+                        </View>
+                        <View style={styles.container2}>
+                                <Input Title="I_Injecté" Change={setI} Value={I} Length={3} Placeholder="Valeur !"/>
+                        </View>
+                        <View style={styles.container2}>
+                                <Input Title="InOb" Change={setInOb} Value={InOb} Length={3} Placeholder="Valeur !"/>
+                        </View>
+                        <View style={styles.container2}>
+                                <Input Title="constTps" Change={setconstTps} Value={constTps} Length={4} Placeholder="Valeur !"/>
+                        </View>
                     </View>
-                    <View style={styles.container2}>
-                            <Input Title="I_Injecté" Change={setI} Value={I} Length={3} Placeholder="Valeur !"/>
+                    <View style={styles.container4}>
+                        <Text style={styles.text2}>Résultats sans Précharge</Text>
                     </View>
-                    <View style={styles.container2}>
-                            <Input Title="InOb" Change={setInOb} Value={InOb} Length={3} Placeholder="Valeur !"/>
+                    <View style={styles.container1}>
+                        <View style={styles.container2}>
+                            <View style={styles.container2}>
+                                <TouchableOpacity style={{activeOpacity:2}} onPress={calc_TpsTh}>
+                                    <Text style={styles.button}>Calculer</Text>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.container1}>
+                                <View style={styles.container2}>
+                                    <Seuil Title="Tps de déclench (Min)" Value={Tps.toFixed(2)}/>
+                                </View>
+                            </View>
+                        </View>
                     </View>
-                    <View style={styles.container2}>
-                            <Input Title="constTps" Change={setconstTps} Value={constTps} Length={4} Placeholder="Valeur !"/>
+                    <View style={styles.container4}>
+                        <Text style={styles.text2}>Résultats Avec Précharge</Text>
+                    </View>
+                        <View style={styles.container2}>
+                            <Text style={styles.text1}>Courant Précharge</Text>
+                            <View style={styles.container3}>
+                                <Input Title="" Change={setIpre} Value={Ipre} Length={4} Placeholder="Valeur !"/>
+                            </View>
+                        </View>
+                    <View style={styles.container1}>
+                        <View style={styles.container2}>
+                            <View style={styles.container2}>
+                                <TouchableOpacity style={{activeOpacity:2}} onPress={calc_TpsThPr}>
+                                    <Text style={styles.button}>Calculer</Text>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.container1}>
+                                <View style={styles.container2}>
+                                    <Seuil Title="Tps de déclench (Min)" Value={Tpspre.toFixed(2)}/>
+                                </View>
+                            </View>
+                        </View>
                     </View>
                 </View>
 
-                <View style={styles.container4}>
-                    <Text style={styles.text2}>Résultats sans Précharge</Text>
-                </View>
-                <View style={styles.container1}>
-                    <View style={styles.container2}>
-                        <View style={styles.container2}>
-                            <TouchableOpacity style={{activeOpacity:2}} onPress={calc_TpsTh}>
-                                <Text style={styles.button}>Calculer</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={styles.container1}>
-                            <View style={styles.container2}>
-                                <Seuil Title="Tps de déclench (Min)" Value={Tps.toFixed(2)}/>
-                            </View>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.container4}>
-                    <Text style={styles.text2}>Résultats Avec Précharge</Text>
-                </View>
-                    <View style={styles.container2}>
-                        <Text style={styles.text1}>Courant Précharge</Text>
-                        <View style={styles.container3}>
-                            <Input Title="" Change={setIpre} Value={Ipre} Length={4} Placeholder="Valeur !"/>
-                        </View>
-                    </View>
-                <View style={styles.container1}>
-                    <View style={styles.container2}>
-                        <View style={styles.container2}>
-                            <TouchableOpacity style={{activeOpacity:2}} onPress={calc_TpsThPr}>
-                                <Text style={styles.button}>Calculer</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={styles.container1}>
-                            <View style={styles.container2}>
-                                <Seuil Title="Tps de déclench (Min)" Value={Tpspre.toFixed(2)}/>
-                            </View>
-                        </View>
-                    </View>
-                </View>
-            </View>
+             </ScrollView>
         )
 };
 
@@ -98,7 +100,8 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 25,
         alignItems: 'center',
-        backgroundColor: colors.background
+        backgroundColor: colors.background,
+        minHeight: 750
     },
     container1: {
         flexDirection: 'row',

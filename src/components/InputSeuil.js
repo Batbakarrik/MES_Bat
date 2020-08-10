@@ -8,13 +8,13 @@ import colors from '../utils/colors'
 const InputSeuil = ({curve, seuil_Ix1, seuil_Ix2, seuil_Ix3, setseuil_Ix1, setseuil_Ix2, setseuil_Ix3}) => (
     <View>
         <View style={styles.container2}>
-            {curve !== '0'? <Input Title="Seuil I_1" Change={setseuil_Ix1} Valeur={seuil_Ix1} Length={4} Placeholder="Valeur !"/>: null}
+            {curve !== '0'? <Input Title="Ir_1/In" Change={setseuil_Ix1} Valeur={seuil_Ix1} Length={4} Placeholder="Valeur !"/>: null}
         </View>
         <View style={styles.container2}>
-            {curve !== '0'? <Input Title="Seuil I_2" Change={setseuil_Ix2} Valeur={seuil_Ix2} Length={4} Placeholder="Valeur !"/>: null}
+            {curve !== '0'? <Input Title="Ir2/In" Change={setseuil_Ix2} Valeur={seuil_Ix2} Length={4} Placeholder="Valeur !"/>: null}
         </View>
         <View style={styles.container2}>
-            {curve !== '0'? <Input Title="Seuil I_3" Change={setseuil_Ix3} Valeur={seuil_Ix3} Length={4} Placeholder="Valeur !"/>: null}
+            {curve !== '0'? <Input Title="Ir_3/In" Change={setseuil_Ix3} Valeur={seuil_Ix3} Length={4} Placeholder="Valeur !"/>: null}
         </View>
     </View>
     )

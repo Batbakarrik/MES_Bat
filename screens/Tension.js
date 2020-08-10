@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { StyleSheet, View, TouchableOpacity, Text, Picker } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Text, Picker, ScrollView } from 'react-native'
 
 import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
@@ -31,68 +31,70 @@ const Tension = () => {
     // console.log({prim_U, second_U, seuil_U, coef_U})
 
          return (
-            <View style={styles.container}>
-                <View style={styles.container4}>
-                    <Text style={styles.text2}>Caractéristiques TP</Text>
-                </View> 
-                <View style={styles.container1}>
-                    <View style={styles.container2}>
-                        <View style={styles.container3}>
-                            <Input Title="Primaire TP" Change={setprim_U} Value={prim_U} Length={6} Placeholder="Valeur !"/>
-                        </View>
-                        <View style={styles.container3}>
-                            <Info Title="U simple" TitleInfo={seuil_V.toFixed(0)+" V"}/>
-                        </View>
-                    </View>
-                    <View style={styles.container2}>
-                        <Text style={styles.text1}>Secondaire TP</Text>
-                        <View style={styles.text4}>
-                            <Picker
-                                mode = "dropdown"
-                                selectedValue = {second_U}
-                                onValueChange = {newsecond_U =>setsecond_U(newsecond_U)}
-                                style = {styles.text3}>
-                                <Picker.Item label = "100V" value ="100"/>
-                                <Picker.Item label = "110V" value ="110"/>
-                            </Picker>
-                        </View>
-                    </View>
-                    <View style={styles.container2}>
-                        <Info Title="Coef_Us/Up" TitleInfo={coef_U}/>
-                    </View>
-                </View>
-                <View style={styles.container4}>
-                    <Text style={styles.text2}>Paramètre du seuil a calculer</Text>
-                </View>
-                <View style={styles.container1}>
-                            <View style={styles.container2}>
-                                <Input Title="Seuil U" Change={setseuil_U} Value={seuil_U} Length={6} Placeholder="Valeur !"/>
-                            </View>
-                            <View style={styles.container2}>
-                                <Info Title=" " TitleInfo={seuil_Up+" %Un"}/>
-                            </View>
-                </View>
-                <View style={styles.container4}>
-                    <Text style={styles.text2}>Résultats</Text>
-                </View>
-                <View style={styles.container1}>
-                    <View style={styles.container2}>
+             <ScrollView>
+                <View style={styles.container}>
+                    <View style={styles.container4}>
+                        <Text style={styles.text2}>Caractéristiques TP</Text>
+                    </View> 
+                    <View style={styles.container1}>
                         <View style={styles.container2}>
-                            <TouchableOpacity style={{activeOpacity:2}} onPress={calc_seuilU}>
-                                <Text style={styles.button}>Calculer</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={styles.container1}>
-                            <View style={styles.container2}>
-                                <Seuil Title="Inj_U Comp." Value={inj_Uc.toFixed(2)}/>
+                            <View style={styles.container3}>
+                                <Input Title="Primaire TP" Change={setprim_U} Value={prim_U} Length={6} Placeholder="Valeur !"/>
                             </View>
+                            <View style={styles.container3}>
+                                <Info Title="U simple" TitleInfo={seuil_V.toFixed(0)+" V"}/>
+                            </View>
+                        </View>
+                        <View style={styles.container2}>
+                            <Text style={styles.text1}>Secondaire TP</Text>
+                            <View style={styles.text4}>
+                                <Picker
+                                    mode = "dropdown"
+                                    selectedValue = {second_U}
+                                    onValueChange = {newsecond_U =>setsecond_U(newsecond_U)}
+                                    style = {styles.text3}>
+                                    <Picker.Item label = "100V" value ="100"/>
+                                    <Picker.Item label = "110V" value ="110"/>
+                                </Picker>
+                            </View>
+                        </View>
+                        <View style={styles.container2}>
+                            <Info Title="Coef_Us/Up" TitleInfo={coef_U}/>
+                        </View>
+                    </View>
+                    <View style={styles.container4}>
+                        <Text style={styles.text2}>Paramètre du seuil a calculer</Text>
+                    </View>
+                    <View style={styles.container1}>
+                                <View style={styles.container2}>
+                                    <Input Title="Seuil U" Change={setseuil_U} Value={seuil_U} Length={6} Placeholder="Valeur !"/>
+                                </View>
+                                <View style={styles.container2}>
+                                    <Info Title=" " TitleInfo={seuil_Up+" %Un"}/>
+                                </View>
+                    </View>
+                    <View style={styles.container4}>
+                        <Text style={styles.text2}>Résultats</Text>
+                    </View>
+                    <View style={styles.container1}>
+                        <View style={styles.container2}>
                             <View style={styles.container2}>
-                                <Seuil Title="Inj_U Simple" Value={inj_Us.toFixed(2)}/>
+                                <TouchableOpacity style={{activeOpacity:2}} onPress={calc_seuilU}>
+                                    <Text style={styles.button}>Calculer</Text>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.container1}>
+                                <View style={styles.container2}>
+                                    <Seuil Title="Inj_U Comp." Value={inj_Uc.toFixed(2)}/>
+                                </View>
+                                <View style={styles.container2}>
+                                    <Seuil Title="Inj_U Simple" Value={inj_Us.toFixed(2)}/>
+                                </View>
                             </View>
                         </View>
                     </View>
                 </View>
-            </View>
+             </ScrollView>
         )
 };
 
@@ -104,7 +106,8 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 30,
         alignItems: 'center',
-        backgroundColor: colors.background
+        backgroundColor: colors.background,
+        minHeight: 750
     },
     container1: {
         flexDirection: 'row',

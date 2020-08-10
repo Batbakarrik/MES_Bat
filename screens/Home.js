@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, TouchableOpacity, Image, Linking } from 'react-native'
+import { Text, StyleSheet, View, TouchableOpacity, Image, Linking, ScrollView } from 'react-native'
 
 import colors from '../src/utils/colors'
 import {expo} from '../app.json'
 
 import * as firebase from 'firebase'
-import { WhiteSpace } from 'antd-mobile'
 
 export default class Home extends Component {
   static navigationOptions = {
@@ -26,9 +25,9 @@ export default class Home extends Component {
     firebase.auth().signOut()
   }
 
-
   render() {
     return (
+      <ScrollView>
       <View style={styles.container}>
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 70}}></Image>
         <View style={styles.container1}>
@@ -50,6 +49,7 @@ export default class Home extends Component {
           </TouchableOpacity>
         </View>
       </View>
+      </ScrollView>
     )
   }
 }
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems:'center',
     backgroundColor: colors.background,
+    minHeight: 750
   },
   container1: {
     paddingTop: 30,

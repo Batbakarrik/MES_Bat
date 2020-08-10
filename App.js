@@ -27,7 +27,7 @@ var firebaseConfig = {
 
   firebase.initializeApp(firebaseConfig);
 
-const AppTabNavigator = createBottomTabNavigator(
+const TabNavigator = createBottomTabNavigator(
   {
     Home: {
       screen: Home,
@@ -66,22 +66,62 @@ const AppTabNavigator = createBottomTabNavigator(
     )
   }
 )
+const navOptionHandler = (navigation) => ({
+  headerShown: false
+})
 
 const AuthStack = createStackNavigator ({
   Login: Login,
   Signup: Signup,
 });
 
-
-export default createAppContainer(
-  createSwitchNavigator(
-    {
-      Loading: Loading,
-      App: AppTabNavigator,
-      Auth: AuthStack
+const rootStack = createStackNavigator (
+  {
+    Loading: {
+      screen: Loading,
+      navigationOptions: navOptionHandler
     },
-    {
-      initialRouteName: "Loading"
+    App: {
+      screen: TabNavigator,
+      navigationOptions: navOptionHandler
+
+    },
+    Auth: {
+      screen: AuthStack,
+      navigationOptions: navOptionHandler
     }
-  )
-)
+  },
+);
+
+// const appDrawer = createDrawerNavigator(
+//   {
+//     drawer: MainStack
+//   },
+//   {
+//     contentComponent: SideMenu,
+//     drawerWith: Dimensions.get('windows').width * 3/4
+//   }
+// )
+
+const AppContainer = createAppContainer(rootStack);
+
+// export default createAppContainer(TabNavigator);
+
+export default class App extends React.Component {
+  render () {
+    return <AppContainer />
+  }
+};
+
+// export default createAppContainer(
+//   createSwitchNavigator(
+//     {
+//       Loading: Loading,
+//       App: AppTabNavigator,
+//       Auth: AuthStack
+//     },
+//     {
+//       initialRouteName: "Loading"
+//     }
+//   )
+// )

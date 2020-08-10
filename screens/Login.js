@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, TextInput, TouchableOpacity, StatusBar, Image } from 'react-native'
+import { Text, StyleSheet, View, TextInput, TouchableOpacity, StatusBar, Image, ScrollView } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import * as firebase from 'firebase'
 
@@ -34,49 +34,51 @@ export default class Login extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar barStyle='light-content'></StatusBar>
-        <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 65}}>
-        </Image>
-        <Text style={styles.text}> Application d'aide à la mise en service </Text>
-        <Logo/>
-        <View style={styles.errorMessage}>
-          {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}
-        </View>
-        <View style={styles.container1}>
-          <View style={styles.container2}>
-            <Ionicons name="ios-mail" color={'white'} size={24}></Ionicons>
-              <TextInput style={styles.inputBox}
-                placeholder="Email"
-                autoCapitalize="none"
-                onChangeText={email => this.setState({ email })}
-                value={this.state.email}
-              />
+      <ScrollView>
+        <View style={styles.container}>
+          <StatusBar barStyle='light-content'></StatusBar>
+          <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 65}}>
+          </Image>
+          <Text style={styles.text}> Application d'aide à la mise en service </Text>
+          <Logo/>
+          <View style={styles.errorMessage}>
+            {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}
           </View>
-          <View style={styles.container2}>
-            <Ionicons name="ios-lock" color={'white'} size={24}></Ionicons>
-              <TextInput style={styles.inputBox}
-                placeholder="Password"
-                autoCapitalize="none"
-                secureTextEntry={true}  
-                onChangeText={password => this.setState({ password })}
-                value={this.state.password}
-              />
-          </View>
-          <TouchableOpacity onPress={this.handleLogin}>
-            <Text
-              style={styles.button}>
-              Login
-            </Text>
+          <View style={styles.container1}>
+            <View style={styles.container2}>
+              <Ionicons name="ios-mail" color={'white'} size={24}></Ionicons>
+                <TextInput style={styles.inputBox}
+                  placeholder="Email"
+                  autoCapitalize="none"
+                  onChangeText={email => this.setState({ email })}
+                  value={this.state.email}
+                />
+            </View>
+            <View style={styles.container2}>
+              <Ionicons name="ios-lock" color={'white'} size={24}></Ionicons>
+                <TextInput style={styles.inputBox}
+                  placeholder="Password"
+                  autoCapitalize="none"
+                  secureTextEntry={true}  
+                  onChangeText={password => this.setState({ password })}
+                  value={this.state.password}
+                />
+            </View>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate("Signup")}>
+            <View style={styles.signupcont}>
+              <Text style={styles.text}>Vous n'avez pas de compte?</Text>
+              <Text style={styles.signuptext}>Sign Up!!</Text>
+            </View>
           </TouchableOpacity>
-        </View>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("Signup")}>
-          <View style={styles.signupcont}>
-            <Text style={styles.text}>Don't have an account yet?</Text>
-            <Text style={styles.signuptext}>Sign Up!!</Text>
+            <TouchableOpacity onPress={this.handleLogin}>
+              <Text
+                style={styles.button}>
+                Login
+              </Text>
+            </TouchableOpacity>
           </View>
-        </TouchableOpacity>
-      </View>
+        </View>
+      </ScrollView>
     )
   }
 }
@@ -89,8 +91,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems:'center',
     backgroundColor: colors.background,
-    // borderColor: colors.borderinput,
-    // borderWidth: 1,
+    minHeight: 750
   },
   container1: {
     display: 'flex',
@@ -138,9 +139,6 @@ const styles = StyleSheet.create({
       margin: 8,
       paddingHorizontal: 8,
       color: colors.texte,
-      // borderColor: colors.borderinput,
-      // borderWidth: 1,
-      // borderRadius: 25,
       justifyContent: 'center',
       textAlignVertical: 'center',
   },
@@ -150,6 +148,7 @@ const styles = StyleSheet.create({
   },
   signuptext: {
     paddingHorizontal: 8,
+    paddingVertical: 8,
     color: colors.signuptext,
     textAlignVertical: 'center',
   },
