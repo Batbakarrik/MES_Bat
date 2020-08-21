@@ -11,7 +11,8 @@ const Input = ({ Value, Change, Placeholder, Length, Title }) => (
             Value={Value}
             maxLength = {Length}
             placeholder={Placeholder}
-            keyboardType={"decimal-pad"}
+            keyboardType={"numeric"}
+            cursorColor={'white'}
         />
     </View>
     )
@@ -30,8 +31,8 @@ const Input = ({ Value, Change, Placeholder, Length, Title }) => (
             borderRadius: 25,
             fontSize: 16,
             textAlign: 'center',
-            padding: 2,
-            margin: 2,
+            padding: 0.5,
+            marginLeft: 2,
         },
         text: {
             width: 95,

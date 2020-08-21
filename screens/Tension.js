@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { StyleSheet, View, TouchableOpacity, Text, Picker, ScrollView } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Text, Picker } from 'react-native'
 
 import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
@@ -28,10 +28,7 @@ const Tension = () => {
         setseuil_V(prim_U/1.732)
     },[prim_U, second_U, seuil_U]);
 
-    // console.log({prim_U, second_U, seuil_U, coef_U})
-
          return (
-             <ScrollView>
                 <View style={styles.container}>
                     <View style={styles.container4}>
                         <Text style={styles.text2}>Caractéristiques TP</Text>
@@ -94,7 +91,6 @@ const Tension = () => {
                         </View>
                     </View>
                 </View>
-             </ScrollView>
         )
 };
 

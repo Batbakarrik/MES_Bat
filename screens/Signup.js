@@ -97,12 +97,12 @@ export default class Signup extends Component {
             </Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.signupcont}>
+        {/* <View style={styles.signupcont}>
           <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
             <Text style={styles.accounttext}>Don't have an account yet?</Text>
             <Text style={styles.signuptext}>Login!!</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     )
   }

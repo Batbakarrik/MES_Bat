@@ -87,8 +87,6 @@ const Courant = () => {
             setseuil_Ip(seuil_I.Value / prim_I.Value)
         }, [prim_I, second_I, seuil_I])
         
-        console.log({seuil_I, seuil_Ip})
-        
             return (
                 <ScrollView>
                     <View style={styles.container}>

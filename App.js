@@ -11,21 +11,12 @@ import Signup from './screens/Signup'
 import Courant from './screens/Courant'
 import Tension from './screens/Tension'
 import Thermique from './screens/Thermique'
+import Ansi from './screens/Ansi'
 
-import * as firebase from 'firebase'
+// import firebase from './src/firebase'
+// import config from './src/Firebase'
+
 import colors from './src/utils/colors'
-
-var firebaseConfig = {
-    apiKey: "AIzaSyCaVkEUsqPO-eGbeZQ7ubhQLwKkylI5hf8",
-    authDomain: "spie-mob.firebaseapp.com",
-    databaseURL: "https://spie-mob.firebaseio.com",
-    projectId: "spie-mob",
-    storageBucket: "spie-mob.appspot.com",
-    messagingSenderId: "376115758009",
-    appId: "1:376115758009:web:b4916082028469ae326c68"
-  };
-
-  firebase.initializeApp(firebaseConfig);
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -49,6 +40,12 @@ const TabNavigator = createBottomTabNavigator(
     },
     Thermique: {
       screen: Thermique,
+      navigationOptions: {
+        tabBarIcon: () => <Ionicons name="ios-calculator" size={24} color={'white'}></Ionicons>
+      }
+    },
+    Ansi: {
+      screen: Ansi,
       navigationOptions: {
         tabBarIcon: () => <Ionicons name="ios-calculator" size={24} color={'white'}></Ionicons>
       }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { StyleSheet, View, TouchableOpacity, Text, ScrollView } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
 
 import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
@@ -27,7 +27,6 @@ const Thermique = () => {
     // },[k, InOb, constTps, Tps]);
 
          return (
-             <ScrollView>
                 <View style={styles.container}>
                     <View style={styles.container4}>
                         <Text style={styles.text2}>Valeurs de réglage</Text>
@@ -87,8 +86,6 @@ const Thermique = () => {
                         </View>
                     </View>
                 </View>
-
-             </ScrollView>
         )
 };
 
