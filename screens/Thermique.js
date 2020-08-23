@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        paddingTop: 25,
+        paddingTop: 30,
         alignItems: 'center',
         backgroundColor: colors.background,
         minHeight: 750

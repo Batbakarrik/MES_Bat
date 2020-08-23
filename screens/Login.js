@@ -39,7 +39,7 @@ export default class Login extends Component {
           <StatusBar barStyle='light-content'></StatusBar>
           <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 65}}>
           </Image>
-          <Text style={styles.text}> Application d'aide à la mise en service </Text>
+          <Text style={styles.text}> Application d'aide à la mise en service de RPN</Text>
           <Logo/>
           <View style={styles.errorMessage}>
             {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}

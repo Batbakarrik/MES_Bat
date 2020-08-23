@@ -30,23 +30,25 @@ export default class Home extends Component {
       <View style={styles.container}>
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 70}}></Image>
         <View style={styles.container1}>
-          <Text style={styles.text}>{"version " + expo.version}</Text>
           <Text style={styles.text}>Aide:</Text>
           <Text style={styles.text}>Dans l'onglet 'Courant' rentrez les caractéristiques des TC, le seuil, la courbe de déclenchement. Confirmer en cliquant sur 'Calculer'</Text>
           <Text style={styles.text}>Dans l'onglet 'Tension' rentrez les caractéristiques des TP, le seuil. Confirmer en cliquant sur 'Calculer'</Text>
-        </View>
-        <View style={styles.container3}>
-          <Text style={styles.text}>Règles de confidentialité:</Text>
-          <Text style={styles.text}
-            onPress={() => Linking.openURL('https://reglesdeconfidentialite.xipitei.com')}>
-            Cliquez ici
-          </Text>
         </View>
         <View style={styles.container2}>
           <TouchableOpacity style={{activeOpacity:2}} onPress={this.signOutUser}>
             <Text style={styles.button}>LogOut</Text>
           </TouchableOpacity>
         </View>
+        <View style={styles.container3}>
+          <Text style={styles.textlien}
+            onPress={() => Linking.openURL('https://reglesdeconfidentialite.xipitei.com')}>
+            Règles de confidentialité: Cliquez ici
+          </Text>
+        </View>
+        <TouchableOpacity onPress={() => Linking.openURL('mailto:xipitei.dev@xipitei.com?subject=App MES_Bat&body=')}>
+          <Text style={styles.textlien}>Contactez moi : Cliquez ici</Text>
+        </TouchableOpacity>
+        <Text style={styles.text}>{"Application version " + expo.version}</Text>
       </View>
     )
   }
@@ -65,11 +67,13 @@ const styles = StyleSheet.create({
   },
   container2: {
     flex:1,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   container3: {
     flex:1,
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'flex-end',
   },
   button: {
     width: 250,
@@ -84,6 +88,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   text: {
+    margin: 8,
+    paddingHorizontal: 8,
+    color: colors.texte,
+    textAlignVertical: 'center',
+  },
+  textlien: {
     margin: 8,
     paddingHorizontal: 8,
     color: colors.texte,

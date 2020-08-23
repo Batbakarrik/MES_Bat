@@ -1,11 +1,11 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
-import data from '../src/products'
+import { SafeAreaView, View, FlatList, StyleSheet, Text } from 'react-native';
+import data from '../src/utils/ansiData'
 import colors from '../src/utils/colors'
 
 const Item = ({ Ansi, Iec61850, Iec60617, DesignFr, DesignEn }) => (
   <View style={styles.item}>
-    <Text style={styles.title}>{Ansi}  /  {Iec60617} /  {Iec61850}</Text>
+    <Text style={styles.title}>{Ansi}  -  {Iec60617} -  {Iec61850}</Text>
     <View style={styles.item1}> 
         <Text style={styles.title1}>{DesignFr}</Text>
         <Text style={styles.title1}>{DesignEn}</Text>
@@ -27,7 +27,7 @@ const ansi = () => {
   return (
     <SafeAreaView style={styles.container}>
         <View style={styles.container4}>
-            <Text style={styles.text2}>Codes ANSI / IEC61850 / IEC60617</Text>
+            <Text style={styles.text2}>Codes ANSI - IEC60617 - IEC61850</Text>
         </View>
       <FlatList
         data={data}

@@ -1,51 +1,51 @@
 import React, { useState, useEffect }  from 'react'
-import { StyleSheet, Text, View, FlatList, ScrollView } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, FlatList, ScrollView } from 'react-native'
 import firebase from '../src/firebase'
+
 import colors from '../src/utils/colors'
 
 const DataList = () => {
 
     const [data, setdata] = useState([]);
-    
+    const dbRefObject = firebase.database().ref('password/id')
+ 
     useEffect(() => {
-        // Get elements
-        const preObject = document.getElementById('codeAnsi')
-        //Create references
-        const dbRefObject = firebase.database().ref().child('codeAnsi')
-        //sync object changes
-        dbRefObject.on('value', snap => {
-            console.log(snap.val())
-            setdata(snap.val())
-            // preObject.innerText = JSON.stringify(snap.val(), null, 3)
-        })
-    }, [])
-    // console.log(data)
-    renderList = ({ansi, iec61850}) => {
-        return (
-            <view>
-                <Text style={styles.text2}>{ansi}</Text>
-                <Text style={styles.text2}>{iec61850}</Text>
-            </view>
-        )
-    }
+        dbRefObject.on('value', snapshot => {
+        setdata(snapshot.val());
+        },
+        // errorObject => {
+        //     console.log("The read failed: " + errorObject.code)
+        // }
+        )}, [firebase])
+    
+    // const renderList = ({logiciel}) => {
+    //     return (
+    //         <SafeAreaView>
+    //                 <Text style={styles.text2}>{logiciel}</Text>
+    //                 {/* <Text style={styles.text2}>{data.id}</Text> */}
+    //         </SafeAreaView>
+    //     )
+    // }
 
     return (
-        <ScrollView>
+        console.log(data),
+        <>
             <View style={styles.container}>
                 <View style={styles.container1}>
                     <View style={styles.container4}>
                         <Text style={styles.text2}>Code Ansi List</Text>
-                        <Text style={styles.text2}>List {data.id}</Text>
+                        <Text style={styles.text2}>List {data.logiciel}</Text>
+                        <Text style={styles.text2}>List {data.marque}</Text>
                     </View>
                 </View>
             </View>
-            <FlatList
+            {/* <FlatList
                 style= {{flex:1, width:'100%'}}
-                data={[data]}
+                data={data}
                 renderItem={({ item }) => renderList(item)}
-                keyExtractor={item => item.id.toString()}
-            />
-        </ScrollView>
+                keyExtractor={item => item.logiciel}
+            /> */}
+        </>
         )
     }
     export default DataList
@@ -70,17 +70,6 @@ const DataList = () => {
         //       .finally(() => setloading(false));
         //   },[]);
         
-    //     useEffect(() => {
-    //       axios.get('http://xipitei.com/api/movies.json'), {headers: {'Access-Control-Allow-Origin': '*','Access-Control-Allow-Headers': 'Content-Type, Authorization',}}
-    //           .then(res => {
-    //               setdata(res.data);
-    //               setloading(true);
-    //           })
-    //           .catch(err => {
-    //               setError(err.message);
-    //               setloading(true)
-    //           })
-    //   }, []);
 
     const styles = StyleSheet.create({
         container: {

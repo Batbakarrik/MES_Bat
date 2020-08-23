@@ -12,6 +12,7 @@ import Courant from './screens/Courant'
 import Tension from './screens/Tension'
 import Thermique from './screens/Thermique'
 import Ansi from './screens/Ansi'
+import Password from './screens/Password'
 
 // import firebase from './src/firebase'
 // import config from './src/Firebase'
@@ -47,7 +48,13 @@ const TabNavigator = createBottomTabNavigator(
     Ansi: {
       screen: Ansi,
       navigationOptions: {
-        tabBarIcon: () => <Ionicons name="ios-calculator" size={24} color={'white'}></Ionicons>
+        tabBarIcon: () => <Ionicons name="ios-list" size={24} color={'white'}></Ionicons>
+      }
+    },
+    Password: {
+      screen: Password,
+      navigationOptions: {
+        tabBarIcon: () => <Ionicons name="ios-list-box" size={24} color={'white'}></Ionicons>
       }
     },
   },
