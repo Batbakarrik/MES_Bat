@@ -2,8 +2,9 @@ import React from 'react'
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
+import firebase, { FirebaseContext } from './src/firebase'
+import useAuth from './src/hooks/useAuth'
 import { Ionicons } from '@expo/vector-icons'
-
 import Home from './screens/Home'
 import Loading from './screens/Loading'
 import Login from './screens/Login'
@@ -13,9 +14,6 @@ import Tension from './screens/Tension'
 import Thermique from './screens/Thermique'
 import Ansi from './screens/Ansi'
 import Password from './screens/Password'
-
-// import firebase from './src/firebase'
-// import config from './src/Firebase'
 
 import colors from './src/utils/colors'
 
@@ -111,11 +109,16 @@ const AppContainer = createAppContainer(rootStack);
 
 // export default createAppContainer(TabNavigator);
 
-export default class App extends React.Component {
-  render () {
-    return <AppContainer />
-  }
+const App = () => {
+  const user = useAuth()
+  console.log(user)
+    return (
+      <FirebaseContext.Provider value={{ user, firebase }}>
+        <AppContainer />
+      </FirebaseContext.Provider>
+    ) 
 };
+export default App
 
 // export default createAppContainer(
 //   createSwitchNavigator(

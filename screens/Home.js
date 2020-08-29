@@ -4,7 +4,7 @@ import { Text, StyleSheet, View, TouchableOpacity, Image, Linking } from 'react-
 import colors from '../src/utils/colors'
 import {expo} from '../app.json'
 
-import * as firebase from 'firebase'
+import firebase from '../src/firebase'
 
 export default class Home extends Component {
   static navigationOptions = {
@@ -17,12 +17,12 @@ export default class Home extends Component {
   }
 
   componentDidMount = () => {
-    const { email, displayName} = firebase.auth().currentUser
+    const { email, displayName} = firebase.auth.currentUser
     this.setState({ email, displayName})
   }
 
   signOutUser = () => {
-    firebase.auth().signOut()
+    firebase.auth.signOut()
   }
 
   render() {

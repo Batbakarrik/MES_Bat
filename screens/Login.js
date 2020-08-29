@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View, TextInput, TouchableOpacity, StatusBar, Image, ScrollView } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import * as firebase from 'firebase'
+import firebase from '../src/firebase'
 
 import Logo from '../src/components/Logo'
 import colors from '../src/utils/colors'
@@ -28,7 +28,7 @@ export default class Login extends Component {
   handleLogin = () => {
     const {email, password} = this.state
     
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    firebase.auth.signInWithEmailAndPassword(email, password)
     .catch(error => this.setState({errorMessage: error.message}))
   }
 
