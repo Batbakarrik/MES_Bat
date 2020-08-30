@@ -7,7 +7,7 @@ import InputSeuil from '../src/components/InputSeuil'
 import Injecter from '../src/components/Injecter'
 import Info from '../src/components/Info'
 
-const Courant = () => {
+const Courant = ({ route }) => {
     
         const [seuil_I, setseuil_I] = useState(0);
         const [prim_I, setprim_I] = useState(0);
@@ -90,6 +90,7 @@ const Courant = () => {
             return (
                 <ScrollView>
                     <View style={styles.container}>
+                        {route.params.name && <Text>{route.params.name}</Text>}
                         <View style={styles.container2}>
                             <View style={styles.container4}>
                             <Text style={styles.text2}>Caractéristiques TC</Text>

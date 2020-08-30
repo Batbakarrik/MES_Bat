@@ -50,11 +50,11 @@ import firebase from '../src/firebase'
 
 export default class Loading extends Component {
 
-  componentDidMount = () => {
-    firebase.auth.onAuthStateChanged(user => {
-      this.props.navigation.navigate(user ? "App" : "Auth");
-    });
-  }
+  // componentDidMount = () => {
+  //   firebase.auth.onAuthStateChanged(user => {
+  //     this.props.navigation.navigate(user ? "App" : "Auth");
+  //   });
+  // }
 
   render() {
     return (

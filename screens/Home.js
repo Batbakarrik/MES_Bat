@@ -1,42 +1,40 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
+import { FirebaseContext } from '../src/firebase'
 import { Text, StyleSheet, View, TouchableOpacity, Image, Linking } from 'react-native'
 
 import colors from '../src/utils/colors'
 import {expo} from '../app.json'
 
-import firebase from '../src/firebase'
+const  Home = ({ navigation }) => {
+  const { user, firebase } = useContext(FirebaseContext)
 
-export default class Home extends Component {
-  static navigationOptions = {
-    title: 'Home',
-  };
+  // state = {
+  //   email: "",
+  //   displayName: ""
+  // }
 
-  state = {
-    email: "",
-    displayName: ""
-  }
+  // componentDidMount = () => {
+  //   const { email, displayName} = firebase.auth.currentUser
+  //   this.setState({ email, displayName})
+  // }
 
-  componentDidMount = () => {
-    const { email, displayName} = firebase.auth.currentUser
-    this.setState({ email, displayName})
-  }
-
-  signOutUser = () => {
-    firebase.auth.signOut()
-  }
-
-  render() {
     return (
       <View style={styles.container}>
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 70}}></Image>
         <View style={styles.container1}>
+          <Text style={styles.text}>{user.displayName}</Text>
           <Text style={styles.text}>Aide:</Text>
           <Text style={styles.text}>Dans l'onglet 'Courant' rentrez les caractéristiques des TC, le seuil, la courbe de déclenchement. Confirmer en cliquant sur 'Calculer'</Text>
           <Text style={styles.text}>Dans l'onglet 'Tension' rentrez les caractéristiques des TP, le seuil. Confirmer en cliquant sur 'Calculer'</Text>
         </View>
         <View style={styles.container2}>
-          <TouchableOpacity style={{activeOpacity:2}} onPress={this.signOutUser}>
+          <TouchableOpacity style={{activeOpacity:2}} /*onPress={firebase.logout()}*/>
             <Text style={styles.button}>LogOut</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.container2}>
+          <TouchableOpacity style={{activeOpacity:2}} onPress={() => navigation.toggleDrawer()}>
+            <Text style={styles.button}>Drawer Acces</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.container3}>
@@ -52,7 +50,7 @@ export default class Home extends Component {
       </View>
     )
   }
-}
+export default Home
 
 const styles = StyleSheet.create({
   container: {

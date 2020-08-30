@@ -14,6 +14,7 @@ class Firebase {
     //     .catch(error => this.setState({errorMessage: error.message}))
     //     console.log(email)
     //   }
+        Logout = async () => await this.auth.signOut
 }
 
 const firebase = new Firebase()

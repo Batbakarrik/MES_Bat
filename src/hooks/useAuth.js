@@ -6,7 +6,6 @@ const useAuth = () => {
 
     useEffect(() => {
         firebase.auth.onAuthStateChanged(user => {
-            // this.navigation.navigate(user ? "App" : "Auth")
             if (user) {
                 setAuthUser(user)
             } else {
@@ -15,8 +14,8 @@ const useAuth = () => {
         },
         )
     }, [])
+    console.log(authUser)
     return authUser
-    // console.log(authUser)
 }
 
 export default useAuth

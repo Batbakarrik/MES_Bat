@@ -1,56 +1,43 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Text, StyleSheet, View, TextInput, TouchableOpacity, StatusBar, Image} from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-
-import * as firebase from 'firebase'
 
 import Logo from '../src/components/Logo'
 import colors from '../src/utils/colors'
 
-export default class Signup extends Component {
-  static navigationOptions = {
-    title: '',
-    headerStyle: {
-      backgroundColor: colors.background,
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    }
-  }
+const SignUp = ({ navigation }) => {
 
-  state = {
-    name: '',
-    email: '',
-    password: '',
-    errorMessage : null
-  }
+  // state = {
+  //   name: '',
+  //   email: '',
+  //   password: '',
+  //   errorMessage : null
+  // }
 
-  handleSignup = () => {
-    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-    .then(userCredentials => {
-      return userCredentials.user.updateProfile({
-        displayName: this.state.name
-      })
-    })
-    .catch(error => this.setState({ errorMessage: error.message}));
-    // .then(function(user){
-    //   if(user && user.emailVerified === false){
-    //     user.sendEmailVerification().then(function(){
-    //       console.log("email verification sent to user");
-    //     });
-    //   }
-    // })
-    // .catch(function(error) {
-    //   // Handle Errors here.
-    //   var errorCode = error.code;
-    //   var errorMessage = error.message;
+  // handleSignup = () => {
+  //   firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+  //   .then(userCredentials => {
+  //     return userCredentials.user.updateProfile({
+  //       displayName: this.state.name
+  //     })
+  //   })
+  //   .catch(error => this.setState({ errorMessage: error.message}));
+  //   .then(function(user){
+  //     if(user && user.emailVerified === false){
+  //       user.sendEmailVerification().then(function(){
+  //         console.log("email verification sent to user");
+  //       });
+  //     }
+  //   })
+  //   .catch(function(error) {
+  //     // Handle Errors here.
+  //     var errorCode = error.code;
+  //     var errorMessage = error.message;
 
-    //   console.log(errorCode, errorMessage);
-    // })
-  }
+  //     console.log(errorCode, errorMessage);
+  //   })
+  // }
 
-  render() {
     return (
       <View style={styles.container}>
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 40}}>
@@ -59,7 +46,7 @@ export default class Signup extends Component {
         <Text style={styles.text}> Veuillez remplir les champs </Text>
         <Logo/>
         <View style={styles.errorMessage}>
-          {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}
+          {/* {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>} */}
         </View>
         <View style={styles.container1}>
           <View style={styles.container2}>
@@ -67,8 +54,8 @@ export default class Signup extends Component {
             <TextInput style={styles.inputBox}
                 placeholder="name"
                 autoCapitalize="none"
-                onChangeText={name => this.setState({ name })}
-                value={this.state.name}
+                // onChangeText={name => this.setState({ name })}
+                // value={this.state.name}
               />
           </View>
           <View style={styles.container2}>
@@ -76,8 +63,8 @@ export default class Signup extends Component {
               <TextInput style={styles.inputBox}
                 placeholder="Email"
                 autoCapitalize="none"
-                onChangeText={email => this.setState({ email })}
-                value={this.state.email}
+                // onChangeText={email => this.setState({ email })}
+                // value={this.state.email}
               />
           </View>
           <View style={styles.container2}>
@@ -86,11 +73,11 @@ export default class Signup extends Component {
                 placeholder="Password"
                 autoCapitalize="none"
                 secureTextEntry={true}  
-                onChangeText={password => this.setState({ password })}
-                value={this.state.password}
+                // onChangeText={password => this.setState({ password })}
+                // value={this.state.password}
               />
           </View>
-          <TouchableOpacity onPress={this.handleSignup}>
+          <TouchableOpacity /*onPress={this.handleSignup}*/>
             <Text
               style={styles.button}>
               Sign Up
@@ -106,7 +93,8 @@ export default class Signup extends Component {
       </View>
     )
   }
-}
+
+export default SignUp
 
 const styles = StyleSheet.create({
   container: {

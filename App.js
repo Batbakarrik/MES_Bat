@@ -1,134 +1,137 @@
-import React from 'react'
-import { createAppContainer, createSwitchNavigator } from 'react-navigation'
-import { createStackNavigator } from 'react-navigation-stack'
-import { createBottomTabNavigator } from 'react-navigation-tabs'
+import React, { useEffect, useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+
 import firebase, { FirebaseContext } from './src/firebase'
 import useAuth from './src/hooks/useAuth'
-import { Ionicons } from '@expo/vector-icons'
+
 import Home from './screens/Home'
 import Loading from './screens/Loading'
-import Login from './screens/Login'
+import SignIn from './screens/SignIn'
 import Signup from './screens/Signup'
 import Courant from './screens/Courant'
 import Tension from './screens/Tension'
 import Thermique from './screens/Thermique'
 import Ansi from './screens/Ansi'
 import Password from './screens/Password'
+import Profile from './screens/Profile'
+import Protections from './screens/Protections'
 
-import colors from './src/utils/colors'
+const AuthStack = createStackNavigator()
+const Tabs = createBottomTabNavigator()
+const HomeStack = createStackNavigator()
+const ProtectionsStack = createStackNavigator()
+const DonneeStack = createStackNavigator()
 
-const TabNavigator = createBottomTabNavigator(
-  {
-    Home: {
-      screen: Home,
-      navigationOptions: {
-        tabBarIcon: () => <Ionicons name="ios-home" size={24} color={'white'}></Ionicons>
-      }
-    },
-    Courant: {
-      screen: Courant,
-      navigationOptions: {
-        tabBarIcon: () => <Ionicons name="ios-calculator" size={24} color={'white'}></Ionicons>
-      }
-    },
-    Tension: {
-      screen: Tension,
-      navigationOptions: {
-        tabBarIcon: () => <Ionicons name="ios-calculator" size={24} color={'white'}></Ionicons>
-      }
-    },
-    Thermique: {
-      screen: Thermique,
-      navigationOptions: {
-        tabBarIcon: () => <Ionicons name="ios-calculator" size={24} color={'white'}></Ionicons>
-      }
-    },
-    Ansi: {
-      screen: Ansi,
-      navigationOptions: {
-        tabBarIcon: () => <Ionicons name="ios-list" size={24} color={'white'}></Ionicons>
-      }
-    },
-    Password: {
-      screen: Password,
-      navigationOptions: {
-        tabBarIcon: () => <Ionicons name="ios-list-box" size={24} color={'white'}></Ionicons>
-      }
-    },
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarOptions: {
-        activeTintColor: 'white',
-        inactiveTintColor: 'gray',
-        activeBackgroundColor: colors.backgroundactive,
-        inactiveBackgroundColor: colors.background,
-      },
-    }
-    )
-  }
+const HomeStackScreen = () => (
+    <HomeStack.Navigator>
+        <HomeStack.Screen
+            name="Home"
+            component={Home}
+        />
+    </HomeStack.Navigator>
 )
-const navOptionHandler = (navigation) => ({
-  headerShown: false
-})
+const ProtectionsStackScreen = () => (
+    <ProtectionsStack.Navigator>
+        <ProtectionsStack.Screen
+            name="Protections"
+            component={Protections}
+        />
+        <ProtectionsStack.Screen
+            name="Courant"
+            component={Courant}
+            options={({ route }) => ({
+                title: route.params.name
+            })}
+        />
+        <ProtectionsStack.Screen
+            name="Tension"
+            component={Tension}
+        />
+        <ProtectionsStack.Screen
+            name="Thermique" 
+            component={Thermique}
+        />
+    </ProtectionsStack.Navigator>
+)
+const DonneeStackScreen = () => (
+    <DonneeStack.Navigator>
+        <DonneeStack.Screen name="Ansi" component={Ansi} />
+        <DonneeStack.Screen name="Password" component={Password} />
+    </DonneeStack.Navigator>
+)
 
-const AuthStack = createStackNavigator ({
-  Login: Login,
-  Signup: Signup,
-});
+const ProfileStack = createStackNavigator()
+const ProfileStackScreen = () => (
+    <ProfileStack.Navigator>
+        <ProfileStack.Screen name="Profile" component={Profile} />
+    </ProfileStack.Navigator>
+)
 
-const rootStack = createStackNavigator (
-  {
-    Loading: {
-      screen: Loading,
-      navigationOptions: navOptionHandler
-    },
-    App: {
-      screen: TabNavigator,
-      navigationOptions: navOptionHandler
+const TabsScreen = () => (
+    <Tabs.Navigator>
+        <Tabs.Screen
+            name="Home"
+            component={HomeStackScreen}
+        />
+        <Tabs.Screen
+            name="Protections"
+            component={ProtectionsStackScreen}
+        />
+        <Tabs.Screen
+            name="Donnee"
+            component={DonneeStackScreen}
+        />
+    </Tabs.Navigator>
+)
 
-    },
-    Auth: {
-      screen: AuthStack,
-      navigationOptions: navOptionHandler
-    }
-  },
-);
-
-// const appDrawer = createDrawerNavigator(
-//   {
-//     drawer: MainStack
-//   },
-//   {
-//     contentComponent: SideMenu,
-//     drawerWith: Dimensions.get('windows').width * 3/4
-//   }
-// )
-
-const AppContainer = createAppContainer(rootStack);
-
-// export default createAppContainer(TabNavigator);
+const Drawer = createDrawerNavigator()
 
 const App = () => {
-  const user = useAuth()
-  console.log(user)
-    return (
-      <FirebaseContext.Provider value={{ user, firebase }}>
-        <AppContainer />
-      </FirebaseContext.Provider>
-    ) 
-};
-export default App
+    const [isLoading, setIsLoading] = useState(true)
+    const user = useAuth()
 
-// export default createAppContainer(
-//   createSwitchNavigator(
-//     {
-//       Loading: Loading,
-//       App: AppTabNavigator,
-//       Auth: AuthStack
-//     },
-//     {
-//       initialRouteName: "Loading"
-//     }
-//   )
-// )
+    useEffect(() => {
+    setTimeout(() => {
+        setIsLoading(false)
+    }, 1000)
+    }, [])
+
+    if (isLoading) {
+        return <Loading/>
+    }
+    return (
+        <FirebaseContext.Provider value={{ user, firebase }}>
+            <NavigationContainer>
+                {user ? (
+                    <Drawer.Navigator initialRouteName="Home">
+                        <Drawer.Screen
+                            name="Home"
+                            component={TabsScreen}
+                        />
+                        <Drawer.Screen
+                            name="Profile"
+                            component={ProfileStackScreen}
+                        />
+                    </Drawer.Navigator>
+                ) : (
+                    <AuthStack.Navigator>
+                        <AuthStack.Screen
+                            name="SignIn"
+                            component={SignIn}
+                            options={{ title: 'Sign In'}}
+                        />
+                        <AuthStack.Screen
+                            name="Signup"
+                            component={Signup}
+                            options={{ title: 'Sign Up'}}
+                        />
+                    </AuthStack.Navigator>
+                )}
+            </NavigationContainer>
+        </FirebaseContext.Provider>
+    );
+}
+export default App

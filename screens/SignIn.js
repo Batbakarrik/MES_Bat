@@ -1,38 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Text, StyleSheet, View, TextInput, TouchableOpacity, StatusBar, Image, ScrollView } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import firebase from '../src/firebase'
+
 
 import Logo from '../src/components/Logo'
 import colors from '../src/utils/colors'
 
-export default class Login extends Component {
-  static navigationOptions = {
-    title: '',
-    headerStyle: {
-      backgroundColor: colors.background,
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-      textAlign: 'center',
-    }
-  }
+const SignIn = ({ navigation }) => {
 
-  state = {
-    email: '',
-    password: '',
-    errorMessage : null
-  }
-
-  handleLogin = () => {
-    const {email, password} = this.state
-    
-    firebase.auth.signInWithEmailAndPassword(email, password)
-    .catch(error => this.setState({errorMessage: error.message}))
-  }
-
-  render() {
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -42,7 +17,7 @@ export default class Login extends Component {
           <Text style={styles.text}> Application d'aide à la mise en service de RPN</Text>
           <Logo/>
           <View style={styles.errorMessage}>
-            {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}
+            {/* {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>} */}
           </View>
           <View style={styles.container1}>
             <View style={styles.container2}>
@@ -50,8 +25,8 @@ export default class Login extends Component {
                 <TextInput style={styles.inputBox}
                   placeholder="Email"
                   autoCapitalize="none"
-                  onChangeText={email => this.setState({ email })}
-                  value={this.state.email}
+                  // onChangeText={email => this.setState({ email })}
+                  // value={this.state.email}
                 />
             </View>
             <View style={styles.container2}>
@@ -60,17 +35,17 @@ export default class Login extends Component {
                   placeholder="Password"
                   autoCapitalize="none"
                   secureTextEntry={true}  
-                  onChangeText={password => this.setState({ password })}
-                  value={this.state.password}
+                  // onChangeText={password => this.setState({ password })}
+                  // value={this.state.password}
                 />
             </View>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate("Signup")}>
+          <TouchableOpacity onPress={() => navigation.push("Signup")}>
             <View style={styles.signupcont}>
               <Text style={styles.text}>Vous n'avez pas de compte?</Text>
               <Text style={styles.signuptext}>Sign Up!!</Text>
             </View>
           </TouchableOpacity>
-            <TouchableOpacity onPress={this.handleLogin}>
+            <TouchableOpacity /*onPress={this.handleLogin}*/>
               <Text
                 style={styles.button}>
                 Login
@@ -81,7 +56,8 @@ export default class Login extends Component {
       </ScrollView>
     )
   }
-}
+
+export default SignIn
 
 const styles = StyleSheet.create({
   container: {
