@@ -27,7 +27,7 @@ const ansi = () => {
     )
     
     // lire dans Database
-     const datas =  firebase.database.ref('ansi').on('value', (datas) => {
+     const datas =  firebase.database().ref('ansi').on('value', (datas) => {
         console.log(datas.toJSON())
         // Alert.alert("Voir ta console !!!!")
       })

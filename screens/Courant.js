@@ -143,7 +143,7 @@ const Courant = () => {
                                     {curve == '0'? null : <Input Title="Coef k" Change={(e) => setk({Value:e})} Valeur={k} Length={5} Placeholder="Valeur !"/>}
                                 </View>
                                 <View style={styles.container2}>
-                                    {curve == '0'? <Info Title="" TitleInfo={ seuil_Ip +" xIn"}/> : null}
+                                    {curve == '0'? <Info Title="" TitleInfo={ seuil_Ip.toFixed(3) +" xIn"}/> : null}
                                 </View>
                             </View>
                         </View>
