@@ -49,40 +49,42 @@ const SignUp = ({ navigation }) => {
           {/* {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>} */}
         </View>
         <View style={styles.container1}>
-          <View style={styles.container2}>
-            <Ionicons name="ios-person-add" color={'white'} size={24}></Ionicons>
-            <TextInput style={styles.inputBox}
-                placeholder="name"
-                autoCapitalize="none"
-                // onChangeText={name => this.setState({ name })}
-                // value={this.state.name}
-              />
-          </View>
-          <View style={styles.container2}>
-            <Ionicons name="ios-mail" color={'white'} size={24}></Ionicons>
+          {/* <Form> */}
+            <View style={styles.container2}>
+              <Ionicons name="ios-person-add" color={'white'} size={24}></Ionicons>
               <TextInput style={styles.inputBox}
-                placeholder="Email"
-                autoCapitalize="none"
-                // onChangeText={email => this.setState({ email })}
-                // value={this.state.email}
-              />
-          </View>
-          <View style={styles.container2}>
-            <Ionicons name="ios-lock" color={'white'} size={24}></Ionicons>
-              <TextInput style={styles.inputBox}
-                placeholder="Password"
-                autoCapitalize="none"
-                secureTextEntry={true}  
-                // onChangeText={password => this.setState({ password })}
-                // value={this.state.password}
-              />
-          </View>
-          <TouchableOpacity /*onPress={this.handleSignup}*/>
-            <Text
-              style={styles.button}>
-              Sign Up
-            </Text>
-          </TouchableOpacity>
+                  placeholder="name"
+                  autoCapitalize="none"
+                  // onChangeText={name => this.setState({ name })}
+                  // value={this.state.name}
+                />
+            </View>
+            <View style={styles.container2}>
+              <Ionicons name="ios-mail" color={'white'} size={24}></Ionicons>
+                <TextInput style={styles.inputBox}
+                  placeholder="Email"
+                  autoCapitalize="none"
+                  // onChangeText={email => this.setState({ email })}
+                  // value={this.state.email}
+                />
+            </View>
+            <View style={styles.container2}>
+              <Ionicons name="ios-lock" color={'white'} size={24}></Ionicons>
+                <TextInput style={styles.inputBox}
+                  placeholder="Password"
+                  autoCapitalize="none"
+                  secureTextEntry={true}  
+                  // onChangeText={password => this.setState({ password })}
+                  // value={this.state.password}
+                />
+            </View>
+            <TouchableOpacity /*onPress={this.handleSignup}*/>
+              <Text
+                style={styles.button}>
+                Sign Up
+              </Text>
+            </TouchableOpacity>
+          {/* </Form> */}
         </View>
         {/* <View style={styles.signupcont}>
           <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>

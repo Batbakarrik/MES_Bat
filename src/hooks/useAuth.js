@@ -6,15 +6,16 @@ const useAuth = () => {
 
     useEffect(() => {
         firebase.auth.onAuthStateChanged(user => {
+            console.log(user)
             if (user) {
                 setAuthUser(user)
             } else {
                 setAuthUser(null)
             }
-        },
-        )
+        }
+        ),
+        console.log(authUser)
     }, [])
-    console.log(authUser)
     return authUser
 }
 

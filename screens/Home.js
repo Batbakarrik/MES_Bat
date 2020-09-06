@@ -7,17 +7,6 @@ import {expo} from '../app.json'
 
 const  Home = ({ navigation }) => {
   const { user, firebase } = useContext(FirebaseContext)
-
-  // state = {
-  //   email: "",
-  //   displayName: ""
-  // }
-
-  // componentDidMount = () => {
-  //   const { email, displayName} = firebase.auth.currentUser
-  //   this.setState({ email, displayName})
-  // }
-
     return (
       <View style={styles.container}>
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 70}}></Image>
@@ -28,7 +17,7 @@ const  Home = ({ navigation }) => {
           <Text style={styles.text}>Dans l'onglet 'Tension' rentrez les caractéristiques des TP, le seuil. Confirmer en cliquant sur 'Calculer'</Text>
         </View>
         <View style={styles.container2}>
-          <TouchableOpacity style={{activeOpacity:2}} /*onPress={firebase.logout()}*/>
+          <TouchableOpacity style={{activeOpacity:2}} onPress={() => firebase.logout()}>
             <Text style={styles.button}>LogOut</Text>
           </TouchableOpacity>
         </View>

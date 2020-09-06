@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, Alert } from 'react-native';
-import firebase from '../src/firebase'
+import firebase from 'firebase'
 
-import data from '../src/utils/ansiData'
+
 import colors from '../src/utils/colors'
+import { ActivityIndicator } from 'antd-mobile';
+
 
 const Item = ({ Ansi, Iec61850, Iec60617, DesignFr, DesignEn }) => (
   <View style={styles.item}>
@@ -16,6 +18,34 @@ const Item = ({ Ansi, Iec61850, Iec60617, DesignFr, DesignEn }) => (
 );
 
 const ansi = () => {
+  
+  const [loading, setLoading] = useState(true)
+  const [data, setData] = useState([])
+  
+  useEffect(() => {
+    const dbRefObject = firebase.database().ref().child('ansi')
+    const data = []
+    dbRefObject.on('value', (snap) => {
+      snap.forEach((child) => {
+      data.push({
+        key: child.id,
+        ansi: child.val().ansi
+      })
+    }),
+    setData(data),
+    setLoading(false)
+    console.log(data)
+    console.log(loading)
+    }, error => console.log(error))
+
+
+    return () => dbRefObject()
+  }, [])
+
+  if (loading) {
+    return <ActivityIndicator />
+  }
+
   const renderItem = ({ item }) => (
     <Item
     Ansi={ansi}
@@ -25,13 +55,20 @@ const ansi = () => {
     DesignEn={designEn}
     />
     )
-    
-    // lire dans Database
-     const datas =  firebase.database().ref('ansi').on('value', (datas) => {
-        console.log(datas.toJSON())
-        // Alert.alert("Voir ta console !!!!")
-      })
 
+    // const preObject = document.getElementById('ansi')
+    // const dbRefObject = firebase.database().ref().child('ansi')
+
+    //     dbRefObject.on('value', snap.forEach((child) => {
+    //       items.push({
+    //         key: child.id,
+    //         ansi: child.val().ansi
+    //       })
+    //     }
+    //     )
+    //       // snap => console.log(snap.val())
+    //       // {preObject.innerText = JSON.stringify(snap.val(),null,3)}
+    //     )
 // ajouter data dans Database
 // firebase.database().ref('password').set(
   //   [{}]
@@ -47,17 +84,16 @@ const ansi = () => {
 // effacer données de Database
 // firebase.database().ref('password/1').remove())
 
-
   return (
-    console.log(datas),
+    // console.log(snap.val()),
     <SafeAreaView style={styles.container}>
         <View style={styles.container4}>
             <Text style={styles.text2}>Codes ANSI - IEC60617 - IEC61850</Text>
         </View>
       <FlatList
-        data={datas}
+        data={data}
         renderItem={renderItem}
-        keyExtractor={item => id}
+        // keyExtractor={data => id}
       />
     </SafeAreaView>
   );

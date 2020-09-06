@@ -19,22 +19,61 @@ import Password from './screens/Password'
 import Profile from './screens/Profile'
 import Protections from './screens/Protections'
 
+import colors from './src/utils/colors'
+import { Ionicons } from '@expo/vector-icons'
+import { color } from "react-native-reanimated";
+import { Button, title } from "react-native";
+
+
 const AuthStack = createStackNavigator()
+const AuthStackScreen = () => (
+    <AuthStack.Navigator headerMode="none">
+        <AuthStack.Screen
+            name="SignIn"
+            component={SignIn}
+            options={{ title: 'Sign In'}}
+        />
+        <AuthStack.Screen
+            name="Signup"
+            component={Signup}
+            options={{ title: 'Sign Up'}}
+        />
+    </AuthStack.Navigator>
+)
 const Tabs = createBottomTabNavigator()
 const HomeStack = createStackNavigator()
 const ProtectionsStack = createStackNavigator()
 const DonneeStack = createStackNavigator()
 
-const HomeStackScreen = () => (
-    <HomeStack.Navigator>
+const HomeStackScreen = ({navigation}) => (
+    <HomeStack.Navigator /*headerMode="none"*/>
         <HomeStack.Screen
             name="Home"
             component={Home}
+            options={{
+                headerTintColor: 'white',
+                headerStyle: { backgroundColor: colors.background},
+                headerTitle: "Sommaire",
+                headerTitleStyle:{
+                    textAlign: "center"
+                },
+                headerLeft: () => (
+                    <Button
+                        title="Profile"
+                        onPress= {() => navigation.toggleDrawer()}
+                    />
+                ),
+            }}
         />
     </HomeStack.Navigator>
 )
 const ProtectionsStackScreen = () => (
-    <ProtectionsStack.Navigator>
+    <ProtectionsStack.Navigator 
+        screenOptions={{
+            headerTintColor: 'white',
+            headerStyle: { backgroundColor: colors.background}
+        }}
+    >
         <ProtectionsStack.Screen
             name="Protections"
             component={Protections}
@@ -71,65 +110,110 @@ const ProfileStackScreen = () => (
 )
 
 const TabsScreen = () => (
-    <Tabs.Navigator>
+    <Tabs.Navigator
+        tabBarOptions={{
+            style:{
+                backgroundColor: colors.background
+            }
+        }}
+    >
         <Tabs.Screen
             name="Home"
             component={HomeStackScreen}
+            options={{
+                tabBarLabel: 'Home',
+                tabBarIcon: ({ color }) => (
+                    <Ionicons name="ios-home" size={24} color={'white'}></Ionicons>
+                )
+            }}
         />
         <Tabs.Screen
             name="Protections"
             component={ProtectionsStackScreen}
+            options={{
+                tabBarLabel: 'Protections',
+                tabBarIcon: ({ color }) => (
+                    <Ionicons name="ios-calculator" size={24} color={'white'}></Ionicons>
+                )
+            }}
         />
         <Tabs.Screen
             name="Donnee"
             component={DonneeStackScreen}
+            options={{
+                tabBarLabel: 'Donnee',
+                tabBarIcon: ({ color }) => (
+                    <Ionicons name="ios-list" size={24} color={'white'}></Ionicons>
+                )
+            }}
         />
     </Tabs.Navigator>
 )
 
 const Drawer = createDrawerNavigator()
+const DrawerScreen = () => (
+    <Drawer.Navigator /*initialRouteName="Home"*/
+        drawerStyle={{
+            backgroundColor: colors.background
+        }}
+    >
+        <Drawer.Screen
+            name="Home"
+            component={TabsScreen}
+            options={{
+                drawerIcon: ({focused, size}) => (
+                    <Ionicons
+                      name="ios-home"
+                      size={size}
+                      color={focused ? '#7cc' : '#ccc'}
+                    />
+                  ),
+            }}
+        />
+        <Drawer.Screen
+            name="Profile"
+            component={ProfileStackScreen}
+            options={{
+                drawerIcon: ({focused, size}) => (
+                    <Ionicons
+                      name="ios-home"
+                      size={size}
+                      color={focused ? '#7cc' : '#ccc'}
+                    />
+                ),
+            }}
+        />
+    </Drawer.Navigator>
+)
+
+const RootStack = createStackNavigator()
+const RootStackScreen = ({user}) => (
+    <RootStack.Navigator headerMode="none">
+        {user ? (
+            <RootStack.Screen name="App" component={DrawerScreen}/>
+            ) : (
+            <RootStack.Screen name="Auth" component={AuthStackScreen}/>
+        )}
+    </RootStack.Navigator>
+)
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true)
     const user = useAuth()
-
+    
     useEffect(() => {
-    setTimeout(() => {
-        setIsLoading(false)
-    }, 1000)
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 1000)
     }, [])
-
+    
     if (isLoading) {
         return <Loading/>
     }
     return (
-        <FirebaseContext.Provider value={{ user, firebase }}>
+        <FirebaseContext.Provider value = {{user, firebase }}>
             <NavigationContainer>
-                {user ? (
-                    <Drawer.Navigator initialRouteName="Home">
-                        <Drawer.Screen
-                            name="Home"
-                            component={TabsScreen}
-                        />
-                        <Drawer.Screen
-                            name="Profile"
-                            component={ProfileStackScreen}
-                        />
-                    </Drawer.Navigator>
-                ) : (
-                    <AuthStack.Navigator>
-                        <AuthStack.Screen
-                            name="SignIn"
-                            component={SignIn}
-                            options={{ title: 'Sign In'}}
-                        />
-                        <AuthStack.Screen
-                            name="Signup"
-                            component={Signup}
-                            options={{ title: 'Sign Up'}}
-                        />
-                    </AuthStack.Navigator>
-                )}
+                <RootStackScreen user = {user}/>
             </NavigationContainer>
         </FirebaseContext.Provider>
     );
