@@ -18,6 +18,7 @@ import Ansi from './screens/Ansi'
 import Password from './screens/Password'
 import Profile from './screens/Profile'
 import Protections from './screens/Protections'
+import Donnees from './screens/Donnees'
 
 import colors from './src/utils/colors'
 import { Ionicons } from '@expo/vector-icons'
@@ -96,7 +97,13 @@ const ProtectionsStackScreen = () => (
     </ProtectionsStack.Navigator>
 )
 const DonneeStackScreen = () => (
-    <DonneeStack.Navigator>
+    <DonneeStack.Navigator
+        screenOptions={{
+            headerTintColor: 'white',
+            headerStyle: { backgroundColor: colors.background}
+        }}
+    >
+        <DonneeStack.Screen name="Donnees" component={Donnees}/>
         <DonneeStack.Screen name="Ansi" component={Ansi} />
         <DonneeStack.Screen name="Password" component={Password} />
     </DonneeStack.Navigator>

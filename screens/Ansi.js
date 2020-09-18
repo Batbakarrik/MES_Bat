@@ -1,21 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, Alert } from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Text } from 'react-native';
 import firebase from 'firebase'
-
 
 import colors from '../src/utils/colors'
 import { ActivityIndicator } from 'antd-mobile';
-
-
-const Item = ({ Ansi, Iec61850, Iec60617, DesignFr, DesignEn }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{Ansi}  -  {Iec60617} -  {Iec61850}</Text>
-    <View style={styles.item1}> 
-        <Text style={styles.title1}>{DesignFr}</Text>
-        <Text style={styles.title1}>{DesignEn}</Text>
-    </View>
-  </View>
-);
 
 const ansi = () => {
   
@@ -27,49 +15,38 @@ const ansi = () => {
     const data = []
     dbRefObject.on('value', (snap) => {
       snap.forEach((child) => {
-      data.push({
-        key: child.id,
-        ansi: child.val().ansi
+        data.push({
+          key: child.key,
+          Id: child.val().id,
+          Ansi: child.val().ansi,
+          Iec61850: child.val().iec61850,
+          Iec60617: child.val().iec60617,
+          DesignFr: child.val().designFr,
+          DesignEn: child.val().designEn,
       })
-    }),
-    setData(data),
-    setLoading(false)
-    console.log(data)
-    console.log(loading)
-    }, error => console.log(error))
+      }),
+      setData(data),
+      setLoading(false)
 
+  }, error => console.log(error))
+  
+}, [])
 
-    return () => dbRefObject()
-  }, [])
+if (loading) {
+  return <ActivityIndicator />
+}
 
-  if (loading) {
-    return <ActivityIndicator />
-  }
+const renderItem = ({ item }) => (
+    <View style={styles.item0} key={item.key}>
+      <Text style={styles.title}>{item.Ansi}  -  {item.Iec60617} -  {item.Iec61850}</Text>
+      <View style={styles.item1}> 
+        <Text style={styles.title1}>{item.DesignFr}</Text>
+        <Text style={styles.title1}>{item.DesignEn}</Text>
+      </View>
+    </View>
+  )
 
-  const renderItem = ({ item }) => (
-    <Item
-    Ansi={ansi}
-    Iec61850={iec61850}
-    Iec60617={iec60617}
-    DesignFr={designFr}
-    DesignEn={designEn}
-    />
-    )
-
-    // const preObject = document.getElementById('ansi')
-    // const dbRefObject = firebase.database().ref().child('ansi')
-
-    //     dbRefObject.on('value', snap.forEach((child) => {
-    //       items.push({
-    //         key: child.id,
-    //         ansi: child.val().ansi
-    //       })
-    //     }
-    //     )
-    //       // snap => console.log(snap.val())
-    //       // {preObject.innerText = JSON.stringify(snap.val(),null,3)}
-    //     )
-// ajouter data dans Database
+    // ajouter data dans Database
 // firebase.database().ref('password').set(
   //   [{}]
   // ).catch((error) => {
@@ -85,15 +62,14 @@ const ansi = () => {
 // firebase.database().ref('password/1').remove())
 
   return (
-    // console.log(snap.val()),
     <SafeAreaView style={styles.container}>
-        <View style={styles.container4}>
-            <Text style={styles.text2}>Codes ANSI - IEC60617 - IEC61850</Text>
-        </View>
+      <View style={styles.container4}>
+        <Text style={styles.text2}>Codes ANSI - IEC60617 - IEC61850</Text>
+      </View>
       <FlatList
         data={data}
         renderItem={renderItem}
-        // keyExtractor={data => id}
+        keyExtractor={item => item.key}
       />
     </SafeAreaView>
   );
@@ -124,7 +100,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: colors.bordercontainer,
 },
-  item: {
+  item0: {
     backgroundColor: colors.backgroundinput,
     padding: 4,
     marginVertical: 4,

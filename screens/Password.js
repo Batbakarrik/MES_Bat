@@ -1,35 +1,54 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text } from 'react-native';
-import data from '../src/utils/passwordData'
+import firebase from 'firebase'
+
 import colors from '../src/utils/colors'
+import { ActivityIndicator } from 'antd-mobile';
 
-const Item = ({ Marque, Appareil, Iduser, Password}) => (
-  <View style={styles.item}>
-    <View style={styles.item1}>
-      <Text style={styles.title}>{Marque}</Text>
-    </View>
-    <View style={styles.item1}>
-      <Text style={styles.title1}>{Appareil}</Text>
-    </View>
-    <View style={styles.item1}>
-      <Text style={styles.title1}>{Iduser}</Text>
-    </View>
-    <View style={styles.item1a}>
-      <Text style={styles.title1}>{Password}</Text>
-    </View>
-  </View>
-);
+const password = () => {
 
-const ansi = () => {
+  const [loading, setLoading] = useState(true)
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const dbRefObject = firebase.database().ref().child('password')
+    const data = []
+    dbRefObject.on('value', (snap) => {
+      snap.forEach((child) => {
+        data.push({
+          key: child.key,
+          Id: child.val().id,
+          Appareil: child.val().appareil,
+          Iduser: child.val().iduser,
+          Marque: child.val().marque,
+          Password: child.val().password,
+      })
+      }),
+      setData(data),
+      setLoading(false)
+
+  }, error => console.log(error))
+  
+}, [])
+
+if (loading) {
+  return <ActivityIndicator />
+}
   const renderItem = ({ item }) => (
-    <Item
-    Id={item.id}
-    Marque={item.marque}
-    Appareil={item.appareil}
-    Iduser={item.iduser}
-    Password={item.password}
-    Obs={item.obs}
-    />
+    <View style={styles.item} key={item.key}>
+      <View style={styles.item1}>
+        <Text style={styles.title}>{item.Marque}</Text>
+      </View>
+      <View style={styles.item1}>
+        <Text style={styles.title1}>{item.Appareil}</Text>
+      </View>
+      <View style={styles.item1}>
+        <Text style={styles.title1}>{item.Iduser}</Text>
+      </View>
+      <View style={styles.item1a}>
+        <Text style={styles.title1}>{item.Password}</Text>
+      </View>
+    </View>
   );
   
   return (
@@ -54,7 +73,7 @@ const ansi = () => {
       <FlatList
         data={data}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.key}
       />
     </SafeAreaView>
   );
@@ -139,4 +158,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ansi;
+export default password;
