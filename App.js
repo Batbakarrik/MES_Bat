@@ -11,6 +11,7 @@ import Home from './screens/Home'
 import Loading from './screens/Loading'
 import SignIn from './screens/SignIn'
 import Signup from './screens/Signup'
+import ResetPwd from './screens/ResetPwd'
 import Courant from './screens/Courant'
 import Tension from './screens/Tension'
 import Thermique from './screens/Thermique'
@@ -38,6 +39,11 @@ const AuthStackScreen = () => (
             name="Signup"
             component={Signup}
             options={{ title: 'Sign Up'}}
+        />
+        <AuthStack.Screen
+            name="ResetPwd"
+            component={ResetPwd}
+            options={{ title: 'Reset Password'}}
         />
     </AuthStack.Navigator>
 )
@@ -218,7 +224,7 @@ const App = () => {
         return <Loading/>
     }
     return (
-        <FirebaseContext.Provider value = {{user, firebase }}>
+        <FirebaseContext.Provider value = {{ user, firebase }}>
             <NavigationContainer>
                 <RootStackScreen user = {user}/>
             </NavigationContainer>

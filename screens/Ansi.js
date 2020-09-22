@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, View, FlatList, Text, ActivityIndicator } from 'react-native';
 import firebase from 'firebase'
 
-import colors from '../src/utils/colors'
-import { ActivityIndicator } from 'antd-mobile';
+import styles from '../src/utils/styles'
 
 const ansi = () => {
   
@@ -74,57 +73,5 @@ const renderItem = ({ item }) => (
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flex:1,
-    paddingTop: 30,
-    alignItems: 'center',
-    backgroundColor: colors.background,
-    // marginTop: StatusBar.currentHeight ||0,
-  },
-  text2: {
-    fontSize: 20,
-    paddingBottom: 8,
-    paddingTop: 8,
-    color: colors.texte,
-    textAlignVertical: 'center',
-  },
-  container4: {
-    width: 350,
-    marginTop: 8,
-    paddingBottom: 4,
-    alignItems: 'center',
-    borderRadius: 10,
-    borderTopWidth: 1,
-    borderColor: colors.bordercontainer,
-},
-  item0: {
-    backgroundColor: colors.backgroundinput,
-    padding: 4,
-    marginVertical: 4,
-    marginHorizontal: 8,
-    borderWidth: 0.2,
-    borderColor: colors.bordercontainer,
-  },
-  item1: {
-    flex: 1,
-    backgroundColor: colors.background,
-    padding: 4,
-    marginVertical: 4,
-    marginHorizontal: 8,
-    borderWidth: 0.2,
-    borderColor: colors.bordercontainer,
-  },
-  title: {
-    fontSize: 18,
-    color: colors.texte,
-  },
-  title1: {
-    fontSize: 14,
-    color: colors.signuptext
-  },
-});
 
 export default ansi;

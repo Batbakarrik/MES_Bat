@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, ActivityIndicator } from 'react-native';
 import firebase from 'firebase'
 
 import colors from '../src/utils/colors'
-import { ActivityIndicator } from 'antd-mobile';
 
 const password = () => {
 

@@ -7,8 +7,11 @@ const styles = StyleSheet.create({
       flex:1,
       flexDirection: 'column',
       justifyContent: 'center',
+      paddingTop: 30,
       alignItems:'center',
       backgroundColor: colors.background,
+      // marginTop: StatusBar.currentHeight ||0,
+      minHeight: 750
     },
     container1: {
       display: 'flex',
@@ -26,6 +29,50 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       borderRadius: 25,
     },
+    container3: {
+      flex:1,
+      flexDirection: 'row',
+      alignItems: 'flex-end',
+    },
+    container4: {
+      width: 350,
+      marginTop: 8,
+      paddingBottom: 4,
+      alignItems: 'center',
+      borderRadius: 10,
+      borderTopWidth: 1,
+      borderColor: colors.bordercontainer,
+    },
+    container5:{
+      display: 'flex',
+      flexDirection: 'row',
+    },
+    container6: {
+      alignItems: 'center',
+      backgroundColor: colors.background,
+    },
+    container7: {
+      paddingBottom: 4,
+      alignItems: 'center',
+      backgroundColor: colors.background,
+    },
+    item0: {
+      backgroundColor: colors.backgroundinput,
+      padding: 4,
+      marginVertical: 4,
+      marginHorizontal: 8,
+      borderWidth: 0.2,
+      borderColor: colors.bordercontainer,
+    },
+    item1: {
+      flex: 1,
+      backgroundColor: colors.background,
+      padding: 4,
+      marginVertical: 4,
+      marginHorizontal: 8,
+      borderWidth: 0.2,
+      borderColor: colors.bordercontainer,
+    },
     inputBox: {
       width: 200,
       paddingHorizontal: 8,
@@ -40,6 +87,14 @@ const styles = StyleSheet.create({
         borderColor: colors.borderinput,
         borderRadius: 25,
     },
+    // inputBox2: {
+    //   width: 100,
+    //   paddingHorizontal: 8,
+    //   margin: 8,
+    //   color: colors.texte,
+    //   borderColor: colors.borderinput,
+    //   borderRadius: 25,
+    // },
     button: {
       width: 250,
       paddingHorizontal: 16,
@@ -52,6 +107,17 @@ const styles = StyleSheet.create({
       color: colors.texte,
       textAlign: 'center',
     },
+    button1: {
+      width: 300,
+      margin: 8,
+      fontSize: 25,
+      paddingHorizontal: 8,
+      backgroundColor: colors.button,
+      borderColor: colors.borderinput,
+      borderRadius: 25,
+      color: colors.texte,
+      textAlign: 'center',
+    },
     text: {
         margin: 8,
         paddingHorizontal: 8,
@@ -59,12 +125,47 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         textAlignVertical: 'center',
     },
+    text1: {
+      width: 150,
+      // margin: 0,
+      // paddingHorizontal: 0,
+      color: colors.texte,
+      textAlign: 'center',
+      // textAlignVertical: 'center',
+    },
+    text2: {
+      fontSize: 20,
+      paddingBottom: 8,
+      paddingTop: 8,
+      color: colors.texte,
+      textAlignVertical: 'center',
+    },
+    text3: {
+      width: 120,
+      color: colors.texte,
+    },
+    text4: {
+      width: 120,
+      height: 45,
+      color: colors.texte,
+      borderColor: colors.borderinput,
+      borderWidth: 0,
+      borderRadius: 25,
+      textAlignVertical: 'center',
+    },
+    textlien: {
+      margin: 8,
+      paddingHorizontal: 8,
+      color: colors.texte,
+      textAlignVertical: 'center',
+    },
     signupcont: {
       flexDirection: 'row',
-      marginBottom: 16,
+      marginBottom: 8,
     },
     signuptext: {
       paddingHorizontal: 8,
+      paddingVertical: 8,
       color: colors.signuptext,
       textAlignVertical: 'center',
     },
@@ -73,7 +174,7 @@ const styles = StyleSheet.create({
       color: colors.accounttext,
       textAlignVertical: 'center',
     },
-    errorMessage: {
+    errMessage: {
       margin: 4,
       height: 48,
       color: colors.accounttext,
@@ -94,7 +195,15 @@ const styles = StyleSheet.create({
       backgroundColor: "rgba(21, 22, 48, 0.1)",
       alignItems: "center",
       justifyContent: "center"
-    }
+    },
+    title: {
+      fontSize: 18,
+      color: colors.texte,
+    },
+    title1: {
+      fontSize: 14,
+      color: colors.signuptext
+    },
   })
 
 export default styles
