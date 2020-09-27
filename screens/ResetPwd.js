@@ -13,7 +13,7 @@ const ResetPwd = ({ navigation }) => {
 
   const handleSubmit = () => {
     firebase.passwordReset(email)
-
+    console.log(errorMessage, errorCode)
   }
     return (
       <ScrollView>

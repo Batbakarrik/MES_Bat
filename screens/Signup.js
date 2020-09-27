@@ -1,43 +1,20 @@
-import React from 'react'
-import { Text, StyleSheet, View, TextInput, TouchableOpacity, StatusBar, Image} from 'react-native'
+import React, {useState, useContext} from 'react'
+import { Text, View, TextInput, TouchableOpacity, StatusBar, Image} from 'react-native'
+import { FirebaseContext } from '../src/firebase'
 import { Ionicons } from '@expo/vector-icons'
 
 import Logo from '../src/components/Logo'
 import styles from '../src/utils/styles'
-import colors from '../src/utils/colors'
 
 const SignUp = ({ navigation }) => {
-
-  // state = {
-  //   name: '',
-  //   email: '',
-  //   password: '',
-  //   errorMessage : null
-  // }
-
-  // handleSignup = () => {
-  //   firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-  //   .then(userCredentials => {
-  //     return userCredentials.user.updateProfile({
-  //       displayName: this.state.name
-  //     })
-  //   })
-  //   .catch(error => this.setState({ errorMessage: error.message}));
-  //   .then(function(user){
-  //     if(user && user.emailVerified === false){
-  //       user.sendEmailVerification().then(function(){
-  //         console.log("email verification sent to user");
-  //       });
-  //     }
-  //   })
-  //   .catch(function(error) {
-  //     // Handle Errors here.
-  //     var errorCode = error.code;
-  //     var errorMessage = error.message;
-
-  //     console.log(errorCode, errorMessage);
-  //   })
-  // }
+  const {firebase} = useContext(FirebaseContext)
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
+  const handleSignup = () => {
+    firebase.signUp(email, password, name)
+  }
 
     return (
       <View style={styles.container}>
@@ -56,8 +33,8 @@ const SignUp = ({ navigation }) => {
               <TextInput style={styles.inputBox}
                   placeholder="name"
                   autoCapitalize="none"
-                  // onChangeText={name => this.setState({ name })}
-                  // value={this.state.name}
+                  value={name}
+                  onChange={e => setName(e.target.value)}
                 />
             </View>
             <View style={styles.container2}>
@@ -65,8 +42,8 @@ const SignUp = ({ navigation }) => {
                 <TextInput style={styles.inputBox}
                   placeholder="Email"
                   autoCapitalize="none"
-                  // onChangeText={email => this.setState({ email })}
-                  // value={this.state.email}
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
                 />
             </View>
             <View style={styles.container2}>
@@ -75,11 +52,11 @@ const SignUp = ({ navigation }) => {
                   placeholder="Password"
                   autoCapitalize="none"
                   secureTextEntry={true}  
-                  // onChangeText={password => this.setState({ password })}
-                  // value={this.state.password}
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
                 />
             </View>
-            <TouchableOpacity /*onPress={this.handleSignup}*/>
+            <TouchableOpacity onPress={handleSignup}>
               <Text
                 style={styles.button}>
                 Sign Up

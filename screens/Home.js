@@ -7,6 +7,7 @@ import {expo} from '../app.json'
 
 const  Home = ({ navigation }) => {
   const { user, firebase } = useContext(FirebaseContext)
+  
     return (
       <View style={styles.container}>
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 70}}></Image>

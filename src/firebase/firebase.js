@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import app from 'firebase/app'
 import 'firebase/auth'
 import firebaseConfig from './config';
@@ -12,13 +11,36 @@ class Firebase {
     signIn = (email, password) => {
         firebase.auth.signInWithEmailAndPassword(email, password)
         .then(() => {
-          alert('handleLogin')
         })
         .catch(error => {
-          alert(error)
+            var errorMessage = error.message
+            var errorCode = error.code
+          alert(errorMessage)
+          alert(errorCode)
         })
-        }
-        
+    }
+
+    signUp = (email, password, name, user) => {
+
+        firebase.auth.createUserWithEmailAndPassword(email, password)
+        .then(userCredentials => {
+            if(user === false){
+                user.sendEmailVerification().then(function(){
+                console.log("email verification sent to user");
+                });
+            }
+            return userCredentials.user.updateProfile({
+                displayName: name
+            })
+        })
+        .catch(error => {
+            var errorMessage = error.message
+            var errorCode = error.code
+          alert(errorMessage)
+          alert(errorCode)
+        });
+    }
+
     logout = () => {
         this.auth.signOut()
     }
@@ -29,7 +51,6 @@ class Firebase {
             alert(`Email envoyé à ${email}`)
         })
         .catch(function(error) {
-                // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 if (errorCode === 'auth/wrong-password') {

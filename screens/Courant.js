@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, View, TouchableOpacity, Text, Picker, ScrollView } from 'react-native'
+import { View, TouchableOpacity, Text, Picker, ScrollView } from 'react-native'
 
 import styles from '../src/utils/styles'
-import colors from '../src/utils/colors'
 import Input from '../src/components/Input'
 import InputSeuil from '../src/components/InputSeuil'
 import Injecter from '../src/components/Injecter'

@@ -24,7 +24,6 @@ const SignIn = ({ navigation }) => {
             <Text style={styles.text}> Application d'aide à la mise en service de RPN</Text>
             <Logo/>
             <View style={styles.errorMessage}>
-              {/* {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>} */}
             </View>
                 <View style={styles.container1}>
                   <View style={styles.container2}>

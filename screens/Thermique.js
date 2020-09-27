@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState } from 'react'
 import { View, TouchableOpacity, Text } from 'react-native'
 
 import styles from '../src/utils/styles'
@@ -13,7 +13,6 @@ const Thermique = () => {
     const [constTps, setconstTps] = useState(0);
     const [Tps, setTps] = useState(0);
     const [Tpspre, setTpspre] = useState(0);
-    // const [Iperch, setIperch] = useState(0);
 
     const calc_TpsTh = () => {
         setTps(constTps*(Math.log1p((Math.pow((I/(k*InOb)),2))/((Math.pow((I/(k*InOb)),2))-1)-1)))
@@ -21,10 +20,6 @@ const Thermique = () => {
     const calc_TpsThPr = () => {
         setTpspre(constTps*(Math.log1p(((Math.pow((I/(k*InOb)),2))-(Math.pow((Ipre/(k*InOb)),2)))/((Math.pow((I/(k*InOb)),2))-1)-1)))
     }
-
-    // useEffect(() => {
-    //     setTps()
-    // },[k, InOb, constTps, Tps]);
 
          return (
                 <View style={styles.container}>
@@ -36,10 +31,10 @@ const Thermique = () => {
                                 <Input Title="Coef K" Change={setk} Value={k} Length={3} Placeholder="Valeur !"/>
                         </View>
                         <View style={styles.container6}>
-                                <Input Title="I_Injecté" Change={setI} Value={I} Length={3} Placeholder="Valeur !"/>
+                                <Input Title="I_Injecté" Change={setI} Value={I} Length={4} Placeholder="Valeur !"/>
                         </View>
                         <View style={styles.container6}>
-                                <Input Title="InOb" Change={setInOb} Value={InOb} Length={3} Placeholder="Valeur !"/>
+                                <Input Title="InOb" Change={setInOb} Value={InOb} Length={4} Placeholder="Valeur !"/>
                         </View>
                         <View style={styles.container6}>
                                 <Input Title="constTps" Change={setconstTps} Value={constTps} Length={4} Placeholder="Valeur !"/>

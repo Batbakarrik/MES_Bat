@@ -8,7 +8,7 @@ const useAuth = () => {
         firebase.auth.onAuthStateChanged(user => {
             console.log(user)
             if (user) {
-                setAuthUser(user)
+                setAuthUser(user.emailVerified)
             } else {
                 setAuthUser(null)
             }

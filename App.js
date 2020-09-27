@@ -23,8 +23,7 @@ import Donnees from './screens/Donnees'
 
 import colors from './src/utils/colors'
 import { Ionicons } from '@expo/vector-icons'
-import { color } from "react-native-reanimated";
-import { Button, title } from "react-native";
+import { Button } from "react-native";
 
 
 const AuthStack = createStackNavigator()
