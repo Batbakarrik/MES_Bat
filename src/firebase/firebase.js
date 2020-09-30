@@ -8,58 +8,20 @@ class Firebase {
         this.auth = app.auth()
     }
     
-    signIn = (email, password) => {
-        firebase.auth.signInWithEmailAndPassword(email, password)
-        .then(() => {
-        })
-        .catch(error => {
-            var errorMessage = error.message
-            var errorCode = error.code
-          alert(errorMessage)
-          alert(errorCode)
-        })
-    }
+    signIn = (email, password) => 
+       this.auth.signInWithEmailAndPassword(email, password)
 
-    signUp = (email, password, name, user) => {
+    signUp = (email, password) =>
+        this.auth.createUserWithEmailAndPassword(email, password)
 
-        firebase.auth.createUserWithEmailAndPassword(email, password)
-        .then(userCredentials => {
-            if(user === false){
-                user.sendEmailVerification().then(function(){
-                console.log("email verification sent to user");
-                });
-            }
-            return userCredentials.user.updateProfile({
-                displayName: name
-            })
-        })
-        .catch(error => {
-            var errorMessage = error.message
-            var errorCode = error.code
-          alert(errorMessage)
-          alert(errorCode)
-        });
-    }
+    // sendEmail = () =>
+    //     this.auth.currentUser.sendEmailVerification()
 
-    logout = () => {
+    logout = () =>
         this.auth.signOut()
-    }
 
-    passwordReset = (email) => {
-        this.auth.sendPasswordResetEmail(email)
-        .then (() => {
-            alert(`Email envoyé à ${email}`)
-        })
-        .catch(function(error) {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                if (errorCode === 'auth/wrong-password') {
-                    alert('Wrong password.');
-                } else {
-                    alert(errorMessage);
-                }
-            }) 
-        }
+    // passwordReset = (email) =>
+    //     this.auth.sendPasswordResetEmail(email)
     }
 
 const firebase = new Firebase()
