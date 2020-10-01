@@ -7,24 +7,18 @@ import Logo from '../src/components/Logo'
 import styles from '../src/utils/styles'
 
 const SignUp = ({ navigation }) => {
-  const {firebase , user} = useContext(FirebaseContext)
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('')
-console.log(user)
+  const {firebase} = useContext(FirebaseContext)
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("")
+
   const handleSignup = () => {
     firebase.signUp(email, password)
       .then(userCredentials => {
-        if(user === false){
-          userCredentials.user.sendEmailVerification()
-          .then(function(){
-          console.log("email verification sent to user");
-          });
-          return (
-            userCredentials.user.updateProfile({displayName: name})
-          )
-        }
+        console.log(userCredentials),
+        userCredentials.user.sendEmailVerification(),
+        userCredentials.user.updateProfile({displayName: name}),
         setName(''),
         setEmail(''),
         setPassword(''),
@@ -34,7 +28,7 @@ console.log(user)
         setError(error)
       });
     }
-        const errorMsg = error !== '' && <span>{error.message}</span>
+    const errorMsg = error !== '' && <span>{error.message}</span>
         
     return (
       <View style={styles.container}>
@@ -47,7 +41,7 @@ console.log(user)
           <Text style={styles.error}>{errorMsg}</Text>
         </View>
         <View style={styles.container1}>
-          <form>
+          {/* <form> */}
             <View style={styles.container2}>
               <Ionicons name="ios-person-add" color={'white'} size={24}></Ionicons>
               <TextInput style={styles.inputBox}
@@ -88,7 +82,7 @@ console.log(user)
                 <Text style={styles.signuptext}>SignIn !!</Text>
               </View>
             </TouchableOpacity>
-          </form>
+          {/* </form> */}
         </View>
       </View>
     )

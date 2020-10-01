@@ -8,12 +8,26 @@ import Logo from '../src/components/Logo'
 
 const SignIn = ({ navigation }) => {
   const {firebase} = useContext(FirebaseContext)
-  const [email, setemail] = useState('');
-  const [password, setpassword] = useState('');
-  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
   const handleLogin = () => {
     firebase.signIn(email, password)
+    .then(userCredential=> {
+      console.log(userCredential.user.emailVerified)
+      if(userCredential.user.emailVerified === false){
+        alert(`Veuillez confirmer vôtre email. Consultez vôtre Boite mail ${email}`)
+      }
+      setEmail(''),
+      setPassword('')
+    })
+    .catch(error => {
+      setError(error)
+    });
   }
+
+  const errorMsg = error !== '' && <span>{error.message}</span>
 
     return (
       <ScrollView>
@@ -24,6 +38,7 @@ const SignIn = ({ navigation }) => {
             <Text style={styles.text}> Application d'aide à la mise en service de RPN</Text>
             <Logo/>
             <View style={styles.errorMessage}>
+              <Text style={styles.error}>{errorMsg}</Text>
             </View>
                 <View style={styles.container1}>
                   <View style={styles.container2}>
@@ -32,7 +47,7 @@ const SignIn = ({ navigation }) => {
                         placeholder="Email"
                         autoCapitalize="none"
                         value={email}
-                        onChange={e => setemail(e.target.value)}
+                        onChange={e => setEmail(e.target.value)}
                         />
                   </View>
                   <View style={styles.container2}>
@@ -42,7 +57,7 @@ const SignIn = ({ navigation }) => {
                         autoCapitalize="none"
                         secureTextEntry={true}
                         value={password}
-                        onChange={e => setpassword(e.target.value)}
+                        onChange={e => setPassword(e.target.value)}
                       />
                   </View>
                   <TouchableOpacity onPress={() => navigation.push("Signup")}>
