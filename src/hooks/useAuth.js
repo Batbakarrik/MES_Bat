@@ -3,11 +3,11 @@ import firebase from '../firebase'
 
 const useAuth = () => {
     const [authUser, setAuthUser] = useState(null)
-    console.log(authUser)
+    // console.log(authUser)
 
     useEffect(() => {
         firebase.auth.onAuthStateChanged(user => {
-            console.log(user)
+            // console.log(user)
             if (user) {
                 setAuthUser(user.emailVerified)
             } else {

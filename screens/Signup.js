@@ -1,8 +1,8 @@
 import React, {useState, useContext} from 'react'
 import { Text, View, TextInput, TouchableOpacity, StatusBar, Image} from 'react-native'
 import {FirebaseContext} from '../src/firebase'
-import { Ionicons } from '@expo/vector-icons'
-
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Logo from '../src/components/Logo'
 import styles from '../src/utils/styles'
 
@@ -12,6 +12,7 @@ const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("")
+  const [hidePass, setHidePass] = useState(true)
 
   const handleSignup = () => {
     firebase.signUp(email, password)
@@ -41,33 +42,38 @@ const SignUp = ({ navigation }) => {
           <Text style={styles.error}>{errorMsg}</Text>
         </View>
         <View style={styles.container1}>
-          {/* <form> */}
             <View style={styles.container2}>
-              <Ionicons name="ios-person-add" color={'white'} size={24}></Ionicons>
+              <Icons name="face" color={'white'} size={20}/>
               <TextInput style={styles.inputBox}
                   placeholder="Name"
                   autoCapitalize="none"
                   value={name}
-                  onChange={e => setName(e.target.value)}
+                  onChangeText={(val) => setName(val)}
                 />
             </View>
             <View style={styles.container2}>
-              <Ionicons name="ios-mail" color={'white'} size={24}></Ionicons>
+              <Icons name="email" color={'white'} size={20}/>
                 <TextInput style={styles.inputBox}
                   placeholder="Email"
                   autoCapitalize="none"
                   value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  onChangeText={(val) => setEmail(val)}
                 />
             </View>
             <View style={styles.container2}>
-              <Ionicons name="ios-lock" color={'white'} size={24}></Ionicons>
+              <Icons name="lock" color={'white'} size={20}/>
                 <TextInput style={styles.inputBox}
                   placeholder="Password"
                   autoCapitalize="none"
-                  secureTextEntry={true}  
+                  secureTextEntry={true}
                   value={password}
-                  onChange={e => setPassword(e.target.value)}
+                  onChangeText={(val) => setPassword(val)}
+                />
+                <Icon
+                  name={hidePass ? 'eye-slash' : 'eye'}
+                  color={'white'}
+                  size={15}
+                  onPress={() => setHidePass(!hidePass)}
                 />
             </View>
             <TouchableOpacity onPress={handleSignup}>
@@ -82,7 +88,6 @@ const SignUp = ({ navigation }) => {
                 <Text style={styles.signuptext}>SignIn !!</Text>
               </View>
             </TouchableOpacity>
-          {/* </form> */}
         </View>
       </View>
     )

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, ActivityIndicator } from 'react-native';
-import firebase from 'firebase'
+// import firebase from 'firebase'
 
 import colors from '../src/utils/colors'
 
@@ -9,26 +9,26 @@ const password = () => {
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState([])
 
-  useEffect(() => {
-    const dbRefObject = firebase.database().ref().child('password')
-    const data = []
-    dbRefObject.on('value', (snap) => {
-      snap.forEach((child) => {
-        data.push({
-          key: child.key,
-          Id: child.val().id,
-          Appareil: child.val().appareil,
-          Iduser: child.val().iduser,
-          Marque: child.val().marque,
-          Password: child.val().password,
-      })
-      }),
-      setData(data),
-      setLoading(false)
+//   useEffect(() => {
+//     const dbRefObject = firebase.database().ref().child('password')
+//     const data = []
+//     dbRefObject.on('value', (snap) => {
+//       snap.forEach((child) => {
+//         data.push({
+//           key: child.key,
+//           Id: child.val().id,
+//           Appareil: child.val().appareil,
+//           Iduser: child.val().iduser,
+//           Marque: child.val().marque,
+//           Password: child.val().password,
+//       })
+//       }),
+//       setData(data),
+//       setLoading(false)
 
-  }, error => console.log(error))
+//   }, error => console.log(error))
   
-}, [])
+// }, [])
 
 if (loading) {
   return <ActivityIndicator />

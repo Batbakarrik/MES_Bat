@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react'
 import { FirebaseContext } from '../src/firebase'
 import { Text, View, TextInput, TouchableOpacity, StatusBar, Image, ScrollView } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
-
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from '../src/utils/styles'
 import Logo from '../src/components/Logo'
 
@@ -11,6 +11,7 @@ const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [hidePass, setHidePass] = useState(true)
 
   const handleLogin = () => {
     firebase.signIn(email, password)
@@ -28,7 +29,8 @@ const SignIn = ({ navigation }) => {
   }
 
   const errorMsg = error !== '' && <span>{error.message}</span>
-
+  
+  console.log({email})
     return (
       <ScrollView>
           <View style={styles.container}>
@@ -42,22 +44,28 @@ const SignIn = ({ navigation }) => {
             </View>
                 <View style={styles.container1}>
                   <View style={styles.container2}>
-                    <Ionicons name="ios-mail" color={'white'} size={24}></Ionicons>
+                    <Icons name="email" color={'white'} size={20}/>
                       <TextInput style={styles.inputBox}
                         placeholder="Email"
                         autoCapitalize="none"
                         value={email}
-                        onChange={e => setEmail(e.target.value)}
-                        />
+                        onChangeText={(val) => setEmail(val)}
+                      />
                   </View>
                   <View style={styles.container2}>
-                    <Ionicons name="ios-lock" color={'white'} size={24}></Ionicons>
+                    <Icons name="lock" color={'white'} size={20}/>
                       <TextInput style={styles.inputBox}
                         placeholder="Password"
                         autoCapitalize="none"
-                        secureTextEntry={true}
+                        secureTextEntry={hidePass ? true:false}
                         value={password}
-                        onChange={e => setPassword(e.target.value)}
+                        onChangeText={(val) => setPassword(val)}
+                      />
+                      <Icon
+                        name={hidePass ? 'eye-slash' : 'eye'}
+                        color={'white'}
+                        size={15}
+                        onPress={() => setHidePass(!hidePass)}
                       />
                   </View>
                   <TouchableOpacity onPress={() => navigation.push("Signup")}>
