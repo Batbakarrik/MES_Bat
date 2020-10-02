@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { FirebaseContext } from '../src/firebase'
 import { Text, View, TouchableOpacity, Image, Linking } from 'react-native'
 
@@ -6,13 +6,24 @@ import styles from '../src/utils/styles'
 import {expo} from '../app.json'
 
 const  Home = ({ navigation }) => {
-  const { user, firebase } = useContext(FirebaseContext)
+  const {firebase} = useContext(FirebaseContext)
+  const [isHidden, setIsHidden] = useState (true)
+
+  const hidden = () => {
+      if (firebase.auth.currentUser.uid === "Q51kWFwa7lUaoaOlCuM7hT1KbEk1") {
+        setIsHidden(false)
+    } else {
+        setIsHidden(true)
+    }
+  }
+  useEffect(() => {
+    hidden()
+  }, [])
   
     return (
       <View style={styles.container}>
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 70}}></Image>
         <View style={styles.container1}>
-          <Text style={styles.text}>{user.displayName}</Text>
           <Text style={styles.text}>Aide:</Text>
           <Text style={styles.text}>Dans l'onglet 'Courant' rentrez les caractéristiques des TC, le seuil, la courbe de déclenchement. Confirmer en cliquant sur 'Calculer'</Text>
           <Text style={styles.text}>Dans l'onglet 'Tension' rentrez les caractéristiques des TP, le seuil. Confirmer en cliquant sur 'Calculer'</Text>
@@ -23,9 +34,12 @@ const  Home = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.container2}>
-          <TouchableOpacity style={{activeOpacity:2}} onPress={() => navigation.toggleDrawer()}>
-            <Text style={styles.button}>Drawer Acces</Text>
-          </TouchableOpacity>
+          { isHidden===false ?
+            <TouchableOpacity style={{activeOpacity:2}} onPress={() => navigation.toggleDrawer()}>
+              <Text style={styles.button}>Drawer Acces</Text>
+            </TouchableOpacity> :
+            <View/>
+          }
         </View>
         <View style={styles.container3}>
           <Text style={styles.textlien}

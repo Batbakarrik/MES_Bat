@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Logo from '../src/components/Logo'
 import styles from '../src/utils/styles'
+import colors from '../src/utils/colors'
 
 const SignUp = ({ navigation }) => {
   const {firebase} = useContext(FirebaseContext)
@@ -17,7 +18,6 @@ const SignUp = ({ navigation }) => {
   const handleSignup = () => {
     firebase.signUp(email, password)
       .then(userCredentials => {
-        console.log(userCredentials),
         userCredentials.user.sendEmailVerification(),
         userCredentials.user.updateProfile({displayName: name}),
         setName(''),
@@ -33,9 +33,9 @@ const SignUp = ({ navigation }) => {
         
     return (
       <View style={styles.container}>
+        <StatusBar barStyle='light-content' backgroundColor= {colors.background}></StatusBar>
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 40}}>
         </Image>
-        <StatusBar barStyle='light-content'></StatusBar>
         <Text style={styles.text}> Veuillez remplir les champs </Text>
         <Logo/>
         <View style={styles.errorMessage}>
@@ -65,7 +65,7 @@ const SignUp = ({ navigation }) => {
                 <TextInput style={styles.inputBox}
                   placeholder="Password"
                   autoCapitalize="none"
-                  secureTextEntry={true}
+                  secureTextEntry={hidePass ? true:false}
                   value={password}
                   onChangeText={(val) => setPassword(val)}
                 />

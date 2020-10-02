@@ -4,18 +4,19 @@ import colors from './colors'
 const styles = StyleSheet.create({
     container: {
       display: 'flex',
-      flex:1,
+      flex: 1,
       flexDirection: 'column',
       justifyContent: 'center',
-      paddingTop: 30,
+      paddingTop: 20,
       alignItems:'center',
       backgroundColor: colors.background,
       // marginTop: StatusBar.currentHeight ||0,
-      minHeight: 750
+      minHeight: 770
     },
     container1: {
       display: 'flex',
-      flex:1,
+      flex: 1,
+      height: 'auto',
       flexDirection: 'column',
     },
     container2: {

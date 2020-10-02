@@ -63,12 +63,14 @@ const HomeStackScreen = ({navigation}) => (
                 headerTitleStyle:{
                     textAlign: "center"
                 },
-                headerLeft: () => (
-                    <Button
-                        title="Profile"
-                        onPress= {() => navigation.toggleDrawer()}
-                    />
-                ),
+                // headerLeft: () => {
+                //     if (user === "toto") {
+                //         <Button
+                //             title="Profile"
+                //             onPress= {() => navigation.toggleDrawer()}
+                //         />
+                //     }
+                // }
             }}
         />
     </HomeStack.Navigator>
@@ -163,40 +165,40 @@ const TabsScreen = () => (
 )
 
 const Drawer = createDrawerNavigator()
-const DrawerScreen = () => (
+const DrawerScreen = (() => (
     <Drawer.Navigator /*initialRouteName="Home"*/
         drawerStyle={{
             backgroundColor: colors.background
         }}
     >
-        <Drawer.Screen
-            name="Home"
-            component={TabsScreen}
-            options={{
-                drawerIcon: ({focused, size}) => (
-                    <Ionicons
-                      name="ios-home"
-                      size={size}
-                      color={focused ? '#7cc' : '#ccc'}
-                    />
-                  ),
-            }}
-        />
-        <Drawer.Screen
-            name="Profile"
-            component={ProfileStackScreen}
-            options={{
-                drawerIcon: ({focused, size}) => (
-                    <Ionicons
-                      name="ios-home"
-                      size={size}
-                      color={focused ? '#7cc' : '#ccc'}
-                    />
-                ),
-            }}
-        />
+            <Drawer.Screen
+                name="Home"
+                component={TabsScreen}
+                options={{
+                    drawerIcon: ({focused, size}) => (
+                        <Ionicons
+                        name="ios-home"
+                        size={size}
+                        color={focused ? '#7cc' : '#ccc'}
+                        />
+                    ),
+                }}
+            />
+            <Drawer.Screen
+                name="Profile"
+                component={ProfileStackScreen}
+                options={{
+                    drawerIcon: ({focused, size}) => (
+                        <Ionicons
+                        name="ios-home"
+                        size={size}
+                        color={focused ? '#7cc' : '#ccc'}
+                        />
+                    ),
+                }}
+            />
     </Drawer.Navigator>
-)
+))
 
 const RootStack = createStackNavigator()
 const RootStackScreen = ({user}) => (

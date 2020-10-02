@@ -1,10 +1,14 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { FirebaseContext } from '../src/firebase'
 import { Text, View, TextInput, TouchableOpacity, StatusBar, Image, ScrollView } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
+
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from '../src/utils/styles'
 import Logo from '../src/components/Logo'
+import colors from '../src/utils/colors'
+
 
 const SignIn = ({ navigation }) => {
   const {firebase} = useContext(FirebaseContext)
@@ -13,10 +17,33 @@ const SignIn = ({ navigation }) => {
   const [error, setError] = useState("");
   const [hidePass, setHidePass] = useState(true)
 
+  const storeData = async () => {
+    try {
+      await AsyncStorage.setItem('myEmail', email)
+    } catch (error) {
+      alert(error)
+    }
+  }
+  
+  const getData = async () => {
+    try {
+      let email = await AsyncStorage.getItem('myEmail')
+      if(email !== null) {
+        setEmail(email)
+      }
+    } catch(error) {
+      alert(error)
+    }
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
   const handleLogin = () => {
     firebase.signIn(email, password)
     .then(userCredential=> {
-      console.log(userCredential.user.emailVerified)
+      storeData()
       if(userCredential.user.emailVerified === false){
         alert(`Veuillez confirmer vôtre email. Consultez vôtre Boite mail ${email}`)
       }
@@ -30,11 +57,10 @@ const SignIn = ({ navigation }) => {
 
   const errorMsg = error !== '' && <span>{error.message}</span>
   
-  console.log({email})
     return (
       <ScrollView>
           <View style={styles.container}>
-            <StatusBar barStyle='light-content'></StatusBar>
+            <StatusBar barStyle='light-content' backgroundColor= {colors.background}></StatusBar>
             <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 65}}>
             </Image>
             <Text style={styles.text}> Application d'aide à la mise en service de RPN</Text>
