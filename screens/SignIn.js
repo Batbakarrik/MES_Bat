@@ -58,7 +58,6 @@ const SignIn = ({ navigation }) => {
   const errorMsg = error !== '' && <span>{error.message}</span>
   
     return (
-      <ScrollView>
           <View style={styles.container}>
             <StatusBar barStyle='light-content' backgroundColor= {colors.background}></StatusBar>
             <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 65}}>
@@ -94,17 +93,18 @@ const SignIn = ({ navigation }) => {
                         onPress={() => setHidePass(!hidePass)}
                       />
                   </View>
-                  <TouchableOpacity onPress={() => navigation.push("Signup")}>
-                    <View style={styles.signupcont}>
-                      <Text style={styles.text}>Vous n'avez pas de compte?</Text>
-                      <Text style={styles.signuptext}>Sign Up !!</Text>
-                      </View>
-                  </TouchableOpacity>
+                  <View style={styles.container6}>
                   <TouchableOpacity onPress={handleLogin}>
                     <Text
                       style={styles.button}>
                       Login
                     </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => navigation.push("Signup")}>
+                    <View style={styles.signupcont}>
+                      <Text style={styles.text}>Vous n'avez pas de compte?</Text>
+                      <Text style={styles.signuptext}>Sign Up !!</Text>
+                      </View>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => navigation.push("ResetPwd")}>
                       <View style={styles.signupcont}>
@@ -112,9 +112,9 @@ const SignIn = ({ navigation }) => {
                       <Text style={styles.signuptext}>Réinitialisez le !!</Text>
                     </View>
                   </TouchableOpacity>
+                  </View>
                 </View>
           </View>
-      </ScrollView>
     )
   }
 

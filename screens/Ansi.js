@@ -37,7 +37,17 @@ if (loading) {
 
 const renderItem = ({ item }) => (
     <View style={styles.item0} key={item.key}>
-      <Text style={styles.title}>{item.Ansi}  -  {item.Iec60617} -  {item.Iec61850}</Text>
+      <View style={styles.item2}>
+        <View style={styles.item3}>
+          <Text style={styles.title}>{item.Ansi}</Text>
+        </View>
+        <View style={styles.item3}>
+          <Text style={styles.title}>{item.Iec60617}</Text>
+        </View>
+        <View style={styles.item3}>
+          <Text style={styles.title}>{item.Iec61850}</Text>
+        </View>
+      </View>
       <View style={styles.item1}> 
         <Text style={styles.title1}>{item.DesignFr}</Text>
         <Text style={styles.title1}>{item.DesignEn}</Text>
@@ -62,14 +72,26 @@ const renderItem = ({ item }) => (
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.container4}>
-        <Text style={styles.text2}>Codes ANSI - IEC60617 - IEC61850</Text>
+      <View style={styles.container8}>
+        <View style={styles.item2}>
+          <View style={styles.item3}>
+            <Text style={styles.title}>ANSI</Text>
+          </View>
+          <View style={styles.item3}>
+            <Text style={styles.title}>Iec60617</Text>
+          </View>
+          <View style={styles.item3}>
+            <Text style={styles.title}>Iec61850</Text>
+          </View>
+        </View>
       </View>
+      <View style={styles.container1}>
       <FlatList
         data={data}
         renderItem={renderItem}
         keyExtractor={item => item.key}
       />
+      </View>
     </SafeAreaView>
   );
 }

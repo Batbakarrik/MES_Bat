@@ -4,6 +4,7 @@ import { Text, View, TextInput, TouchableOpacity, StatusBar, Image, ScrollView }
 import { Ionicons } from '@expo/vector-icons'
 
 import styles from '../src/utils/styles'
+import colors from '../src/utils/colors'
 import Logo from '../src/components/Logo'
 
 
@@ -16,10 +17,8 @@ const ResetPwd = ({ navigation }) => {
     console.log(errorMessage, errorCode)
   }
     return (
-      <ScrollView>
-        <form>
           <View style={styles.container}>
-            <StatusBar barStyle='light-content'></StatusBar>
+          <StatusBar barStyle='light-content' backgroundColor= {colors.background}></StatusBar>
             <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 65}}>
             </Image>
             <Text style={styles.text}> Application d'aide à la mise en service de RPN</Text>
@@ -53,8 +52,6 @@ const ResetPwd = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
           </View>
-        </form>
-      </ScrollView>
     )
   }
 

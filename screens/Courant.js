@@ -90,7 +90,6 @@ const Courant = ({ route }) => {
             return (
                 <ScrollView>
                     <View style={styles.container}>
-                        {route.params.name && <Text>{route.params.name}</Text>}
                         <View style={styles.container6}>
                             <View style={styles.container4}>
                             <Text style={styles.text2}>Caractéristiques TC</Text>

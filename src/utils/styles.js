@@ -6,12 +6,12 @@ const styles = StyleSheet.create({
       display: 'flex',
       flex: 1,
       flexDirection: 'column',
-      justifyContent: 'center',
-      paddingTop: 20,
+      // justifyContent: 'center',
+      // paddingTop: 4,
       alignItems:'center',
       backgroundColor: colors.background,
       // marginTop: StatusBar.currentHeight ||0,
-      minHeight: 770
+      minHeight: 664
     },
     container1: {
       display: 'flex',
@@ -21,14 +21,15 @@ const styles = StyleSheet.create({
     },
     container2: {
       display: 'flex',
-      justifyContent: 'center',
+      // justifyContent: 'center',
       alignItems:'center',
       flexDirection: 'row',
-      paddingLeft: 5,
-      margin: 5,
+      paddingLeft: 8,
+      margin: 4,
       borderColor: colors.borderinput,
       borderWidth: 1,
       borderRadius: 25,
+      width: 270
     },
     container3: {
       flex:1,
@@ -50,12 +51,34 @@ const styles = StyleSheet.create({
     },
     container6: {
       alignItems: 'center',
-      backgroundColor: colors.background,
     },
     container7: {
       paddingBottom: 4,
       alignItems: 'center',
       backgroundColor: colors.background,
+    },
+    container8: {
+      display: 'flex',
+      flex: 0.1,
+      flexDirection: 'column',
+      alignItems:'center',
+      padding: 4,
+      marginVertical: 4,
+      marginHorizontal: 8,
+      borderWidth: 0.2,
+      backgroundColor: colors.backgroundinput,
+      borderColor: colors.bordercontainer
+    },
+    item: {
+      flex: 1,
+      flexDirection: 'row',
+      backgroundColor: colors.background,
+      padding: 4,
+      marginVertical: 4,
+      marginHorizontal: 8,
+      borderWidth: 0.2,
+      borderColor: colors.bordercontainer,
+      minWidth: 300
     },
     item0: {
       backgroundColor: colors.backgroundinput,
@@ -73,6 +96,58 @@ const styles = StyleSheet.create({
       marginHorizontal: 8,
       borderWidth: 0.2,
       borderColor: colors.bordercontainer,
+    },
+    item1a: {
+      backgroundColor: colors.backgroundinput,
+      paddingVertical: 8,
+      paddingHorizontal: 8,
+      marginVertical: 0,
+      // borderWidth: 0.2,
+      // borderColor: colors.bordercontainer,
+      width: 100
+    },
+    item1b: {
+      backgroundColor: colors.backgroundinput,
+      paddingVertical: 8,
+      paddingHorizontal: 8,
+      marginVertical: 0,
+      // borderWidth: 0.2,
+      // borderColor: colors.bordercontainer,
+      width: 65
+    },
+    item2: {
+      flex:1,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      backgroundColor: colors.background,
+      padding: 4,
+      marginVertical: 4,
+      marginHorizontal: 8,
+      borderWidth: 0.2,
+      borderColor: colors.bordercontainer
+    },
+    item2a: {
+      flexDirection: 'row',
+      backgroundColor: colors.background,
+    },
+    item3: {
+      backgroundColor: colors.background,
+      padding: 4,
+      marginVertical: 4,
+      marginHorizontal: 8,
+      borderWidth: 0.2,
+      borderColor: colors.bordercontainer,
+      width:100
+    },
+    item3a: {
+      backgroundColor: colors.background,
+      textAlign: 'center',
+      width: 100
+    },
+    item4: {
+      backgroundColor: colors.background,
+      textAlign: 'center',
+      width: 60
     },
     inputBox: {
       width: 200,
@@ -98,9 +173,10 @@ const styles = StyleSheet.create({
     // },
     button: {
       width: 250,
-      paddingHorizontal: 16,
+      // paddingHorizontal: 16,
       paddingVertical: 8,
-      margin: 8,
+      marginTop: 4,
+      marginBottom:4,
       backgroundColor: colors.buttonlogin,
       borderColor: colors.borderinput,
       borderWidth: 1,
@@ -200,6 +276,12 @@ const styles = StyleSheet.create({
     title: {
       fontSize: 18,
       color: colors.texte,
+      textAlign: 'center'
+    },
+    titlea: {
+      fontSize: 14,
+      color: colors.texte,
+      textAlign: 'center'
     },
     title1: {
       fontSize: 14,

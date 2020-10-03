@@ -23,8 +23,7 @@ import Donnees from './screens/Donnees'
 
 import colors from './src/utils/colors'
 import { Ionicons } from '@expo/vector-icons'
-import { Button } from "react-native";
-
+import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const AuthStack = createStackNavigator()
 const AuthStackScreen = () => (
@@ -46,6 +45,7 @@ const AuthStackScreen = () => (
         />
     </AuthStack.Navigator>
 )
+
 const Tabs = createBottomTabNavigator()
 const HomeStack = createStackNavigator()
 const ProtectionsStack = createStackNavigator()
@@ -83,22 +83,22 @@ const ProtectionsStackScreen = () => (
         }}
     >
         <ProtectionsStack.Screen
-            name="Protections"
+            name="PROTECTIONS"
             component={Protections}
         />
         <ProtectionsStack.Screen
-            name="Courant"
+            name="COURANT"
             component={Courant}
-            options={({ route }) => ({
-                title: route.params.name
-            })}
+            // options={({ route }) => ({
+            //     title: route.params.name
+            // })}
         />
         <ProtectionsStack.Screen
-            name="Tension"
+            name="TENSION"
             component={Tension}
         />
         <ProtectionsStack.Screen
-            name="Thermique" 
+            name="THERMIQUE" 
             component={Thermique}
         />
     </ProtectionsStack.Navigator>
@@ -110,19 +110,17 @@ const DonneeStackScreen = () => (
             headerStyle: { backgroundColor: colors.background}
         }}
     >
-        <DonneeStack.Screen name="Donnees" component={Donnees}/>
-        <DonneeStack.Screen name="Ansi" component={Ansi} />
-        <DonneeStack.Screen name="Password" component={Password} />
+        <DonneeStack.Screen name="BASE DE DONNEES" component={Donnees}/>
+        <DonneeStack.Screen name="CODES" component={Ansi} />
+        <DonneeStack.Screen name="MOTS DE PASSE" component={Password} />
     </DonneeStack.Navigator>
 )
-
 const ProfileStack = createStackNavigator()
 const ProfileStackScreen = () => (
     <ProfileStack.Navigator>
         <ProfileStack.Screen name="Profile" component={Profile} />
     </ProfileStack.Navigator>
 )
-
 const TabsScreen = () => (
     <Tabs.Navigator
         tabBarOptions={{
@@ -136,8 +134,9 @@ const TabsScreen = () => (
             component={HomeStackScreen}
             options={{
                 tabBarLabel: 'Home',
-                tabBarIcon: ({ color }) => (
-                    <Ionicons name="ios-home" size={24} color={'white'}></Ionicons>
+                activeTintColor: '#00E8AC',
+                tabBarIcon: () => (
+                    <Icons name="home-outline" size={24} color={'white'}></Icons>
                 )
             }}
         />
@@ -146,8 +145,11 @@ const TabsScreen = () => (
             component={ProtectionsStackScreen}
             options={{
                 tabBarLabel: 'Protections',
-                tabBarIcon: ({ color }) => (
-                    <Ionicons name="ios-calculator" size={24} color={'white'}></Ionicons>
+                tabBarOptions: {
+                    
+                },
+                tabBarIcon: () => (
+                    <Icons name="calculator" size={24} color={'white'}></Icons>
                 )
             }}
         />
@@ -156,14 +158,13 @@ const TabsScreen = () => (
             component={DonneeStackScreen}
             options={{
                 tabBarLabel: 'Donnee',
-                tabBarIcon: ({ color }) => (
-                    <Ionicons name="ios-list" size={24} color={'white'}></Ionicons>
+                tabBarIcon: () => (
+                    <Icons name="format-list-bulleted" size={24} color={'white'}></Icons>
                 )
             }}
         />
     </Tabs.Navigator>
 )
-
 const Drawer = createDrawerNavigator()
 const DrawerScreen = (() => (
     <Drawer.Navigator /*initialRouteName="Home"*/
@@ -199,7 +200,6 @@ const DrawerScreen = (() => (
             />
     </Drawer.Navigator>
 ))
-
 const RootStack = createStackNavigator()
 const RootStackScreen = ({user}) => (
     <RootStack.Navigator headerMode="none">
@@ -210,7 +210,6 @@ const RootStackScreen = ({user}) => (
         )}
     </RootStack.Navigator>
 )
-
 const App = () => {
     const [isLoading, setIsLoading] = useState(true)
     const user = useAuth()
@@ -218,7 +217,7 @@ const App = () => {
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false)
-        }, 1000)
+        }, 500)
     }, [])
     
     if (isLoading) {
