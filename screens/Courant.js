@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { View, TouchableOpacity, Text, Picker, ScrollView } from 'react-native'
+import { View, TouchableOpacity, Text, ScrollView } from 'react-native'
+import {Picker} from '@react-native-community/picker';
 
 import styles from '../src/utils/styles'
 import Input from '../src/components/Input'
@@ -102,7 +103,6 @@ const Courant = ({ route }) => {
                                 <Text style={styles.text1}>Secondaire TC</Text>
                                     <View style={styles.text4}>
                                         <Picker
-                                            mode = "dropdown"
                                             selectedValue = {second_I}
                                             onValueChange = {newsecond_I =>setsecond_I(newsecond_I)}
                                             style = {styles.text3}
@@ -124,7 +124,6 @@ const Courant = ({ route }) => {
                                     <Text style={styles.text1}>Choix courbe Décl.</Text>
                                     <View style={styles.text4}>
                                         <Picker
-                                            mode = "dropdown"
                                             selectedValue = {curve}
                                             onValueChange = {newcurve =>setcurve(newcurve)}
                                             style = {styles.text3}>
