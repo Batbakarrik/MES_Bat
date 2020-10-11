@@ -287,6 +287,16 @@ const styles = StyleSheet.create({
       fontSize: 14,
       color: colors.signuptext
     },
+    pickerAndroid: {
+      fontSize: 16,
+      paddingHorizontal: 10,
+      paddingVertical: 8,
+      borderWidth: 0.5,
+      borderColor: 'purple',
+      borderRadius: 8,
+      color: 'black',
+      paddingRight: 30, // to ensure the text is never behind the icon
+    },
   })
 
 export default styles

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, TouchableOpacity, Text, ScrollView } from 'react-native'
-import {Picker} from '@react-native-community/picker';
+import { View, TouchableOpacity, Text, ScrollView, Picker } from 'react-native'
 
 import styles from '../src/utils/styles'
 import Input from '../src/components/Input'
@@ -8,7 +7,7 @@ import InputSeuil from '../src/components/InputSeuil'
 import Injecter from '../src/components/Injecter'
 import Info from '../src/components/Info'
 
-const Courant = ({ route }) => {
+const Courant = () => {
     
         const [seuil_I, setseuil_I] = useState(0);
         const [prim_I, setprim_I] = useState(0);
@@ -26,6 +25,7 @@ const Courant = ({ route }) => {
         const [temps1, settemps1] = useState(0);
         const [temps2, settemps2] = useState(0);
         const [temps3, settemps3] = useState(0);
+        const [is, setIs] = useState({})
 
         const calc_seuilI = () => {
             setinj_I(seuil_I.Value * coef_I * 0.95)
@@ -64,6 +64,17 @@ const Courant = ({ route }) => {
             settemps2(((k.Value)*(120/((Math.pow((seuil_Ix2),1))-1))))
             settemps3(((k.Value)*(120/((Math.pow((seuil_Ix3),1))-1))))
         };
+        const TCSecond = [
+            {
+              label: '1A',
+              value: '1',
+            },
+            {
+              label: '5A',
+              value: '5',
+            },
+          ];
+
         useEffect(() => {
             setseuil_I(0)
             setseuil_Ip(0)
@@ -81,6 +92,7 @@ const Courant = ({ route }) => {
             settemps1(0)
             settemps2(0)
             settemps3(0)
+            setIs(1)
         }, [])
         
         useEffect(() => {
