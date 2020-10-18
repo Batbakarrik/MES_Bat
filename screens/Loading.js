@@ -3,6 +3,7 @@ import { Text, View, ActivityIndicator, StatusBar, Image} from 'react-native'
 
 import styles from '../src/utils/styles'
 import colors from '../src/utils/colors'
+
 export default class Loading extends Component {
 
   render() {

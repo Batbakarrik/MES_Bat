@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, FlatList, Text, ActivityIndicator } from 'react-native';
+import { SearchBar } from 'react-native-elements';
 import firebase from 'firebase'
 
 import styles from '../src/utils/styles'
@@ -8,6 +9,7 @@ const ansi = () => {
   
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState([])
+  const [updateSearch, setupdateSearch] = useState()
   
   useEffect(() => {
     const dbRefObject = firebase.database().ref().child('ansi')
@@ -55,6 +57,11 @@ const renderItem = ({ item }) => (
     </View>
   )
 
+  handleSearch = (text => {
+    const formattedQuery = text.toLowerCase()
+    const data = _.filter(fullData, ansi)
+  })
+
     // ajouter data dans Database
 // firebase.database().ref('password').set(
   //   [{}]
@@ -72,6 +79,11 @@ const renderItem = ({ item }) => (
 
   return (
     <SafeAreaView style={styles.container}>
+          <SearchBar
+            placeholder="Type Here"
+            value={updateSearch}
+            onChangeText={handleSearch}
+          />
       <View style={styles.container8}>
         <View style={styles.item2}>
           <View style={styles.item3}>
