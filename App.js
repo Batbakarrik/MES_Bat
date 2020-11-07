@@ -215,7 +215,7 @@ const App = () => {
     const user = useAuth()
     
     useEffect(() => {
-        setTimeout(() => {
+        setTimeout(async () => {
             setIsLoading(false)
         }, 500)
     }, [])

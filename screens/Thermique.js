@@ -15,10 +15,10 @@ const Thermique = () => {
     const [Tpspre, setTpspre] = useState(0);
 
     const calc_TpsTh = () => {
-        setTps(constTps*(Math.log1p((Math.pow((I/(k*InOb)),2))/((Math.pow((I/(k*InOb)),2))-1)-1)))
+        setTps(constTps*(Math.log1p((Math.pow(((I*InOb)/(k*InOb)),2))/((Math.pow(((I*InOb)/(k*InOb)),2))-1)-1)))
     }
     const calc_TpsThPr = () => {
-        setTpspre(constTps*(Math.log1p(((Math.pow((I/(k*InOb)),2))-(Math.pow((Ipre/(k*InOb)),2)))/((Math.pow((I/(k*InOb)),2))-1)-1)))
+        setTpspre(constTps*(Math.log1p(((Math.pow(((I*InOb)/(k*InOb)),2))-(Math.pow((Ipre/(k*InOb)),2)))/((Math.pow(((I*InOb)/(k*InOb)),2))-1)-1)))
     }
 
          return (
@@ -29,16 +29,16 @@ const Thermique = () => {
                     </View> 
                     <View style={styles.container5}>
                         <View style={styles.container6}>
-                                <Input Title="Coef K" Change={setk} Value={k} Length={3} Placeholder="Valeur !"/>
+                                <Input Title="Coef K" Change={setk} Value={k} Length={4} Placeholder="Valeur !"/>
                         </View>
                         <View style={styles.container6}>
-                                <Input Title="I_Injecté" Change={setI} Value={I} Length={4} Placeholder="Valeur !"/>
+                                <Input Title="I_Inj/InOb" Change={setI} Value={I} Length={5} Placeholder="Valeur !"/>
                         </View>
                         <View style={styles.container6}>
-                                <Input Title="InOb" Change={setInOb} Value={InOb} Length={4} Placeholder="Valeur !"/>
+                                <Input Title="InOb" Change={setInOb} Value={InOb} Length={5} Placeholder="Valeur (A)"/>
                         </View>
                         <View style={styles.container6}>
-                                <Input Title="constTps" Change={setconstTps} Value={constTps} Length={4} Placeholder="Valeur !"/>
+                                <Input Title="constTps" Change={setconstTps} Value={constTps+ "s"} Length={4} Placeholder="Valeur (s)"/>
                         </View>
                     </View>
                     <View style={styles.container4}>
@@ -53,7 +53,7 @@ const Thermique = () => {
                             </View>
                             <View style={styles.container5}>
                                 <View style={styles.container6}>
-                                    <Seuil Title="Tps de déclench (Min)" Value={Tps.toFixed(2)}/>
+                                    <Seuil Title="Tps de déclenchement" Value={Tps.toFixed(1)+" s"}/>
                                 </View>
                             </View>
                         </View>
@@ -76,7 +76,7 @@ const Thermique = () => {
                             </View>
                             <View style={styles.container5}>
                                 <View style={styles.container6}>
-                                    <Seuil Title="Tps de déclench (Min)" Value={Tpspre.toFixed(2)}/>
+                                    <Seuil Title="Tps de déclenchement" Value={Tpspre.toFixed(2)+" s"}/>
                                 </View>
                             </View>
                         </View>

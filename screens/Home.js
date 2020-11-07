@@ -10,7 +10,7 @@ const  Home = ({ navigation }) => {
   const [isHidden, setIsHidden] = useState (true)
 
   const hidden = () => {
-      if (firebase.auth.currentUser.uid === "Q51kWFwa7lUaoaOlCuM7hT1KbEk1") {
+      if (firebase.auth.currentUser.uid === "5pzZJeVz9Te4RY7JvpedwcXF7T12") {
         setIsHidden(false)
     } else {
         setIsHidden(true)
@@ -25,8 +25,8 @@ const  Home = ({ navigation }) => {
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 70}}></Image>
         <View style={styles.container1}>
           <Text style={styles.text}>Aide:</Text>
-          <Text style={styles.text}>Dans l'onglet 'Courant' rentrez les caractéristiques des TC, le seuil, la courbe de déclenchement. Confirmer en cliquant sur 'Calculer'</Text>
-          <Text style={styles.text}>Dans l'onglet 'Tension' rentrez les caractéristiques des TP, le seuil. Confirmer en cliquant sur 'Calculer'</Text>
+          <Text style={styles.text}>Dans l'onglet 'Protections puis Courant' rentrez les caractéristiques des TC, le seuil ainsi que la courbe de déclenchement. Confirmer en cliquant sur 'Calculer'</Text>
+          <Text style={styles.text}>Dans l'onglet 'Protection puis Tension' rentrez les caractéristiques des TP puis le seuil. Confirmer en cliquant sur 'Calculer'</Text>
         </View>
         <View style={styles.container2}>
           <TouchableOpacity style={{activeOpacity:2}} onPress={() => firebase.logout()}>
