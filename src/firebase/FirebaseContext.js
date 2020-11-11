@@ -3,8 +3,9 @@ import React, { createContext } from 'react'
 import firebase from 'firebase'
 import 'firebase/auth'
 import 'firebase/firestore'
-import config from '../firebase'
-import FirebaseContext from './context';
+import config from './config'
+
+// import FirebaseContext from './context';
 
 const FirebaseContext = createContext()
 

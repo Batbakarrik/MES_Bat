@@ -55,7 +55,7 @@ const SignIn = ({ navigation }) => {
     });
   }
 
-  const errorMsg = error !== '' && <span>{error.message}</span>
+  const errorMsg = error !== '' && <Text>{error.message}</Text>
   
     return (
           <View style={styles.container}>
