@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react'
 import { Text, View, TextInput, TouchableOpacity, StatusBar, Image} from 'react-native'
-import {FirebaseContext} from '../src/firebase'
+// import {FirebaseContext} from '../src/firebase'
+import {FirebaseContext} from '../src/firebase/firebaseContext'
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';

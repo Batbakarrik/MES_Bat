@@ -57,10 +57,10 @@ const renderItem = ({ item }) => (
     </View>
   )
 
-  handleSearch = (text => {
-    const formattedQuery = text.toLowerCase()
-    const data = _.filter(fullData, ansi)
-  })
+  // handleSearch = (text => {
+  //   const formattedQuery = text.toLowerCase()
+  //   const data = _.filter(fullData, ansi)
+  // })
 
     // ajouter data dans Database
 // firebase.database().ref('password').set(
@@ -79,11 +79,11 @@ const renderItem = ({ item }) => (
 
   return (
     <SafeAreaView style={styles.container}>
-          <SearchBar
+          {/* <SearchBar
             placeholder="Type Here"
             value={updateSearch}
             onChangeText={handleSearch}
-          />
+          /> */}
       <View style={styles.container8}>
         <View style={styles.item2}>
           <View style={styles.item3}>
