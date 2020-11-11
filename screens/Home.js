@@ -1,43 +1,45 @@
-import React, { Component } from 'react'
-import { Text, StyleSheet, View, TouchableOpacity, Image, Linking } from 'react-native'
+import React, { useContext, useState, useEffect } from 'react'
+import { FirebaseContext } from '../src/firebase'
+import { Text, View, TouchableOpacity, Image, Linking } from 'react-native'
 
-import colors from '../src/utils/colors'
+import styles from '../src/utils/styles'
 import {expo} from '../app.json'
 
-import * as firebase from 'firebase'
+const  Home = ({ navigation }) => {
+  const {firebase} = useContext(FirebaseContext)
+  const [isHidden, setIsHidden] = useState (true)
 
-export default class Home extends Component {
-  static navigationOptions = {
-    title: 'Home',
-  };
-
-  state = {
-    email: "",
-    displayName: ""
+  const hidden = () => {
+      if (firebase.auth.currentUser.uid === "5pzZJeVz9Te4RY7JvpedwcXF7T12") {
+        setIsHidden(false)
+    } else {
+        setIsHidden(true)
+    }
   }
-
-  componentDidMount = () => {
-    const { email, displayName} = firebase.auth().currentUser
-    this.setState({ email, displayName})
-  }
-
-  signOutUser = () => {
-    firebase.auth().signOut()
-  }
-
-  render() {
+  useEffect(() => {
+    hidden()
+  }, [])
+  
     return (
       <View style={styles.container}>
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 70}}></Image>
         <View style={styles.container1}>
           <Text style={styles.text}>Aide:</Text>
-          <Text style={styles.text}>Dans l'onglet 'Courant' rentrez les caractéristiques des TC, le seuil, la courbe de déclenchement. Confirmer en cliquant sur 'Calculer'</Text>
-          <Text style={styles.text}>Dans l'onglet 'Tension' rentrez les caractéristiques des TP, le seuil. Confirmer en cliquant sur 'Calculer'</Text>
+          <Text style={styles.text}>Dans l'onglet 'Protections puis Courant' rentrez les caractéristiques des TC, le seuil ainsi que la courbe de déclenchement. Confirmer en cliquant sur 'Calculer'</Text>
+          <Text style={styles.text}>Dans l'onglet 'Protection puis Tension' rentrez les caractéristiques des TP puis le seuil. Confirmer en cliquant sur 'Calculer'</Text>
         </View>
         <View style={styles.container2}>
-          <TouchableOpacity style={{activeOpacity:2}} onPress={this.signOutUser}>
+          <TouchableOpacity style={{activeOpacity:2}} onPress={() => firebase.logout()}>
             <Text style={styles.button}>LogOut</Text>
           </TouchableOpacity>
+        </View>
+        <View style={styles.container2}>
+          { isHidden===false ?
+            <TouchableOpacity style={{activeOpacity:2}} onPress={() => navigation.toggleDrawer()}>
+              <Text style={styles.button}>Drawer Acces</Text>
+            </TouchableOpacity> :
+            <View/>
+          }
         </View>
         <View style={styles.container3}>
           <Text style={styles.textlien}
@@ -52,51 +54,4 @@ export default class Home extends Component {
       </View>
     )
   }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flex:1,
-    justifyContent: 'center',
-    alignItems:'center',
-    backgroundColor: colors.background,
-  },
-  container1: {
-    paddingTop: 30,
-  },
-  container2: {
-    flex:1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  container3: {
-    flex:1,
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-  },
-  button: {
-    width: 250,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    margin: 8,
-    backgroundColor: colors.buttonlogin,
-    borderColor: colors.borderinput,
-    borderWidth: 1,
-    borderRadius: 25,
-    color: colors.texte,
-    textAlign: 'center',
-  },
-  text: {
-    margin: 8,
-    paddingHorizontal: 8,
-    color: colors.texte,
-    textAlignVertical: 'center',
-  },
-  textlien: {
-    margin: 8,
-    paddingHorizontal: 8,
-    color: colors.texte,
-    textAlignVertical: 'center',
-  },
-})
+export default Home
