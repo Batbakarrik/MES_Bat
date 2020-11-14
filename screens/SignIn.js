@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { FirebaseContext } from '../src/firebase'
-import { Text, View, TextInput, TouchableOpacity, StatusBar, Image, ScrollView } from 'react-native'
+import { Text, View, TextInput, TouchableOpacity, StatusBar, Image } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -41,11 +41,15 @@ const SignIn = ({ navigation }) => {
   }, [])
 
   const handleLogin = () => {
-    firebase.signIn(email, password)
+
+    const users = {email, password}
+
+    firebase.signIn(users)
+    
     .then(userCredential=> {
       storeData()
       if(userCredential.user.emailVerified === false){
-        alert(`Veuillez confirmer vôtre email. Consultez vôtre Boite mail ${email}`)
+        alert(`Veuillez confirmer vôtre email\nCliquez sur le lien envoyé à :\n${email}`)
       }
       setEmail(''),
       setPassword('')
@@ -55,7 +59,7 @@ const SignIn = ({ navigation }) => {
     });
   }
 
-  const errorMsg = error !== '' && <span>{error.message}</span>
+  const errorMsg = error !== '' && <Text>{error.message}</Text>
   
     return (
           <View style={styles.container}>

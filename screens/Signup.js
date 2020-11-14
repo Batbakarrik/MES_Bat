@@ -17,21 +17,34 @@ const SignUp = ({ navigation }) => {
   const [hidePass, setHidePass] = useState(true)
 
   const handleSignup = () => {
-    firebase.signUp(email, password)
-      .then(userCredentials => {
+
+    const users = {name, email, password}
+
+      firebase.signUp(users)
+
+      .then(userCredentials=> {
         userCredentials.user.sendEmailVerification(),
         userCredentials.user.updateProfile({displayName: name}),
         setName(''),
         setEmail(''),
         setPassword(''),
         navigation.push("SignIn")
+        alert(
+          `\nIncription en cours\n\nVous allez reçevoir un email de validation à ${email}\n\nNota:\n   Si vous ne reçevez pas cet email\n   Consultez vôtre dossier\n   'Courrier indésirable'`,
+          [
+            { text: "OK", onPress: () => console.log("OK Pressed") }
+          ],
+          { cancelable: false }
+        );
+        firebase.signUp2(users)
       })
-      .catch(error => {
-        setError(error)
-      });
-    }
-    const errorMsg = error !== '' && <span>{error.message}</span>
-        
+
+
+    .catch(error => {
+      setError(error)
+    });
+  }
+    const errorMsg = error !== '' && <Text>{error.message}</Text>
     return (
       <View style={styles.container}>
         <StatusBar barStyle='light-content' backgroundColor= {colors.background}></StatusBar>
@@ -92,6 +105,6 @@ const SignUp = ({ navigation }) => {
         </View>
       </View>
     )
-  }
+}
 
 export default SignUp
