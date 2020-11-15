@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { FirebaseContext } from '../src/firebase'
-import { Text, View, TextInput, TouchableOpacity, StatusBar, Image } from 'react-native'
+import { Text, View, TextInput, TouchableOpacity, StatusBar, Image, Linking } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
+import {expo} from '../app.json'
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -66,7 +67,8 @@ const SignIn = ({ navigation }) => {
             <StatusBar barStyle='light-content' backgroundColor= {colors.background}></StatusBar>
             <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 65}}>
             </Image>
-            <Text style={styles.text}> Application d'aide à la mise en service de RPN</Text>
+            <Text style={styles.text}> {"Application d'aide à la mise en service"}</Text>
+            <Text style={styles.text}> {"MES_BAT V" + expo.version}</Text>
             <Logo/>
             <View style={styles.errorMessage}>
               <Text style={styles.error}>{errorMsg}</Text>
@@ -115,6 +117,9 @@ const SignIn = ({ navigation }) => {
                       <Text style={styles.text}>Mot de passe Oublié?</Text>
                       <Text style={styles.signuptext}>Réinitialisez le !!</Text>
                     </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => Linking.openURL('mailto:contact@app.xipitei.com?subject=App MES_Bat&body=')}>
+                    <Text style={styles.textlien}>Contactez moi : Cliquez ici</Text>
                   </TouchableOpacity>
                   </View>
                 </View>

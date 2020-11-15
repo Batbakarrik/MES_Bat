@@ -34,42 +34,48 @@ if (loading) {
 }
   const renderItem = ({ item }) => (
     <View style={styles.item} key={item.key}>
-      <View style={styles.item1a}>
-        <Text style={styles.title}>{item.Marque}</Text>
-      </View>
-      <View style={styles.item1a}>
-        <Text style={styles.title1}>{item.Appareil}</Text>
-      </View>
-      <View style={styles.item1a}>
-        <Text style={styles.title1}>{item.Iduser}</Text>
-      </View>
-      <View style={styles.item1b}>
-        <Text style={styles.title1}>{item.Password}</Text>
-      </View>
+        <View style={styles.item2b}>
+          <View style={styles.item3}>
+            <Text style={styles.title1}>{item.Marque}</Text>
+          </View>
+          <View style={styles.item3}>
+            <Text style={styles.title1}>{item.Appareil}</Text>
+          </View>
+          <View style={styles.item3}>
+            <Text style={styles.title1}>{item.Iduser}</Text>
+          </View>
+          <View style={styles.item3}>
+            <Text style={styles.title1}>{item.Password}</Text>
+          </View>
+        </View>
     </View>
   );
   
   return (
     <SafeAreaView style={styles.container}>
-        <View style={styles.item2a}>
+      <View style={styles.container8}>
+        <View style={styles.item2b}>
           <View style={styles.item3a}>
-            <Text style={styles.titlea}>Marque</Text>
+            <Text style={styles.title}>Marque</Text>
           </View>
           <View style={styles.item3a}>
-            <Text style={styles.titlea}>Type</Text>
+            <Text style={styles.title}>Type</Text>
           </View>
           <View style={styles.item3a}>
-            <Text style={styles.titlea}>Id</Text>
+            <Text style={styles.title}>Id</Text>
           </View>
-          <View style={styles.item4}>
-            <Text style={styles.titlea}>Mdp</Text>
+          <View style={styles.item3a}>
+            <Text style={styles.title}>Mdp</Text>
           </View>
         </View>
+      </View>
+      <View style={styles.container1}>
         <FlatList
           data={data}
           renderItem={renderItem}
           keyExtractor={item => item.key}
         />
+      </View>
     </SafeAreaView>
   );
 }

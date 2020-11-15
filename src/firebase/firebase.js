@@ -3,6 +3,7 @@ import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import firebaseConfig from './config';
+import FirebaseContext from './context';
 
 class Firebase {
     constructor () {
@@ -19,7 +20,6 @@ class Firebase {
         
     signUp2 = async (users) => {
         const uid = firebase.auth.currentUser.uid
-        console.log(uid)
 
         await this.db.collection("users").doc(uid).set({
             username: users.name,
@@ -29,6 +29,9 @@ class Firebase {
     }
     logout = () =>
         this.auth.signOut()
+
+    pwdReset = (email) => this.auth.sendPasswordResetEmail(email)
+
         
     database = (data) => firebase.database().ref().child(data)
     }

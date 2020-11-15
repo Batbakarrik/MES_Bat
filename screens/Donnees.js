@@ -10,7 +10,7 @@ const Donnees = ({navigation}) => {
       <View style={styles.container1}>
         <View style={styles.container2}>
           <TouchableOpacity style={{activeOpacity:2}} onPress={() => navigation.push("CODES", {name: "CODES"})}>
-          <Text style={styles.button}>ANSI / IEC60617 / IEC61850</Text>
+          <Text style={styles.button}>ANSI / IEC61850 / IEC60617</Text>
         </TouchableOpacity>
         </View>
         <View style={styles.container2}>

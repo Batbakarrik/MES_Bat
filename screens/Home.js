@@ -19,7 +19,7 @@ const  Home = ({ navigation }) => {
   useEffect(() => {
     hidden()
   }, [])
-  
+
     return (
       <View style={styles.container}>
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 70}}></Image>
@@ -47,7 +47,7 @@ const  Home = ({ navigation }) => {
             Règles de confidentialité: Cliquez ici
           </Text>
         </View>
-        <TouchableOpacity onPress={() => Linking.openURL('mailto:xipitei.dev@xipitei.com?subject=App MES_Bat&body=')}>
+        <TouchableOpacity onPress={() => Linking.openURL('mailto:contact@app.xipitei.com?subject=App MES_Bat&body=')}>
           <Text style={styles.textlien}>Contactez moi : Cliquez ici</Text>
         </TouchableOpacity>
         <Text style={styles.text}>{"Application version " + expo.version}</Text>

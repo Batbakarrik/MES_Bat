@@ -28,23 +28,22 @@ const SignUp = ({ navigation }) => {
         setName(''),
         setEmail(''),
         setPassword(''),
-        navigation.push("SignIn")
         alert(
           `\nIncription en cours\n\nVous allez reçevoir un email de validation à ${email}\n\nNota:\n   Si vous ne reçevez pas cet email\n   Consultez vôtre dossier\n   'Courrier indésirable'`,
           [
             { text: "OK", onPress: () => console.log("OK Pressed") }
           ],
           { cancelable: false }
-        );
+          )
         firebase.signUp2(users)
+        navigation.push("SignIn")
       })
 
-
-    .catch(error => {
-      setError(error)
-    });
+      .catch(error => {
+        setError(error)
+      })
   }
-    const errorMsg = error !== '' && <Text>{error.message}</Text>
+  const errorMsg = error !== '' && <Text>{error.message}</Text>
     return (
       <View style={styles.container}>
         <StatusBar barStyle='light-content' backgroundColor= {colors.background}></StatusBar>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, FlatList, Text, ActivityIndicator } from 'react-native';
-import { SearchBar } from 'react-native-elements';
+// import { SearchBar } from 'react-native-elements';
 import firebase from 'firebase'
 
 import styles from '../src/utils/styles'
@@ -9,7 +9,7 @@ const ansi = () => {
   
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState([])
-  const [updateSearch, setupdateSearch] = useState()
+  // const [updateSearch, setupdateSearch] = useState()
   
   useEffect(() => {
     const dbRefObject = firebase.database().ref().child('ansi')
@@ -39,15 +39,15 @@ if (loading) {
 
 const renderItem = ({ item }) => (
     <View style={styles.item0} key={item.key}>
-      <View style={styles.item2}>
-        <View style={styles.item3}>
+      <View style={styles.item2b}>
+        <View style={styles.item3b}>
           <Text style={styles.title}>{item.Ansi}</Text>
         </View>
-        <View style={styles.item3}>
-          <Text style={styles.title}>{item.Iec60617}</Text>
-        </View>
-        <View style={styles.item3}>
+        <View style={styles.item3b}>
           <Text style={styles.title}>{item.Iec61850}</Text>
+        </View>
+        <View style={styles.item3b}>
+          <Text style={styles.title}>{item.Iec60617}</Text>
         </View>
       </View>
       <View style={styles.item1}> 
@@ -57,10 +57,10 @@ const renderItem = ({ item }) => (
     </View>
   )
 
-  handleSearch = (text => {
-    const formattedQuery = text.toLowerCase()
-    const data = _.filter(fullData, ansi)
-  })
+  // handleSearch = (text => {
+  //   const formattedQuery = text.toLowerCase()
+  //   const data = _.filter(fullData, ansi)
+  // })
 
     // ajouter data dans Database
 // firebase.database().ref('password').set(
@@ -79,21 +79,21 @@ const renderItem = ({ item }) => (
 
   return (
     <SafeAreaView style={styles.container}>
-          <SearchBar
+          {/* <SearchBar
             placeholder="Type Here"
             value={updateSearch}
             onChangeText={handleSearch}
-          />
+          /> */}
       <View style={styles.container8}>
-        <View style={styles.item2}>
-          <View style={styles.item3}>
+        <View style={styles.item2b}>
+          <View style={styles.item3c}>
             <Text style={styles.title}>ANSI</Text>
           </View>
-          <View style={styles.item3}>
-            <Text style={styles.title}>Iec60617</Text>
+          <View style={styles.item3c}>
+            <Text style={styles.title}>IEC61850</Text>
           </View>
-          <View style={styles.item3}>
-            <Text style={styles.title}>Iec61850</Text>
+          <View style={styles.item3c}>
+            <Text style={styles.title}>IEC60617</Text>
           </View>
         </View>
       </View>

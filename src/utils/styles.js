@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
       alignItems:'center',
       backgroundColor: colors.background,
       // marginTop: StatusBar.currentHeight ||0,
-      minHeight: 664
+      minHeight: 664,
     },
     container1: {
       display: 'flex',
@@ -59,42 +59,37 @@ const styles = StyleSheet.create({
     },
     container8: {
       display: 'flex',
-      flex: 0.1,
+      flex: 0.04,
       flexDirection: 'column',
       alignItems:'center',
       padding: 4,
-      marginVertical: 4,
-      marginHorizontal: 8,
+      marginVertical: 0,
+      marginHorizontal: 4,
       borderWidth: 0.2,
       backgroundColor: colors.backgroundinput,
-      borderColor: colors.bordercontainer
+      borderColor: colors.bordercontainer,
     },
     item: {
       flex: 1,
       flexDirection: 'row',
       backgroundColor: colors.background,
-      padding: 4,
-      marginVertical: 4,
-      marginHorizontal: 8,
+      padding: 1,
+      marginVertical: 1,
+      marginHorizontal: 2,
       borderWidth: 0.2,
       borderColor: colors.bordercontainer,
-      minWidth: 300
+      minWidth: 250
     },
     item0: {
       backgroundColor: colors.backgroundinput,
-      padding: 4,
-      marginVertical: 4,
+      padding: 8,
+      marginVertical: 8,
       marginHorizontal: 8,
       borderWidth: 0.2,
       borderColor: colors.bordercontainer,
+      width: 375,
     },
     item1: {
-      flex: 1,
-      backgroundColor: colors.background,
-      padding: 4,
-      marginVertical: 4,
-      marginHorizontal: 8,
-      borderWidth: 0.2,
       borderColor: colors.bordercontainer,
     },
     item1a: {
@@ -102,47 +97,42 @@ const styles = StyleSheet.create({
       paddingVertical: 8,
       paddingHorizontal: 8,
       marginVertical: 0,
-      // borderWidth: 0.2,
-      // borderColor: colors.bordercontainer,
       width: 100
     },
-    item1b: {
+    item1c: {
       backgroundColor: colors.backgroundinput,
       paddingVertical: 8,
       paddingHorizontal: 8,
       marginVertical: 0,
-      // borderWidth: 0.2,
-      // borderColor: colors.bordercontainer,
       width: 65
     },
     item2: {
-      flex:1,
       flexDirection: 'row',
-      justifyContent: 'center',
-      backgroundColor: colors.background,
-      padding: 4,
-      marginVertical: 4,
-      marginHorizontal: 8,
-      borderWidth: 0.2,
       borderColor: colors.bordercontainer
     },
     item2a: {
       flexDirection: 'row',
       backgroundColor: colors.background,
     },
-    item3: {
+    item2b: {
+      flexDirection: 'row',
       backgroundColor: colors.background,
-      padding: 4,
-      marginVertical: 4,
-      marginHorizontal: 8,
-      borderWidth: 0.2,
+    },
+    item3: {
       borderColor: colors.bordercontainer,
-      width:100
+      width: 90
     },
     item3a: {
       backgroundColor: colors.background,
-      textAlign: 'center',
-      width: 100
+      width: 90
+    },
+    item3b: {
+      backgroundColor: colors.background,
+      width: 120
+    },
+    item3c: {
+      backgroundColor: colors.background,
+      width: 122
     },
     item4: {
       backgroundColor: colors.background,
@@ -163,17 +153,8 @@ const styles = StyleSheet.create({
         borderColor: colors.borderinput,
         borderRadius: 25,
     },
-    // inputBox2: {
-    //   width: 100,
-    //   paddingHorizontal: 8,
-    //   margin: 8,
-    //   color: colors.texte,
-    //   borderColor: colors.borderinput,
-    //   borderRadius: 25,
-    // },
     button: {
       width: 250,
-      // paddingHorizontal: 16,
       paddingVertical: 8,
       marginTop: 4,
       marginBottom:4,
@@ -285,7 +266,8 @@ const styles = StyleSheet.create({
     },
     title1: {
       fontSize: 14,
-      color: colors.signuptext
+      color: colors.signuptext,
+      textAlign: 'center'
     },
     pickerAndroid: {
       fontSize: 16,
