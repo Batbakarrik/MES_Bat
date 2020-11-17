@@ -52,7 +52,7 @@ const ProtectionsStack = createStackNavigator()
 const DonneeStack = createStackNavigator()
 
 const HomeStackScreen = ({navigation}) => (
-    <HomeStack.Navigator /*headerMode="none"*/>
+    <HomeStack.Navigator>
         <HomeStack.Screen
             name="Home"
             component={Home}
@@ -217,7 +217,7 @@ const App = () => {
     useEffect(() => {
         setTimeout(async () => {
             setIsLoading(false)
-        }, 500)
+        }, 2000)
     }, [])
     
     if (isLoading) {

@@ -9,12 +9,17 @@ export default class Loading extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor={colors.background} ></StatusBar>
-        <Image source={require("../assets/icon.png")} style= {{position:"absolute", resizeMode:'contain', width:400, top:20}}></Image>
-        {/* <View style={styles.container1}>
-          <Text style={styles.text}>Loading...</Text>
-          <ActivityIndicator size="large" color="#4c757d"></ActivityIndicator>
-        </View> */}
+        {/* <StatusBar backgroundColor={colors.background} ></StatusBar> */}
+        <View style={styles.container1}>
+        <Image 
+          style= {{ width: 400, height: 867, top: -20}}
+          resizeMode= "contain"
+          source={require("../assets/splash.png")}
+          >
+          </Image>
+          {/* <Text style={styles.text}>Loading...</Text>
+          <ActivityIndicator size="large" color="#4c757d"></ActivityIndicator> */}
+        </View>
       </View>
     )
   }
