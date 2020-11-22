@@ -34,34 +34,33 @@ const Courant = () => {
             setinj_I3((seuil_I.Value * coef_I) * 1.1)
         };
         const calc_seuilISIT = () => {
-            setinj_I1(((seuil_Ix1 * (prim_I.Value)) * coef_I))
-            setinj_I2(((seuil_Ix2 * (prim_I.Value)) * coef_I))
-            setinj_I3(((seuil_Ix3 * (prim_I.Value)) * coef_I))
+            setinj_I1(((seuil_Ix1 * (seuil_I.Value)) * coef_I))
+            setinj_I2(((seuil_Ix2 * (seuil_I.Value)) * coef_I))
+            setinj_I3(((seuil_Ix3 * (seuil_I.Value)) * coef_I))
             settemps1(((k.Value)*(0.14/((Math.pow((seuil_Ix1),0.02))-1)))) /* /2.97 */
             settemps2(((k.Value)*(0.14/((Math.pow((seuil_Ix2),0.02))-1))))
             settemps3(((k.Value)*(0.14/((Math.pow((seuil_Ix3),0.02))-1))))
-            console.log(seuil_Ix1, prim_I.Value, coef_I, inj_I1)
         };
         const calc_seuilIVIT = () => {
-            setinj_I1(((seuil_Ix1 * (prim_I.Value)) * coef_I))
-            setinj_I2(((seuil_Ix2 * (prim_I.Value)) * coef_I))
-            setinj_I3(((seuil_Ix3 * (prim_I.Value)) * coef_I))
+            setinj_I1(((seuil_Ix1 * (seuil_I.Value)) * coef_I))
+            setinj_I2(((seuil_Ix2 * (seuil_I.Value)) * coef_I))
+            setinj_I3(((seuil_Ix3 * (seuil_I.Value)) * coef_I))
             settemps1(((k.Value)*(13.5/((Math.pow((seuil_Ix1),1))-1)))) /* /1.5 */
             settemps2(((k.Value)*(13.5/((Math.pow((seuil_Ix2),1))-1))))
             settemps3(((k.Value)*(13.5/((Math.pow((seuil_Ix3),1))-1))))
         };
         const calc_seuilIEIT = () => {
-            setinj_I1(((seuil_Ix1 * (prim_I.Value)) * coef_I))
-            setinj_I2(((seuil_Ix2 * (prim_I.Value)) * coef_I))
-            setinj_I3(((seuil_Ix3 * (prim_I.Value)) * coef_I))
+            setinj_I1(((seuil_Ix1 * (seuil_I.Value)) * coef_I))
+            setinj_I2(((seuil_Ix2 * (seuil_I.Value)) * coef_I))
+            setinj_I3(((seuil_Ix3 * (seuil_I.Value)) * coef_I))
             settemps1(((k.Value)*(80/((Math.pow((seuil_Ix1),2))-1)))) /* 0.808 */
             settemps2(((k.Value)*(80/((Math.pow((seuil_Ix2),2))-1))))
             settemps3(((k.Value)*(80/((Math.pow((seuil_Ix3),2))-1))))
         };
         const calc_seuilILIT = () => {
-            setinj_I1(((seuil_Ix1 * (prim_I.Value)) * coef_I))
-            setinj_I2(((seuil_Ix2 * (prim_I.Value)) * coef_I))
-            setinj_I3(((seuil_Ix3 * (prim_I.Value)) * coef_I))
+            setinj_I1(((seuil_Ix1 * (seuil_I.Value)) * coef_I))
+            setinj_I2(((seuil_Ix2 * (seuil_I.Value)) * coef_I))
+            setinj_I3(((seuil_Ix3 * (seuil_I.Value)) * coef_I))
             settemps1(((k.Value)*(120/((Math.pow((seuil_Ix1),1))-1))))
             settemps2(((k.Value)*(120/((Math.pow((seuil_Ix2),1))-1))))
             settemps3(((k.Value)*(120/((Math.pow((seuil_Ix3),1))-1))))
@@ -108,7 +107,7 @@ const Courant = () => {
                     <View style={styles.container}>
                         <View style={styles.container6}>
                             <View style={styles.container4}>
-                            <Text style={styles.text2}>Caractéristiques TC</Text>
+                                <Text style={styles.text2}>Caractéristiques TC</Text>
                             </View>
                             <View style={styles.container5}>
                                 <View style={styles.container6}>
@@ -128,7 +127,7 @@ const Courant = () => {
                                     </View>
                                 </View>
                                 <View style={styles.container6}>
-                                    <Info Title="Coef_Is/Ip" TitleInfo={coef_I.toFixed(3)}/>
+                                    <Info Taille="110" Title="Is/Ip" TitleInfo={coef_I.toFixed(3)}/>
                                 </View>
                             </View>
                             <View style={styles.container4}>
@@ -143,21 +142,21 @@ const Courant = () => {
                                             onValueChange = {newcurve =>setcurve(newcurve)}
                                             style = {styles.text3}>
                                             <Picker.Item label = "DT" value = "0"/>
-                                            <Picker.Item label = "CEI SIT" value = "1"/>
-                                            <Picker.Item label = "CEI VIT" value = "2"/>
-                                            <Picker.Item label = "CEI EIT" value = "3"/>
-                                            <Picker.Item label = "CEI LIT" value = "4"/>
+                                            <Picker.Item label = "SIT CEI" value = "1"/>
+                                            <Picker.Item label = "VIT CEI" value = "2"/>
+                                            <Picker.Item label = "EIT CEI" value = "3"/>
+                                            <Picker.Item label = "LIT CEI" value = "4"/>
                                         </Picker>
                                     </View>
                                 </View>
                                 <View style={styles.container6}>
-                                    {curve == '0'? <Input Title="Seuil I" Change={(e) => setseuil_I({Value:e})} Valeur={seuil_I} Length={4} Placeholder="Valeur (A)"/> : null}
+                                    <Input Title="Seuil I" Change={(e) => setseuil_I({Value:e})} Valeur={seuil_I} Length={4} Placeholder="Valeur (A)"/>
                                 </View>
                                 <View style={styles.container6}>
                                     {curve == '0'? null : <Input Title="Coef k" Change={(e) => setk({Value:e})} Valeur={k} Length={5} Placeholder="Valeur !"/>}
                                 </View>
                                 <View style={styles.container6}>
-                                    {curve == '0'? <Info Title="" TitleInfo={ seuil_Ip.toFixed(3) +" xIn"}/> : null}
+                                    {curve == '0'? <Info Taille="110" Title="" TitleInfo={ seuil_Ip.toFixed(3) +" xIn"}/> : null}
                                 </View>
                             </View>
                         </View>

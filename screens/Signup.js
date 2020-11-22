@@ -58,8 +58,10 @@ const SignUp = ({ navigation }) => {
             <View style={styles.container2}>
               <Icons name="face" color={'white'} size={20}/>
               <TextInput style={styles.inputBox}
-                  placeholder="Name"
                   autoCapitalize="none"
+                  autoCorrect={false}
+                  autoFocus={true}
+                  placeholder="Name"
                   value={name}
                   onChangeText={(val) => setName(val)}
                 />
@@ -67,8 +69,12 @@ const SignUp = ({ navigation }) => {
             <View style={styles.container2}>
               <Icons name="email" color={'white'} size={20}/>
                 <TextInput style={styles.inputBox}
-                  placeholder="Email"
                   autoCapitalize="none"
+                  autoCompleteType="email"
+                  autoCorrect={false}
+                  autoFocus={true}
+                  keyboardType="email-address"
+                  placeholder="Email"
                   value={email}
                   onChangeText={(val) => setEmail(val)}
                 />
@@ -76,8 +82,10 @@ const SignUp = ({ navigation }) => {
             <View style={styles.container2}>
               <Icons name="lock" color={'white'} size={20}/>
                 <TextInput style={styles.inputBox}
-                  placeholder="Password"
                   autoCapitalize="none"
+                  autoCompleteType="password"
+                  autoCorrect={false}
+                  placeholder="Password"
                   secureTextEntry={hidePass ? true:false}
                   value={password}
                   onChangeText={(val) => setPassword(val)}

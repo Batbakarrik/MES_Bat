@@ -6,11 +6,8 @@ const styles = StyleSheet.create({
       display: 'flex',
       flex: 1,
       flexDirection: 'column',
-      // justifyContent: 'center',
-      // paddingTop: 4,
       alignItems:'center',
       backgroundColor: colors.background,
-      // marginTop: StatusBar.currentHeight ||0,
       minHeight: 664,
     },
     container1: {
@@ -21,7 +18,6 @@ const styles = StyleSheet.create({
     },
     container2: {
       display: 'flex',
-      // justifyContent: 'center',
       alignItems:'center',
       flexDirection: 'row',
       paddingLeft: 8,
@@ -139,12 +135,12 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       width: 60
     },
-    inputBox: {
-      width: 200,
-      paddingHorizontal: 8,
-      margin: 4,
-      color: colors.texte,
-    },
+    // inputBox: {
+    //   width: 100,
+    //   paddingHorizontal: 0,
+    //   margin: 0,
+    //   color: colors.texte,
+    // },
     inputBox1: {
         width: 100,
         paddingHorizontal: 8,
@@ -185,11 +181,8 @@ const styles = StyleSheet.create({
     },
     text1: {
       width: 150,
-      // margin: 0,
-      // paddingHorizontal: 0,
       color: colors.texte,
       textAlign: 'center',
-      // textAlignVertical: 'center',
     },
     text2: {
       fontSize: 20,
@@ -199,17 +192,31 @@ const styles = StyleSheet.create({
       textAlignVertical: 'center',
     },
     text3: {
-      width: 120,
+      width: 110,
       color: colors.texte,
     },
     text4: {
-      width: 120,
+      width: 80,
       height: 45,
       color: colors.texte,
       borderColor: colors.borderinput,
       borderWidth: 0,
       borderRadius: 25,
       textAlignVertical: 'center',
+    },
+    text5: {
+      margin: 8,
+      paddingHorizontal: 8,
+      color: colors.texte,
+      justifyContent: 'center',
+      textAlignVertical: 'center',
+      textAlign: 'center'
+    },
+    text6: {
+      width: 95,
+      color: colors.texte,
+      marginBottom: 10,
+      textAlign: 'center',
     },
     textlien: {
       margin: 8,
@@ -279,6 +286,20 @@ const styles = StyleSheet.create({
       color: 'black',
       paddingRight: 30, // to ensure the text is never behind the icon
     },
+    inputBox: {
+      width: 95,
+      height: 30,
+      color: colors.texte,
+      backgroundColor: colors.backgroundinput,
+      borderColor: colors.borderinput,
+      borderWidth: 1,
+      borderRadius: 25,
+      fontSize: 16,
+      textAlign: 'center',
+      textAlignVertical: 'center',
+      padding: 0.5,
+      marginLeft: 2,
+  },
   })
 
 export default styles

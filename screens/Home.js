@@ -3,7 +3,6 @@ import { FirebaseContext } from '../src/firebase'
 import { Text, View, TouchableOpacity, StatusBar, Image, Linking } from 'react-native'
 
 import styles from '../src/utils/styles'
-import {expo} from '../app.json'
 import colors from '../src/utils/colors'
 
 const  Home = ({ navigation }) => {
@@ -52,7 +51,6 @@ const  Home = ({ navigation }) => {
         <TouchableOpacity onPress={() => Linking.openURL('mailto:contact@app.xipitei.com?subject=App MES_Bat&body=')}>
           <Text style={styles.textlien}>Contactez moi : Cliquez ici</Text>
         </TouchableOpacity>
-        <Text style={styles.text}>{"Application version " + expo.version}</Text>
       </View>
     )
   }

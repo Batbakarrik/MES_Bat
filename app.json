@@ -9,9 +9,9 @@
       "android",
       "web"
     ],
-    "version": "1.6",
+    "version": "1.6.1",
     "orientation": "portrait",
-    "icon": "./assets/icon_512x512_V1_5.png",
+    "icon": "./assets/icon.png",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -20,7 +20,7 @@
     ],
     "android": {
       "package": "xipitei.com.spie_mob",
-      "versionCode": 13
+      "versionCode": 15
     },
     "description": ""
   }

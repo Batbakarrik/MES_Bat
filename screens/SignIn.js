@@ -67,9 +67,9 @@ const SignIn = ({ navigation }) => {
             <StatusBar barStyle='light-content' backgroundColor= {colors.background}></StatusBar>
             <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 65}}>
             </Image>
-            <Text style={styles.text}> {"Application d'aide à la mise en service"}</Text>
-            <Text style={styles.text}> {"MES_BAT V" + expo.version}</Text>
+            <Text style={styles.text5}>{"Application d'aide à la mise en service de relais de protection numériques"}</Text>
             <Logo/>
+            <Text style={{fontWeight: 'bold',color: "#7ea9b1", paddingTop:4}}> {"MES_BAT V" + expo.version}</Text>
             <View style={styles.errorMessage}>
               <Text style={styles.error}>{errorMsg}</Text>
             </View>
@@ -77,8 +77,12 @@ const SignIn = ({ navigation }) => {
                   <View style={styles.container2}>
                     <Icons name="email" color={'white'} size={20}/>
                       <TextInput style={styles.inputBox}
-                        placeholder="Email"
                         autoCapitalize="none"
+                        autoCompleteType="email"
+                        autoCorrect={false}
+                        autoFocus={true}
+                        keyboardType="email-address"
+                        placeholder="Email"
                         value={email}
                         onChangeText={(val) => setEmail(val)}
                       />
@@ -86,8 +90,10 @@ const SignIn = ({ navigation }) => {
                   <View style={styles.container2}>
                     <Icons name="lock" color={'white'} size={20}/>
                       <TextInput style={styles.inputBox}
-                        placeholder="Password"
                         autoCapitalize="none"
+                        autoCompleteType="password"
+                        autoCorrect={false}
+                        placeholder="Password"
                         secureTextEntry={hidePass ? true:false}
                         value={password}
                         onChangeText={(val) => setPassword(val)}
@@ -114,15 +120,15 @@ const SignIn = ({ navigation }) => {
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => navigation.push("ResetPwd")}>
                       <View style={styles.signupcont}>
-                      <Text style={styles.text}>Mot de passe Oublié?</Text>
+                      <Text style={styles.text}>Mot de passe oublié?</Text>
                       <Text style={styles.signuptext}>Réinitialisez le !!</Text>
                     </View>
                   </TouchableOpacity>
+                  </View>
+                </View>
                   <TouchableOpacity onPress={() => Linking.openURL('mailto:contact@app.xipitei.com?subject=App MES_Bat&body=')}>
                     <Text style={styles.textlien}>Contactez moi : Cliquez ici</Text>
                   </TouchableOpacity>
-                  </View>
-                </View>
           </View>
     )
   }

@@ -40,7 +40,7 @@ const Tension = () => {
                                 <Input Title="Primaire TP" Change={setprim_U} Value={prim_U} Length={6} Placeholder="Valeur !"/>
                             </View>
                             <View style={styles.container7}>
-                                <Info Title="U simple" TitleInfo={seuil_V.toFixed(0)+" V"}/>
+                                <Info Taille="110" Title="U simple" TitleInfo={seuil_V.toFixed(0)+" V"}/>
                             </View>
                         </View>
                         <View style={styles.container6}>
@@ -57,7 +57,7 @@ const Tension = () => {
                             </View>
                         </View>
                         <View style={styles.container6}>
-                            <Info Title="Coef_Us/Up" TitleInfo={coef_U}/>
+                            <Info Taille="110" Title="Coef_Us/Up" TitleInfo={coef_U}/>
                         </View>
                     </View>
                     <View style={styles.container4}>
@@ -68,7 +68,7 @@ const Tension = () => {
                                     <Input Title="Seuil U" Change={setseuil_U} Value={seuil_U} Length={6} Placeholder="Valeur !"/>
                                 </View>
                                 <View style={styles.container6}>
-                                    <Info Title=" " TitleInfo={seuil_Up+" %Un"}/>
+                                    <Info Taille="110" Title=" " TitleInfo={seuil_Up+" %Un"}/>
                                 </View>
                     </View>
                     <View style={styles.container4}>
