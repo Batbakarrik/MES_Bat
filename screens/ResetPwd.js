@@ -46,7 +46,7 @@ const ResetPwd = ({ navigation }) => {
                 <View style={styles.container1}>
                     <View style={styles.container2}>
                       <Ionicons name="ios-mail" color={'white'} size={24}></Ionicons>
-                        <TextInput style={styles.inputBox}
+                        <TextInput style={styles.inputBox2}
                           placeholder="Email"
                           autoCapitalize="none"
                           value={email}

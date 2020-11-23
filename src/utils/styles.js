@@ -300,6 +300,12 @@ const styles = StyleSheet.create({
       padding: 0.5,
       marginLeft: 2,
   },
+    inputBox2: {
+      width: 200,
+      paddingHorizontal: 8,
+      margin: 4,
+      color: colors.texte
+  },
   })
 
 export default styles
