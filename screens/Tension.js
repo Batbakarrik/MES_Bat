@@ -57,7 +57,7 @@ const Tension = () => {
                             </View>
                         </View>
                         <View style={styles.container6}>
-                            <Info Taille="110" Title="Coef_Us/Up" TitleInfo={coef_U}/>
+                            <Info Taille="110" Title="Coef_Us/Up" TitleInfo={coef_U.toFixed(4)}/>
                         </View>
                     </View>
                     <View style={styles.container4}>
@@ -68,7 +68,7 @@ const Tension = () => {
                                     <Input Title="Seuil U" Change={setseuil_U} Value={seuil_U} Length={6} Placeholder="Valeur !"/>
                                 </View>
                                 <View style={styles.container6}>
-                                    <Info Taille="110" Title=" " TitleInfo={seuil_Up+" %Un"}/>
+                                    <Info Taille="110" Title=" " TitleInfo={seuil_Up.toFixed(1)+" %Un"}/>
                                 </View>
                     </View>
                     <View style={styles.container4}>

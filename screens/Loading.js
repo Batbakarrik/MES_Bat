@@ -13,13 +13,12 @@ export default class Loading extends Component {
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: -350, right: 80}}>
         </Image>
         <View style={{ 
-          flex: 0.5,
+          flex: 0.6,
           flexDirection: 'row',
-          marginTop: 4,
           alignItems: 'stretch'}}>
           <Text style={{
             fontWeight: 'bold',
-            fontSize: 45,
+            fontSize: 40,
             textAlign: 'left',
             color: "#7ea9b1",
             transform: [{ rotate: '90deg'}]}}>{"MES_BAT V " + expo.version}</Text>

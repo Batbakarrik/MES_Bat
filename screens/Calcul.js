@@ -108,6 +108,10 @@ const Calcul = () => {
                             <View style={styles.container4}>
                             {/* <Text style={styles.text2}></Text> */}
                             </View>
+                            <View style={styles.container6}>
+                                <Text style={styles.text}>Pour caluler la puissance rentrez U - I - CosPhi</Text>
+                                <Text style={styles.text}>Pour caluler le courant rentrez P - U - CosPhi</Text>
+                            </View>
                             <View style={styles.container5}>
                                 <View style={styles.container6}>
                                     { calc === 0 | val_8 === undefined ? <Input Title="P" Change={(e) => setval_4({Value:e})} Value={val_4} Length={6} Placeholder={"Valeur"}/> :
@@ -136,12 +140,7 @@ const Calcul = () => {
                                 >
                                 <Text style={styles.button1}>Calculer</Text>
                             </TouchableOpacity>
-                            {/* <TouchableOpacity
-                                    style={{activeOpacity:2}}
-                                    onPress={setCalc(0)}
-                                >
-                                <Text style={styles.button1}>Reset</Text>
-                            </TouchableOpacity> */}
+
                         </View>
                     </View>
                 </ScrollView>
