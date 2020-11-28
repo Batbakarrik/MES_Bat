@@ -15,6 +15,7 @@ import ResetPwd from './screens/ResetPwd'
 import Courant from './screens/Courant'
 import Tension from './screens/Tension'
 import Thermique from './screens/Thermique'
+import Calcul from './screens/Calcul'
 import Ansi from './screens/Ansi'
 import Password from './screens/Password'
 import Profile from './screens/Profile'
@@ -52,7 +53,7 @@ const ProtectionsStack = createStackNavigator()
 const DonneeStack = createStackNavigator()
 
 const HomeStackScreen = ({navigation}) => (
-    <HomeStack.Navigator /*headerMode="none"*/>
+    <HomeStack.Navigator>
         <HomeStack.Screen
             name="Home"
             component={Home}
@@ -100,6 +101,10 @@ const ProtectionsStackScreen = () => (
         <ProtectionsStack.Screen
             name="THERMIQUE" 
             component={Thermique}
+        />
+        <ProtectionsStack.Screen
+            name="CALCULATRICE" 
+            component={Calcul}
         />
     </ProtectionsStack.Navigator>
 )
@@ -217,7 +222,7 @@ const App = () => {
     useEffect(() => {
         setTimeout(async () => {
             setIsLoading(false)
-        }, 500)
+        }, 2000)
     }, [])
     
     if (isLoading) {

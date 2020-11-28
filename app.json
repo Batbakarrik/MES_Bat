@@ -1,7 +1,7 @@
 {
   "expo": {
     "sdkVersion": "38.0.0",
-    "name": "MES_Bat",
+    "name": "MES_Bat V1.6.3",
     "slug": "MEs_Bat",
     "privacy": "public",
     "platforms": [
@@ -9,12 +9,12 @@
       "android",
       "web"
     ],
-    "version": "1.5.0",
+    "version": "1.6.3",
     "orientation": "portrait",
-    "icon": "./assets/icon_512x512_V1_5.png",
+    "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/icon.png",
-      "resizeMode": "cover",
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
       "backgroundColor": "#003B46"
     },
     "updates": {
@@ -25,7 +25,7 @@
     ],
     "android": {
       "package": "xipitei.com.spie_mob",
-      "versionCode": 8
+      "versionCode": 17
     },
     "description": ""
   }

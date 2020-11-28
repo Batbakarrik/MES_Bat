@@ -17,21 +17,33 @@ const SignUp = ({ navigation }) => {
   const [hidePass, setHidePass] = useState(true)
 
   const handleSignup = () => {
-    firebase.signUp(email, password)
-      .then(userCredentials => {
+
+    const users = {name, email, password}
+
+      firebase.signUp(users)
+
+      .then(userCredentials=> {
         userCredentials.user.sendEmailVerification(),
         userCredentials.user.updateProfile({displayName: name}),
         setName(''),
         setEmail(''),
         setPassword(''),
+        alert(
+          `\nIncription en cours\n\nVous allez reçevoir un email de validation à ${email}\n\nNota:\n   Si vous ne reçevez pas cet email\n   Consultez vôtre dossier\n   'Courrier indésirable'`,
+          [
+            { text: "OK", onPress: () => console.log("OK Pressed") }
+          ],
+          { cancelable: false }
+          )
+        firebase.signUp2(users)
         navigation.push("SignIn")
       })
+
       .catch(error => {
         setError(error)
-      });
-    }
-    const errorMsg = error !== '' && <span>{error.message}</span>
-        
+      })
+  }
+  const errorMsg = error !== '' && <Text>{error.message}</Text>
     return (
       <View style={styles.container}>
         <StatusBar barStyle='light-content' backgroundColor= {colors.background}></StatusBar>
@@ -45,27 +57,35 @@ const SignUp = ({ navigation }) => {
         <View style={styles.container1}>
             <View style={styles.container2}>
               <Icons name="face" color={'white'} size={20}/>
-              <TextInput style={styles.inputBox}
-                  placeholder="Name"
+              <TextInput style={styles.inputBox2}
                   autoCapitalize="none"
+                  autoCorrect={false}
+                  autoFocus={true}
+                  placeholder="Name"
                   value={name}
                   onChangeText={(val) => setName(val)}
                 />
             </View>
             <View style={styles.container2}>
               <Icons name="email" color={'white'} size={20}/>
-                <TextInput style={styles.inputBox}
-                  placeholder="Email"
+                <TextInput style={styles.inputBox2}
                   autoCapitalize="none"
+                  autoCompleteType="email"
+                  autoCorrect={false}
+                  autoFocus={true}
+                  keyboardType="email-address"
+                  placeholder="Email"
                   value={email}
                   onChangeText={(val) => setEmail(val)}
                 />
             </View>
             <View style={styles.container2}>
               <Icons name="lock" color={'white'} size={20}/>
-                <TextInput style={styles.inputBox}
-                  placeholder="Password"
+                <TextInput style={styles.inputBox2}
                   autoCapitalize="none"
+                  autoCompleteType="password"
+                  autoCorrect={false}
+                  placeholder="Password"
                   secureTextEntry={hidePass ? true:false}
                   value={password}
                   onChangeText={(val) => setPassword(val)}
@@ -92,6 +112,6 @@ const SignUp = ({ navigation }) => {
         </View>
       </View>
     )
-  }
+}
 
 export default SignUp

@@ -6,12 +6,9 @@ const styles = StyleSheet.create({
       display: 'flex',
       flex: 1,
       flexDirection: 'column',
-      // justifyContent: 'center',
-      // paddingTop: 4,
       alignItems:'center',
       backgroundColor: colors.background,
-      // marginTop: StatusBar.currentHeight ||0,
-      minHeight: 664
+      minHeight: 664,
     },
     container1: {
       display: 'flex',
@@ -21,7 +18,6 @@ const styles = StyleSheet.create({
     },
     container2: {
       display: 'flex',
-      // justifyContent: 'center',
       alignItems:'center',
       flexDirection: 'row',
       paddingLeft: 8,
@@ -59,42 +55,37 @@ const styles = StyleSheet.create({
     },
     container8: {
       display: 'flex',
-      flex: 0.1,
+      flex: 0.04,
       flexDirection: 'column',
       alignItems:'center',
       padding: 4,
-      marginVertical: 4,
-      marginHorizontal: 8,
+      marginVertical: 0,
+      marginHorizontal: 4,
       borderWidth: 0.2,
       backgroundColor: colors.backgroundinput,
-      borderColor: colors.bordercontainer
+      borderColor: colors.bordercontainer,
     },
     item: {
       flex: 1,
       flexDirection: 'row',
       backgroundColor: colors.background,
-      padding: 4,
-      marginVertical: 4,
-      marginHorizontal: 8,
+      padding: 1,
+      marginVertical: 1,
+      marginHorizontal: 2,
       borderWidth: 0.2,
       borderColor: colors.bordercontainer,
-      minWidth: 300
+      minWidth: 250
     },
     item0: {
       backgroundColor: colors.backgroundinput,
-      padding: 4,
-      marginVertical: 4,
+      padding: 8,
+      marginVertical: 8,
       marginHorizontal: 8,
       borderWidth: 0.2,
       borderColor: colors.bordercontainer,
+      width: 375,
     },
     item1: {
-      flex: 1,
-      backgroundColor: colors.background,
-      padding: 4,
-      marginVertical: 4,
-      marginHorizontal: 8,
-      borderWidth: 0.2,
       borderColor: colors.bordercontainer,
     },
     item1a: {
@@ -102,59 +93,54 @@ const styles = StyleSheet.create({
       paddingVertical: 8,
       paddingHorizontal: 8,
       marginVertical: 0,
-      // borderWidth: 0.2,
-      // borderColor: colors.bordercontainer,
       width: 100
     },
-    item1b: {
+    item1c: {
       backgroundColor: colors.backgroundinput,
       paddingVertical: 8,
       paddingHorizontal: 8,
       marginVertical: 0,
-      // borderWidth: 0.2,
-      // borderColor: colors.bordercontainer,
       width: 65
     },
     item2: {
-      flex:1,
       flexDirection: 'row',
-      justifyContent: 'center',
-      backgroundColor: colors.background,
-      padding: 4,
-      marginVertical: 4,
-      marginHorizontal: 8,
-      borderWidth: 0.2,
       borderColor: colors.bordercontainer
     },
     item2a: {
       flexDirection: 'row',
       backgroundColor: colors.background,
     },
-    item3: {
+    item2b: {
+      flexDirection: 'row',
       backgroundColor: colors.background,
-      padding: 4,
-      marginVertical: 4,
-      marginHorizontal: 8,
-      borderWidth: 0.2,
+    },
+    item3: {
       borderColor: colors.bordercontainer,
-      width:100
+      width: 90
     },
     item3a: {
       backgroundColor: colors.background,
-      textAlign: 'center',
-      width: 100
+      width: 90
+    },
+    item3b: {
+      backgroundColor: colors.background,
+      width: 120
+    },
+    item3c: {
+      backgroundColor: colors.background,
+      width: 122
     },
     item4: {
       backgroundColor: colors.background,
       textAlign: 'center',
       width: 60
     },
-    inputBox: {
-      width: 200,
-      paddingHorizontal: 8,
-      margin: 4,
-      color: colors.texte,
-    },
+    // inputBox: {
+    //   width: 100,
+    //   paddingHorizontal: 0,
+    //   margin: 0,
+    //   color: colors.texte,
+    // },
     inputBox1: {
         width: 100,
         paddingHorizontal: 8,
@@ -163,17 +149,8 @@ const styles = StyleSheet.create({
         borderColor: colors.borderinput,
         borderRadius: 25,
     },
-    // inputBox2: {
-    //   width: 100,
-    //   paddingHorizontal: 8,
-    //   margin: 8,
-    //   color: colors.texte,
-    //   borderColor: colors.borderinput,
-    //   borderRadius: 25,
-    // },
     button: {
       width: 250,
-      // paddingHorizontal: 16,
       paddingVertical: 8,
       marginTop: 4,
       marginBottom:4,
@@ -204,11 +181,8 @@ const styles = StyleSheet.create({
     },
     text1: {
       width: 150,
-      // margin: 0,
-      // paddingHorizontal: 0,
       color: colors.texte,
       textAlign: 'center',
-      // textAlignVertical: 'center',
     },
     text2: {
       fontSize: 20,
@@ -218,17 +192,31 @@ const styles = StyleSheet.create({
       textAlignVertical: 'center',
     },
     text3: {
-      width: 120,
+      width: 110,
       color: colors.texte,
     },
     text4: {
-      width: 120,
+      width: 80,
       height: 45,
       color: colors.texte,
       borderColor: colors.borderinput,
       borderWidth: 0,
       borderRadius: 25,
       textAlignVertical: 'center',
+    },
+    text5: {
+      margin: 8,
+      paddingHorizontal: 8,
+      color: colors.texte,
+      justifyContent: 'center',
+      textAlignVertical: 'center',
+      textAlign: 'center'
+    },
+    text6: {
+      width: 95,
+      color: colors.texte,
+      marginBottom: 10,
+      textAlign: 'center',
     },
     textlien: {
       margin: 8,
@@ -285,7 +273,8 @@ const styles = StyleSheet.create({
     },
     title1: {
       fontSize: 14,
-      color: colors.signuptext
+      color: colors.signuptext,
+      textAlign: 'center'
     },
     pickerAndroid: {
       fontSize: 16,
@@ -297,6 +286,26 @@ const styles = StyleSheet.create({
       color: 'black',
       paddingRight: 30, // to ensure the text is never behind the icon
     },
+    inputBox: {
+      width: 95,
+      height: 30,
+      color: colors.texte,
+      backgroundColor: colors.backgroundinput,
+      borderColor: colors.borderinput,
+      borderWidth: 1,
+      borderRadius: 25,
+      fontSize: 16,
+      textAlign: 'center',
+      textAlignVertical: 'center',
+      padding: 0.5,
+      marginLeft: 2,
+  },
+    inputBox2: {
+      width: 200,
+      paddingHorizontal: 8,
+      margin: 4,
+      color: colors.texte
+  },
   })
 
 export default styles

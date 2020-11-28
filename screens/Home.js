@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { FirebaseContext } from '../src/firebase'
-import { Text, View, TouchableOpacity, Image, Linking } from 'react-native'
+import { Text, View, TouchableOpacity, StatusBar, Image, Linking } from 'react-native'
 
 import styles from '../src/utils/styles'
-import {expo} from '../app.json'
+import colors from '../src/utils/colors'
 
 const  Home = ({ navigation }) => {
   const {firebase} = useContext(FirebaseContext)
@@ -19,9 +19,10 @@ const  Home = ({ navigation }) => {
   useEffect(() => {
     hidden()
   }, [])
-  
+
     return (
       <View style={styles.container}>
+        <StatusBar barStyle='light-content' backgroundColor= {colors.background}></StatusBar>
         <Image source={require("../assets/authHeader_MES_Bat.png")} style= {{position:"absolute", top: 200, right: 70}}></Image>
         <View style={styles.container1}>
           <Text style={styles.text}>Aide:</Text>
@@ -47,10 +48,9 @@ const  Home = ({ navigation }) => {
             Règles de confidentialité: Cliquez ici
           </Text>
         </View>
-        <TouchableOpacity onPress={() => Linking.openURL('mailto:xipitei.dev@xipitei.com?subject=App MES_Bat&body=')}>
+        <TouchableOpacity onPress={() => Linking.openURL('mailto:contact@app.xipitei.com?subject=App MES_Bat&body=')}>
           <Text style={styles.textlien}>Contactez moi : Cliquez ici</Text>
         </TouchableOpacity>
-        <Text style={styles.text}>{"Application version " + expo.version}</Text>
       </View>
     )
   }

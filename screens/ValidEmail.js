@@ -1,25 +1,25 @@
 import React, { useState, useContext } from 'react'
 import { FirebaseContext } from '../src/firebase'
 import { Text, View, TextInput, TouchableOpacity, StatusBar, Image, ScrollView } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
 
+import { Ionicons } from '@expo/vector-icons'
 import styles from '../src/utils/styles'
 import colors from '../src/utils/colors'
 import Logo from '../src/components/Logo'
 
 
-const ResetPwd = ({ navigation }) => {
+const ValidEmail = ({ navigation }) => {
   const {firebase} = useContext(FirebaseContext)
   const [email, setEmail] = useState('');
   const [error, setError] = useState("")
   
   const handleSubmit = () => {
     
-    firebase.pwdReset(email)
+    firebase.validEmail()
 
     .then(tot => {
     alert(
-      `\nRéinitialisation en cours\n\nVous allez reçevoir un email à ${email}\n\nNota:\n   Si vous ne reçevez pas cet email\n   Consultez vôtre dossier\n   'Courrier indésirable'`,
+      `\nTraitement en cours\n\nVous allez reçevoir un email à ${email}\n\nNota:\n   Si vous ne reçevez pas cet email\n   Consultez vôtre dossier\n   'Courrier indésirable'`,
       [
         { text: "OK", onPress: () => console.log("OK Pressed") }
       ],
@@ -46,7 +46,7 @@ const ResetPwd = ({ navigation }) => {
                 <View style={styles.container1}>
                     <View style={styles.container2}>
                       <Ionicons name="ios-mail" color={'white'} size={24}></Ionicons>
-                        <TextInput style={styles.inputBox2}
+                        <TextInput style={styles.inputBox}
                           placeholder="Email"
                           autoCapitalize="none"
                           value={email}
@@ -57,7 +57,7 @@ const ResetPwd = ({ navigation }) => {
                     <TouchableOpacity onPress={handleSubmit}>
                       <Text
                         style={styles.button}>
-                        Réinitialisez !!
+                        Validez vôtre email !!
                       </Text>
                     </TouchableOpacity>
                   <TouchableOpacity onPress={() => navigation.push("SignIn")}>
@@ -71,4 +71,4 @@ const ResetPwd = ({ navigation }) => {
     )
   }
 
-export default ResetPwd
+export default ValidEmail
