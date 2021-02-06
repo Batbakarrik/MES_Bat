@@ -24,11 +24,11 @@ const Protections = ({ navigation }) => {
               <Text style={styles.button}>Protection Thermique</Text>
             </TouchableOpacity>
             </View>
-          </View>
-          <View style={styles.container2}>
-              <TouchableOpacity style={{activeOpacity:2}} onPress={() => navigation.push("CALCULATRICE", {name: "Calculatrice"})}>
-              <Text style={styles.button}>Calculatrice</Text>
-            </TouchableOpacity>
+            <View style={styles.container2}>
+                <TouchableOpacity style={{activeOpacity:2}} onPress={() => navigation.push("CALCULATRICE", {name: "Calculatrice"})}>
+                <Text style={styles.button}>Calculatrice</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>

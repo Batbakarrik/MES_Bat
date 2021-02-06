@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, ScrollView, TouchableOpacity , Picker } from 'react-native'
+import { View, Text, ScrollView, TouchableOpacity , Picker, TextInput } from 'react-native'
 
 import styles from '../src/utils/styles'
 import Input from '../src/components/Input'
@@ -11,11 +11,12 @@ const Calcul = () => {
         const [val_2, setval_2] = useState(0);
         const [val_3, setval_3] = useState(0);
         const [val_4, setval_4] = useState(0);
-        const [val_5, setval_5] = useState(0);
+        const [val_5, setval_5] = useState(10);
         const [val_6, setval_6] = useState(0);
         const [val_7, setval_7] = useState(0);
         const [val_8, setval_8] = useState();
         const [val_9, setval_9] = useState();
+        const [val_10, setval_10] = useState();
         const [calc, setCalc] = useState(0);
         const [racine, setracine] = useState(1.732);
         const [result_1, setresult_1] = useState(0);
@@ -39,13 +40,20 @@ const Calcul = () => {
             setresult_5(parseFloat(val_2.Value) + parseFloat(val_3.Value))
             setresult_6(parseFloat(val_2.Value) - parseFloat(val_3.Value))
             setresult_7(parseFloat(val_2.Value) / parseFloat(val_3.Value)*100)
-        }, [val_1, val_2, val_3, racine, calc])
+            // setCalc(1)
+            // if (val_4.Value === undefined ) {
+            //     setval_8(parseFloat(val_5.Value) * parseFloat(val_6.Value) * 1.732 *val_7.Value)
+            // }
+            // else if (val_6.Value === undefined ) {
+            //     setval_9(parseFloat(val_4.Value) / (parseFloat(val_5.Value) * 1.732 * val_7.Value))
+            // }
+            console.log(val_4, val_5, val_6, val_7, val_8, val_9, calc)
+        }, [val_1, val_2, val_3, val_4, val_5, val_6, val_7, val_8, val_9, val_10, racine, calc])
         
         const rac = '\u221A'
         
         const puissance = () => {
             setCalc(1)
-            // console.log(val_4.Value, val_5.Value, val_6.Value, val_7.Value, val_8)
             if (val_4.Value === undefined ) {
                 setval_8(parseFloat(val_5.Value) * parseFloat(val_6.Value) * 1.732 *val_7.Value)
             }
@@ -53,8 +61,13 @@ const Calcul = () => {
                 setval_9(parseFloat(val_4.Value) / (parseFloat(val_5.Value) * 1.732 * val_7.Value))
             }
         }
-            return (
-                <ScrollView>
+
+        // function reset () {
+        //      window.location.reload(false)
+        // }
+        
+        return (
+            <ScrollView>
                     <View style={styles.container}>
                         <View style={styles.container6}>
                             <View style={styles.container4}>
@@ -135,12 +148,29 @@ const Calcul = () => {
                                 </View>
                             </View>
                             <TouchableOpacity
-                                    style={{activeOpacity:2}}
-                                    onPress={puissance}
-                                >
+                                style={{activeOpacity:2}}
+                                onPress={puissance}
+                            >
                                 <Text style={styles.button1}>Calculer</Text>
                             </TouchableOpacity>
-
+                            {/* <TouchableOpacity>
+                            <View style={{justifyContent: 'center'}}>
+                                <Text style={styles.text6}>toto</Text>
+                                <TextInput style={styles.inputBox}
+                                    onChangeText={(e) => setval_10({Value:e})}
+                                    Value={val_10}
+                                    maxLength = {6}
+                                    placeholder= "valeur"
+                                    keyboardType={"decimal-pad"}
+                                />
+                            </View>
+                            </TouchableOpacity> */}
+                            {/* <TouchableOpacity
+                                style={{activeOpacity:2}}
+                                onPress={}
+                            >
+                                <Text style={styles.button1}>Reset Calcul</Text>
+                            </TouchableOpacity> */}
                         </View>
                     </View>
                 </ScrollView>

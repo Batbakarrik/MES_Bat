@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, TouchableOpacity, Text, ScrollView, Picker } from 'react-native'
+import { View, TouchableOpacity, Text, ScrollView, StyleSheet, Picker} from 'react-native'
 
 import styles from '../src/utils/styles'
 import Input from '../src/components/Input'
@@ -65,16 +65,6 @@ const Courant = () => {
             settemps2(((k.Value)*(120/((Math.pow((seuil_Ix2),1))-1))))
             settemps3(((k.Value)*(120/((Math.pow((seuil_Ix3),1))-1))))
         };
-        const TCSecond = [
-            {
-              label: '1A',
-              value: '1',
-            },
-            {
-              label: '5A',
-              value: '5',
-            },
-          ];
 
         useEffect(() => {
             setprim_I(0)
@@ -101,9 +91,8 @@ const Courant = () => {
             setcoef_I(second_I / prim_I.Value)
             setseuil_Ip(seuil_I.Value / prim_I.Value)
         }, [prim_I, second_I, seuil_I])
-        
+
             return (
-                <ScrollView>
                     <View style={styles.container}>
                         <View style={styles.container6}>
                             <View style={styles.container4}>
@@ -118,11 +107,11 @@ const Courant = () => {
                                     <View style={styles.text4}>
                                         <Picker
                                             selectedValue = {second_I}
-                                            onValueChange = {newsecond_I =>setsecond_I(newsecond_I)}
+                                            onValueChange = {second_I =>setsecond_I(second_I)}
                                             style = {styles.text3}
                                             >
-                                            <Picker.Item label = "5A" value ="5"/>
-                                            <Picker.Item label = "1A" value ="1"/>
+                                            <Picker.Item label= '5A' value='5'/>
+                                            <Picker.Item label= '1A' value='1'/>
                                         </Picker>
                                     </View>
                                 </View>
@@ -210,7 +199,6 @@ const Courant = () => {
 
                         </View>
                     </View>
-                </ScrollView>
                 )
         };
 
