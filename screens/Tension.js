@@ -9,25 +9,33 @@ import Info from '../src/components/Info'
 
 const Tension = () => {
     const [seuil_U, setseuil_U] = useState(0);
+    const [seuilcoef_U, setseuilcoef_U] = useState(0);
     const [seuil_V, setseuil_V] = useState(0);
     const [seuil_Up, setseuil_Up] = useState(0);
+    const [seuil_UpCoef, setseuil_UpCoef] = useState(0);
     const [prim_U, setprim_U] = useState(0);
     const [second_U, setsecond_U] = useState(100);
     const [coef_U, setcoef_U] = useState(0);
     const [inj_Uc, setinj_Uc] = useState(0);
     const [inj_Us, setinj_Us] = useState(0);
 
-    const calc_seuilU = () => {
-        setinj_Uc(seuil_U * coef_U)
-        setinj_Us((seuil_U * coef_U)/1.732)
-    };
-
     useEffect(() => {
         setcoef_U(second_U / prim_U)
-        setseuil_Up((seuil_U/prim_U)*100)
         setseuil_V(prim_U/1.732)
-    },[prim_U, second_U, seuil_U]);
+    },[prim_U, second_U]);
+    
+    useEffect(() => {
+        setseuil_Up((seuil_U/prim_U)*100)
+        setinj_Uc(seuil_U * coef_U)
+        setinj_Us((seuil_U * coef_U)/1.732)
+    },[seuil_U])
 
+    useEffect(() => {
+        setseuil_UpCoef(seuilcoef_U * prim_U)
+        setinj_Uc((seuilcoef_U * prim_U) * coef_U)
+        setinj_Us((seuilcoef_U * prim_U) * (coef_U/1.732))
+    },[seuilcoef_U])
+    
          return (
             <ScrollView>
                 <View style={styles.container}>
@@ -66,9 +74,11 @@ const Tension = () => {
                     <View style={styles.container5}>
                                 <View style={styles.container6}>
                                     <Input Title="Seuil U" Change={setseuil_U} Value={seuil_U} Length={6} Placeholder="Valeur !"/>
+                                    <Info Taille="110" Title=" " TitleInfo={seuil_Up.toFixed(1)+" %Un"}/>
                                 </View>
                                 <View style={styles.container6}>
-                                    <Info Taille="110" Title=" " TitleInfo={seuil_Up.toFixed(1)+" %Un"}/>
+                                    <Input Title="Coef xU" Change={setseuilcoef_U} Value={seuilcoef_U} Length={6} Placeholder="Valeur !"/>
+                                    <Info Taille="110" Title=" " TitleInfo={seuil_UpCoef.toFixed(1)+" Un"}/>
                                 </View>
                     </View>
                     <View style={styles.container4}>
@@ -76,11 +86,6 @@ const Tension = () => {
                     </View>
                     <View style={styles.container5}>
                         <View style={styles.container6}>
-                            <View style={styles.container6}>
-                                <TouchableOpacity style={{activeOpacity:2}} onPress={calc_seuilU}>
-                                    <Text style={styles.button1}>Calculer</Text>
-                                </TouchableOpacity>
-                            </View>
                             <View style={styles.container5}>
                                 <View style={styles.container6}>
                                     <Seuil Title="Inj_U Comp." Value={inj_Uc.toFixed(2)}/>
@@ -95,5 +100,4 @@ const Tension = () => {
             </ScrollView>
         )
 };
-
     export default Tension

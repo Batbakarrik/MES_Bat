@@ -44,7 +44,7 @@ const  Home = ({ navigation }) => {
         </View>
         <View style={styles.container3}>
           <Text style={styles.textlien}
-            onPress={() => Linking.openURL('https://reglesdeconfidentialite.xipitei.com')}>
+            onPress={() => Linking.openURL('https://xipitei.com/features.html')}>
             Règles de confidentialité: Cliquez ici
           </Text>
         </View>
