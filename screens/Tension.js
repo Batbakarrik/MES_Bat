@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { View, TouchableOpacity, Text, Picker, ScrollView } from 'react-native'
+import { View, Text, Picker} from 'react-native'
 
 import styles from '../src/utils/styles'
 import Input from '../src/components/Input'
@@ -37,7 +37,6 @@ const Tension = () => {
     },[seuilcoef_U])
     
          return (
-            <ScrollView>
                 <View style={styles.container}>
                     <View style={styles.container4}>
                         <Text style={styles.text2}>Caractéristiques TP</Text>
@@ -97,7 +96,6 @@ const Tension = () => {
                         </View>
                     </View>
                 </View>
-            </ScrollView>
         )
 };
     export default Tension

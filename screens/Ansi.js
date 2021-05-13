@@ -79,7 +79,7 @@ const renderItem = ({ item }) => (
   return (
     <SafeAreaView style={styles.container}>
         <View style={styles.item2c}>
-          <Text style={styles.title}>Recherche par Code ANSI</Text>
+          <Text style={styles.title}>Recherche par Code ANSI </Text>
           <TextInput style={styles.inputBox}
             placeholder="Code"
             onChangeText={setSearch}

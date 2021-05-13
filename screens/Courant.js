@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, TouchableOpacity, Text, ScrollView, StyleSheet, Picker} from 'react-native'
+import { View, TouchableOpacity, Text, Picker} from 'react-native'
 
 import styles from '../src/utils/styles'
 import Input from '../src/components/Input'
@@ -90,9 +90,9 @@ const Courant = () => {
         
         useEffect(() => {
             setseuil_Ip((seuil_I.Value / prim_I.Value) * 100)
-            setinj_I1((seuil_I.Value * coef_I) * 0.95)
-            setinj_I2((seuil_I.Value * coef_I) * 1)
-            setinj_I3((seuil_I.Value * coef_I) * 1.1)
+            curve == '0' ? setinj_I1((seuil_I.Value * coef_I) * 0.95) : null
+            curve == '0' ? setinj_I2((seuil_I.Value * coef_I) * 1) : null
+            curve == '0' ? setinj_I3((seuil_I.Value * coef_I) * 1.1) : null
         }, [seuil_I])
 
         useEffect(() => {
@@ -157,12 +157,12 @@ const Courant = () => {
                             </View>
                             <View style={styles.container5}>
                                 <View style={styles.container6}>
-                                    <Input Title="Seuil I" Change={(e) => setseuil_I({Value:e})} Valeur={seuil_I} Length={4} Placeholder="Valeur (A)"/>
+                                    <Input Title="Seuil I (A)" Change={(e) => setseuil_I({Value:e})} Valeur={seuil_I} Length={4} Placeholder="Valeur !"/>
                                     <Info Taille="110" Title="" TitleInfo={ seuil_Ip.toFixed(0) +" %In"}/>
                                 </View>
                                 <View style={styles.container6}>
-                                    <Input Title="Coef xI" Change={(e) => setseuilcoef_I({Value:e})} Valeur={seuilcoef_I} Length={4} Placeholder="Valeur (A)"/>
-                                    <Info Taille="110" Title="" TitleInfo={ seuil_IpCoef.toFixed(0) +" xIn"}/>
+                                    <Input Title="Coef xIn" Change={(e) => setseuilcoef_I({Value:e})} Valeur={seuilcoef_I} Length={4} Placeholder="Valeur !"/>
+                                    <Info Taille="110" Title="" TitleInfo={ seuil_IpCoef.toFixed(0) +" A"}/>
                                 </View>
                                 <View style={styles.container6}>
                                     {curve == '0'? null : <Input Title="Coef k" Change={(e) => setk({Value:e})} Valeur={k} Length={5} Placeholder="Valeur !"/>}

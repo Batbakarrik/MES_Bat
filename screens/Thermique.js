@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
-import { View, TouchableOpacity, Text, ScrollView } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { View, Text} from 'react-native'
 
 import styles from '../src/utils/styles'
 import Input from '../src/components/Input'
 import Seuil from '../src/components/Seuil'
+import Info from '../src/components/Info'
+import { CLOUD_SDK_CLIENT_ID } from 'google-auth-library/build/src/auth/googleauth'
 
 const Thermique = () => {
     const [k, setk] = useState(0);
@@ -12,17 +14,30 @@ const Thermique = () => {
     const [Ipre, setIpre] = useState(0);
     const [constTps, setconstTps] = useState(0);
     const [Tps, setTps] = useState(0);
+    const [TpsMin, setTpsMin] = useState(0);
     const [Tpspre, setTpspre] = useState(0);
+    const [TpspreMin, setTpspreMin] = useState(0);
 
     const calc_TpsTh = () => {
         setTps(constTps*(Math.log1p((Math.pow(((I*InOb)/(k*InOb)),2))/((Math.pow(((I*InOb)/(k*InOb)),2))-1)-1)))
+        setTpsMin((constTps*(Math.log1p((Math.pow(((I*InOb)/(k*InOb)),2))/((Math.pow(((I*InOb)/(k*InOb)),2))-1)-1)))/60)
     }
     const calc_TpsThPr = () => {
         setTpspre(constTps*(Math.log1p(((Math.pow(((I*InOb)/(k*InOb)),2))-(Math.pow((Ipre/(k*InOb)),2)))/((Math.pow(((I*InOb)/(k*InOb)),2))-1)-1)))
+        setTpspreMin((constTps*(Math.log1p(((Math.pow(((I*InOb)/(k*InOb)),2))-(Math.pow((Ipre/(k*InOb)),2)))/((Math.pow(((I*InOb)/(k*InOb)),2))-1)-1)))/60)
     }
 
+    useEffect(() => {
+        calc_TpsTh()
+        console.log(Tps)
+    },[constTps])
+
+    useEffect(() => {
+        calc_TpsThPr()
+        console.log(Tpspre)
+    },[Ipre])
+
          return (
-            <ScrollView>
                 <View style={styles.container}>
                     <View style={styles.container4}>
                         <Text style={styles.text2}>Valeurs de réglage</Text>
@@ -47,13 +62,11 @@ const Thermique = () => {
                     <View style={styles.container5}>
                         <View style={styles.container6}>
                             <View style={styles.container6}>
-                                <TouchableOpacity style={{activeOpacity:2}} onPress={calc_TpsTh}>
-                                    <Text style={styles.button}>Calculer</Text>
-                                </TouchableOpacity>
                             </View>
                             <View style={styles.container5}>
                                 <View style={styles.container6}>
-                                    <Seuil Title="Tps de déclenchement" Value={Tps.toFixed(1)+" s"}/>
+                                    <Seuil Title="Tps de décl" Value={Tps.toFixed(1)+" s"}/>
+                                    <Info Taille="" Title="" TitleInfo={TpsMin.toFixed(2)+ " min"}/>
                                 </View>
                             </View>
                         </View>
@@ -70,19 +83,16 @@ const Thermique = () => {
                     <View style={styles.container5}>
                         <View style={styles.container6}>
                             <View style={styles.container6}>
-                                <TouchableOpacity style={{activeOpacity:2}} onPress={calc_TpsThPr}>
-                                    <Text style={styles.button}>Calculer</Text>
-                                </TouchableOpacity>
                             </View>
                             <View style={styles.container5}>
                                 <View style={styles.container6}>
-                                    <Seuil Title="Tps de déclenchement" Value={Tpspre.toFixed(2)+" s"}/>
+                                    <Seuil Title="Tps de décl" Value={Tpspre.toFixed(2)+" s"}/>
+                                    <Info Taille="" Title="" TitleInfo={TpspreMin.toFixed(2)+ " min"}/>
                                 </View>
                             </View>
                         </View>
                     </View>
                 </View>
-            </ScrollView>
         )
 };
 
