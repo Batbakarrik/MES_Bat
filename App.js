@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { PermissionsAndroid, Platform } from "react-native"
 
 import firebase, { FirebaseContext } from './src/firebase'
 import useAuth from './src/hooks/useAuth'
@@ -218,8 +219,15 @@ const RootStackScreen = ({user}) => (
 const App = () => {
     const [isLoading, setIsLoading] = useState(true)
     const user = useAuth()
+
+    const toto = PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+    const titi = PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION)
     
     useEffect(() => {
+
+        toto === PermissionsAndroid.RESULTS.BLOCKED
+        titi === PermissionsAndroid.RESULTS.BLOCKED
+
         setTimeout(async () => {
             setIsLoading(false)
         }, 2000)

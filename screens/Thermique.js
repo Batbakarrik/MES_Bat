@@ -5,7 +5,6 @@ import styles from '../src/utils/styles'
 import Input from '../src/components/Input'
 import Seuil from '../src/components/Seuil'
 import Info from '../src/components/Info'
-import { CLOUD_SDK_CLIENT_ID } from 'google-auth-library/build/src/auth/googleauth'
 
 const Thermique = () => {
     const [k, setk] = useState(0);
