@@ -23,8 +23,7 @@ import Protections from './screens/Protections'
 import Donnees from './screens/Donnees'
 
 import colors from './src/utils/colors'
-import { Ionicons } from '@expo/vector-icons'
-import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Ionicons } from '@expo/vector-icons';
 
 const AuthStack = createStackNavigator()
 const AuthStackScreen = () => (
@@ -141,7 +140,7 @@ const TabsScreen = () => (
                 tabBarLabel: 'Home',
                 activeTintColor: '#00E8AC',
                 tabBarIcon: () => (
-                    <Icons name="home-outline" size={24} color={'white'}></Icons>
+                    <Ionicons name="ios-home" size={24} color={'white'}/>
                 )
             }}
         />
@@ -154,7 +153,7 @@ const TabsScreen = () => (
                     
                 },
                 tabBarIcon: () => (
-                    <Icons name="calculator" size={24} color={'white'}></Icons>
+                    <Ionicons name="ios-calculator" size={24} color={'white'}/>
                 )
             }}
         />
@@ -164,7 +163,7 @@ const TabsScreen = () => (
             options={{
                 tabBarLabel: 'Donnee',
                 tabBarIcon: () => (
-                    <Icons name="format-list-bulleted" size={24} color={'white'}></Icons>
+                    <Ionicons name="ios-list" size={24} color={'white'}/>
                 )
             }}
         />
@@ -218,7 +217,7 @@ const RootStackScreen = ({user}) => (
 const App = () => {
     const [isLoading, setIsLoading] = useState(true)
     const user = useAuth()
-    
+
     useEffect(() => {
         setTimeout(async () => {
             setIsLoading(false)

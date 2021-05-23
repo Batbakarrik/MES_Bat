@@ -114,6 +114,11 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       backgroundColor: colors.background,
     },
+    item2c: {
+      flexDirection: 'row',
+      backgroundColor: colors.background,
+      padding: 16,
+    },
     item3: {
       borderColor: colors.bordercontainer,
       width: 90
@@ -141,6 +146,22 @@ const styles = StyleSheet.create({
     //   margin: 0,
     //   color: colors.texte,
     // },
+
+    searchBox: {
+      width: 200,
+      height: 30,
+      color: colors.texte,
+      backgroundColor: colors.backgroundinput,
+      borderColor: colors.borderinput,
+      borderWidth: 1,
+      borderRadius: 25,
+      fontSize: 16,
+      textAlign: 'center',
+      textAlignVertical: 'center',
+      padding: 0.5,
+      marginLeft: 2,
+    },
+
     inputBox1: {
         width: 100,
         paddingHorizontal: 8,

@@ -14,5 +14,5 @@ const Input = ({ Value, Change, Placeholder, Length, Title }) => (
             keyboardType={"decimal-pad"}
         />
     </View>
-    )
+)
     export default Input
