@@ -1,7 +1,7 @@
 {
   "expo": {
     "sdkVersion": "38.0.0",
-    "name": "MES_Bat V1.8.1",
+    "name": "MES_Bat V1.8.4",
     "slug": "MEs_Bat",
     "privacy": "public",
     "platforms": [
@@ -9,7 +9,7 @@
       "android",
       "web"
     ],
-    "version": "1.8.1",
+    "version": "1.8.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -25,7 +25,8 @@
     ],
     "android": {
       "package": "xipitei.com.spie_mob",
-      "versionCode": 24
+      "versionCode": 27,
+      "permissions": []
     },
     "description": "Application d'aide à la mise en service de relais de protection numérique"
   }
