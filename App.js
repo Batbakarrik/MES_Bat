@@ -222,11 +222,13 @@ const App = () => {
 
     const toto = PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
     const titi = PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION)
-    
+    const tata = PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_BACKGROUND_LOCATION)
+
     useEffect(() => {
 
         toto === PermissionsAndroid.RESULTS.BLOCKED
         titi === PermissionsAndroid.RESULTS.BLOCKED
+        tata === PermissionsAndroid.RESULTS.BLOCKED
 
         setTimeout(async () => {
             setIsLoading(false)
