@@ -3,7 +3,7 @@ import { Text, View, TextInput, TouchableOpacity, StatusBar, Image} from 'react-
 import {FirebaseContext} from '../src/firebase'
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icons from 'react-native-vector-icons/MaterialIcons';
 import Logo from '../src/components/Logo'
 import styles from '../src/utils/styles'
 import colors from '../src/utils/colors'

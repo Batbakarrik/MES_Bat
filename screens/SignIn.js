@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import {expo} from '../app.json'
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icons from 'react-native-vector-icons/MaterialIcons';
 import styles from '../src/utils/styles'
 import Logo from '../src/components/Logo'
 import colors from '../src/utils/colors'

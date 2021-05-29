@@ -24,8 +24,8 @@
       "**/*"
     ],
     "android": {
-      "package": "xipitei.com.spie_mob",
-      "versionCode": 27,
+      "package": "xipitei.com.elecbat",
+      "versionCode": 1,
       "permissions": []
     },
     "description": "Application d'aide à la mise en service de relais de protection numérique"
