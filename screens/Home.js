@@ -28,6 +28,8 @@ const  Home = ({ navigation }) => {
           <Text style={styles.text}>Aide:</Text>
           <Text style={styles.text}>Dans l'onglet 'Protections puis Courant' rentrez les caractéristiques des TC, le seuil ainsi que la courbe de déclenchement. Confirmer en cliquant sur 'Calculer'</Text>
           <Text style={styles.text}>Dans l'onglet 'Protection puis Tension' rentrez les caractéristiques des TP puis le seuil. Confirmer en cliquant sur 'Calculer'</Text>
+          <Text style={styles.text}>Modifications V2.0 </Text>
+          <Text style={styles.text}>   Nouveau Logo, Calcul automatique, Recherche par code ANSI, Optimisation de l'APP_BUNDlE</Text>
         </View>
         <View style={styles.container2}>
           <TouchableOpacity style={{activeOpacity:2}} onPress={() => firebase.logout()}>

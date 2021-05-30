@@ -4,8 +4,7 @@ import { Text, View, TextInput, TouchableOpacity, StatusBar, Image, Linking } fr
 import AsyncStorage from '@react-native-community/async-storage'
 import {expo} from '../app.json'
 
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import Icons from 'react-native-vector-icons/MaterialIcons';
+import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import styles from '../src/utils/styles'
 import Logo from '../src/components/Logo'
 import colors from '../src/utils/colors'
@@ -75,7 +74,7 @@ const SignIn = ({ navigation }) => {
             </View>
                 <View style={styles.container1}>
                   <View style={styles.container2}>
-                    <Icons name="email" color={'white'} size={20}/>
+                    <FontAwesome5 name="envelope" color={'white'} size={20}/>
                       <TextInput style={styles.inputBox2}
                         autoCapitalize="none"
                         autoCompleteType="email"
@@ -88,7 +87,7 @@ const SignIn = ({ navigation }) => {
                       />
                   </View>
                   <View style={styles.container2}>
-                    <Icons name="lock" color={'white'} size={20}/>
+                    <FontAwesome5  name="lock" color={'white'} size={20}/>
                       <TextInput style={styles.inputBox2}
                         autoCapitalize="none"
                         autoCompleteType="password"
@@ -98,8 +97,8 @@ const SignIn = ({ navigation }) => {
                         value={password}
                         onChangeText={(val) => setPassword(val)}
                       />
-                      <Icon
-                        name={hidePass ? 'eye-slash' : 'eye'}
+                      <Ionicons
+                        name={hidePass ? 'ios-eye-off' : 'ios-eye'}
                         color={'white'}
                         size={15}
                         onPress={() => setHidePass(!hidePass)}

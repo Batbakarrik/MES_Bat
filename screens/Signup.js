@@ -2,8 +2,7 @@ import React, {useState, useContext} from 'react'
 import { Text, View, TextInput, TouchableOpacity, StatusBar, Image} from 'react-native'
 import {FirebaseContext} from '../src/firebase'
 
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import Icons from 'react-native-vector-icons/MaterialIcons';
+import { Ionicons, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import Logo from '../src/components/Logo'
 import styles from '../src/utils/styles'
 import colors from '../src/utils/colors'
@@ -56,7 +55,7 @@ const SignUp = ({ navigation }) => {
         </View>
         <View style={styles.container1}>
             <View style={styles.container2}>
-              <Icons name="face" color={'white'} size={20}/>
+              <MaterialIcons name="face" color={'white'} size={20}/>
               <TextInput style={styles.inputBox2}
                   autoCapitalize="none"
                   autoCorrect={false}
@@ -67,7 +66,7 @@ const SignUp = ({ navigation }) => {
                 />
             </View>
             <View style={styles.container2}>
-              <Icons name="email" color={'white'} size={20}/>
+              <FontAwesome5 name="envelope" color={'white'} size={20}/>
                 <TextInput style={styles.inputBox2}
                   autoCapitalize="none"
                   autoCompleteType="email"
@@ -80,7 +79,7 @@ const SignUp = ({ navigation }) => {
                 />
             </View>
             <View style={styles.container2}>
-              <Icons name="lock" color={'white'} size={20}/>
+              <FontAwesome5 name="lock" color={'white'} size={20}/>
                 <TextInput style={styles.inputBox2}
                   autoCapitalize="none"
                   autoCompleteType="password"
@@ -90,8 +89,8 @@ const SignUp = ({ navigation }) => {
                   value={password}
                   onChangeText={(val) => setPassword(val)}
                 />
-                <Icon
-                  name={hidePass ? 'eye-slash' : 'eye'}
+                <Ionicons
+                  name={hidePass ? 'ios-eye-off' : 'ios-eye'}
                   color={'white'}
                   size={15}
                   onPress={() => setHidePass(!hidePass)}
